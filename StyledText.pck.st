@@ -1,10 +1,12 @@
-'From Cuis 4.2 of 25 July 2013 [latest update: #2135] on 16 December 2014 at 10:02:47.528061 am'!
+'From Cuis 4.2 of 25 July 2013 [latest update: #2679] on 17 February 2016 at 11:59:56.354779 am'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 12!
-!requires: 'RTFTests' 1 nil nil!
-!requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
+!provides: 'StyledText' 1 17!
 !requires: 'ExtendedClipboard' 1 nil nil!
+!requires: 'RTFImporting' 1 nil nil!
+!requires: 'RTFTests' 1 nil nil!
+!requires: 'Morphic-Widgets-Extras' 1 nil nil!
+!requires: 'RTFExporting' 1 nil nil!
+!requires: 'Cuis-Base' 42 2621 nil!
 !classDefinition: #StyleSet category: #StyledText!
 ActiveModel subclass: #StyleSet
 	instanceVariableNames: 'paragraphStyles characterStyles volatileParaStyles volatileCharStyles'
@@ -1188,9 +1190,9 @@ actualContents: aTextOrString
 			asText
 			beStyledTextWith: styleSet])! !
 
-!StyledTextModel methodsFor: 'as yet unclassified' stamp: 'jmv 7/14/2011 14:00'!
-autoCompleter
-	^STECompleter withModel: self! !
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
+autoCompleterClass
+	^STECompleter! !
 
 !StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:27'!
 basicActualContents: aTextOrString
@@ -1200,7 +1202,7 @@ basicActualContents: aTextOrString
 			asText
 			beStyledTextWith: styleSet])! !
 
-!StyledTextModel methodsFor: 'as yet unclassified' stamp: 'jmv 12/20/2010 14:53'!
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
 editorClass
 	^StyledTextEditor! !
 
@@ -1266,13 +1268,15 @@ save
 	self saveAs: fileName.
 	^true! !
 
-!StyledTextModel methodsFor: 'file save' stamp: 'bp 4/22/2012 13:38'!
+!StyledTextModel methodsFor: 'file save' stamp: 'KenD 12/5/2015 09:00'!
 saveAs: aName
 	| refStream |
 	fileName _ self class withExtension: aName.
 	self flushUndoRedoCommands.
-	refStream _ SmartRefStream forceNewFileNamed: fileName.
-	[ refStream nextPut: self ] ensure: [ refStream close ]! !
+	fileName asFileEntry forceWriteStream: [ :strm |
+		refStream _ SmartRefStream on: strm.
+		refStream nextPut: self 
+	].! !
 
 !StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 12/21/2010 23:48'!
 shoutAboutToStyle: aSHTextStyler
@@ -1299,12 +1303,13 @@ styleSetChanged
 	actualContents beStyledTextWith: styleSet.
 	self triggerEvent: #stylesChanged! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 7/17/2013 09:54'!
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'KenD 12/4/2015 21:07'!
 fromFileNamed: aFileName
-	| fileName file model |
+	| fileName model |
 	fileName _ self withExtension: aFileName.
-	file _ FileStream oldFileNamed: fileName.
-	[ model _ (SmartRefStream on: file) next ] ensure: [ file close ].
+	fileName asFileEntry readStream: [ :strm |
+		model _ (SmartRefStream on: strm) next
+	].
 	model fileName: fileName.
 	"Crude way to fix old Color subInstances in files"
 	"
@@ -1326,7 +1331,7 @@ styleSet: aStyleSet
 !StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 4/28/2012 19:10'!
 withExtension: aName
 	| suffix |
-	suffix _ FileDirectory extensionDelimiter asString, 'object'.
+	suffix := '.object'.
 	^(aName endsWith: suffix)
 		ifTrue: [ aName ]
 		ifFalse: [ aName , suffix ]! !
@@ -1377,27 +1382,34 @@ initialize
 	An English dictionary with (at this time of writing) 166211 words, taking 7.5Mbytes.
 	Load a dictionary from (for example)  ./scowl-7.1/final/ up to a certain level.
 	"
-	| level baseDirectory possibleDirectoryNames scowlName directory  strm |
+	| level baseDirectory possibleDirs dirEntry |
 	level _ 70.
 	EnglishDict _ Trie new.
-	baseDirectory _ (FileDirectory on: (CodePackage named: 'StyledText' createIfAbsent: false registerIfNew: false) fullFileName) containingDirectory.
-	possibleDirectoryNames _ (baseDirectory directoryNames select: [ :any | any beginsWith: 'scowl']) asArray sort.
-	possibleDirectoryNames ifEmpty: [
+	baseDirectory := self package fullFileName asFileEntry parent.
+	possibleDirs := baseDirectory directories select: [ :dir | 'scowl*' match: dir name ]  .
+	possibleDirs ifEmpty: [
 		Transcript newLine; show: 'No word list for English spell checker was found.'.
-		^self ].
-	scowlName _ possibleDirectoryNames last.
-	directory _ ((baseDirectory directoryNamed: scowlName) directoryNamed: 'final').
-	directory fileNames do: [ :filename |
-		(filename prefixAndSuffix: FileDirectory extensionDelimiter) last asNumber <= level ifTrue: [
-			strm _ directory oldFileOrNoneNamed: filename.
-			filename print.
-			[
-				strm reset.
+		^self 
+	].
+	dirEntry := possibleDirs detect: [ :dir | dir directoryNames includes: 'final' ].
+	dirEntry ifNil: [
+		Transcript newLine; show: 'No word list for English spell checker was  found.'.
+		^self 
+	].
+	dirEntry allFilesDo: [ :fileEntry | | fileLevel |
+		fileLevel := fileEntry extension asInteger.
+		((fileLevel isNil not) and: [fileLevel <= level])
+		ifTrue: [ fileEntry readStream: [ :strm |
+				fileEntry name print.
 				[ strm atEnd ] whileFalse: [
 					strm nextLine substrings do: [ :word | 
-						EnglishDict add: word asLowercase ]
+						EnglishDict add: word asLowercase 
 					]
-				] ensure: [strm close]]].
+				]
+			]
+		]
+	].
+
 	'Spell Checker importing done.' print.! !
 
 !CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
@@ -1480,7 +1492,7 @@ shortDescription
 	"note: Does not use all state. Two different instances could answer the same shortDescription."
 	^String streamContents: [ :strm | self shortPrintOn: strm ]! !
 
-!CharacterStyle methodsFor: 'printing' stamp: 'jmv 1/9/2014 21:45'!
+!CharacterStyle methodsFor: 'printing' stamp: 'KenD 12/5/2015 08:31'!
 shortPrintOn: strm
 	familyName ifNotNil: [
 		strm nextPutAll: familyName ].
@@ -1495,8 +1507,8 @@ shortPrintOn: strm
 		strm nextPutAll: ' underlined' ].
 	(emphasis anyMask: AbstractFont struckThroughCode) ifTrue: [
 		strm nextPutAll: ' struckThrough' ].
-	(emphasis anyMask: AbstractFont outlineCode) ifTrue: [
-		strm nextPutAll: ' outline' ].
+	(emphasis anyMask: AbstractFont normalCode) ifTrue: [
+		strm nextPutAll: ' plain' ].
 	color ifNotNil: [
 		strm nextPut: $ .
 		color printOn: strm ]! !
@@ -1924,7 +1936,7 @@ selectAllWithStyle: aParagraphOrCharacterStyle
 	selectionStopBlocks _ stopIndexes collect: [ :index | (textComposition characterBlockForIndex: index) ].
 	self storeSelectionInComposition! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 12/29/2011 15:27'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 12/5/2015 08:28'!
 selectCharacterStyle
 	"Let user add or change character styles for the current selection, or for text to be typed."
 	"This is a user command, and generates undo"
@@ -1937,7 +1949,7 @@ selectCharacterStyle
 				ifTrue: [ '<on>' ]
 				ifFalse: [ '<off>' ]),  
 			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUp)
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
 		ifNotNil: [ :style |
 			style isNullStyle ifTrue: [
 				self removeCharacterStyles.
@@ -1953,7 +1965,7 @@ selectCharacterStyle: aKeyboardEvent
 
 	^self selectCharacterStyle! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 9/19/2011 17:22'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 12/5/2015 08:38'!
 selectCurrentStyle
 	"Let user change styles for the current selection or pragraph."
 	"This is a user command, and generates undo"
@@ -1966,7 +1978,7 @@ selectCurrentStyle
 				ifTrue: [ '<on>' ]
 				ifFalse: [ '<off>' ]),  
 			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUp)
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
 		ifNotNil: [ :style |
 			style = current
 				ifFalse: [ self applyAttribute: (ParagraphStyleReference for: style) ]
@@ -2011,12 +2023,22 @@ cmdShortcutsSpec
 		#(		$k 	#selectCharacterStyle:	'Select Character Style')
 	)! !
 
-!StyledTextEditor class methodsFor: 'class initialization' stamp: 'jmv 11/4/2011 11:05'!
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 2/3/2016 16:01'!
+fileReaderServicesForFile: filename suffix: suffix
+	"FileList buttons that open a CodeFileBrowserWindow on contents."
+
+	(#('object' 'ste') includes: suffix) ifTrue: [
+		^ { self serviceSTEEdit } ].
+
+	^#()! !
+
+!StyledTextEditor class methodsFor: 'class initialization' stamp: 'KenD 2/3/2016 15:53'!
 initialize
 	"
 	StyledTextEditor initialize
 	"
-	super initialize! !
+	super initialize.
+	FileList registerFileReader: self.! !
 
 !StyledTextEditor class methodsFor: 'keyboard shortcut tables' stamp: 'jmv 6/13/2012 18:16'!
 initializeMenu
@@ -2052,6 +2074,32 @@ initializeMenu
 		{'Replace all uses of Paragraph Style...'.	#replaceAllCurrentStyle}.
 		{'Replace all uses of Character Style...'.		#replaceAllCharacterStyle}.
 	}! !
+
+!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 2/3/2016 16:07'!
+openFromFileEntry: fileEntry
+	| model |
+	model _ StyledTextModel fromFileNamed: fileEntry pathName.
+	^SystemWindow editFancierStyledText: model label: fileEntry name! !
+
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 2/3/2016 16:07'!
+serviceSTEEdit
+	"Answer the service of opening a file in a STEditor"
+
+	^ (SimpleServiceEntry
+		provider: self 
+		label: 'open Styled Text Editor file'
+		selector: #openFromFileEntry:
+		description: 'open this file with a Styled Text Editor'
+		buttonLabel: 'open STE')
+		argumentGetter: [ :fileList | fileList selectedFileEntry ]! !
+
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 2/3/2016 16:08'!
+unload
+"
+	self unload.
+"
+
+	FileList unregisterFileReader: self ! !
 
 !FancyDraggeableButtonMorph methodsFor: 'drawing' stamp: 'jmv 4/12/2012 22:14'!
 drawOn: aCanvas
@@ -2106,41 +2154,46 @@ iconColor
 				ifTrue: [ Color gray: 0.75 ]
 				ifFalse: [ Color white ]].! !
 
-!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'jmv 11/30/2014 18:52'!
+!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'KenD 12/4/2015 21:19'!
 updateDownButtonImage
 	"update the receiver's as a downButton.  put a new image inside"
 
-	icon _ BitBltCanvas arrowWithGradientOfDirection: #down.
+	icon _ BitBltCanvas buildArrowOfDirection: #down size: ScrollBar scrollbarThickness.
+	"##FIXME@@ arrowWithGradientOfDirection: #down."
 	actionSelector _ #scrollDown.
 	self
 		roundButtonStyle: false;
 		redrawNeeded! !
 
-!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'jmv 11/30/2014 18:52'!
+!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'KenD 12/4/2015 21:16'!
 updateLeftButtonImage
 	"update the receiver's as a downButton.  put a new image inside"
 
-	icon _ BitBltCanvas arrowWithGradientOfDirection: #left.
+	icon _ BitBltCanvas buildArrowOfDirection: #left size: ScrollBar scrollbarThickness. 
+	"@@FIXME@@ arrowWithGradientOfDirection: #left."
 	actionSelector _ #scrollUp.
 	self
 		roundButtonStyle: false;
 		redrawNeeded! !
 
-!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'jmv 11/30/2014 18:53'!
+!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'KenD 12/4/2015 21:20'!
 updateRightButtonImage
 	"update the receiver's as a downButton.  put a new image inside"
 
-	icon _ BitBltCanvas arrowWithGradientOfDirection: #right.
+	icon _ BitBltCanvas buildArrowOfDirection: #right size: ScrollBar scrollbarThickness.
+
+	"##FIXME@@ arrowWithGradientOfDirection: #right."
 	actionSelector _ #scrollDown.
 	self
 		roundButtonStyle: false;
 		redrawNeeded! !
 
-!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'jmv 11/30/2014 18:53'!
+!FancyButtonMorph methodsFor: 'scrollbar button' stamp: 'KenD 12/4/2015 21:18'!
 updateUpButtonImage
 	"update the receiver's as a upButton. put a new image inside"
 
-	icon _ BitBltCanvas arrowWithGradientOfDirection: #up.
+	icon _ BitBltCanvas buildArrowOfDirection: #up size: ScrollBar scrollbarThickness.. 
+	"@@FIXME@@ arrowWithGradientOfDirection: #up"
 	actionSelector _ #scrollUp.
 	self
 		roundButtonStyle: false;
@@ -2251,7 +2304,7 @@ handlesMouseOver: anEvent
 	"So our #mouseLeave: method is called"
 	^ true! !
 
-!PluggableDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 11/30/2014 18:53'!
+!PluggableDropDownListMorph methodsFor: 'initialization' stamp: 'KenD 12/4/2015 21:21'!
 initialize
 	| icon |
 	super initialize.
@@ -2261,7 +2314,8 @@ initialize
 "	self extent: 120 @ 20."
 	icon _ "Theme current steButtons" true
 		ifFalse: [ BitBltCanvas arrowOfDirection: #down size: ScrollBar scrollbarThickness ]
-		ifTrue: [ BitBltCanvas arrowWithGradientOfDirection: #down ].
+		ifTrue: [ BitBltCanvas buildArrowOfDirection: #down size: ScrollBar scrollbarThickness].
+			 "@@FIXME@@ arrowWithGradientOfDirection: #down"
 	downButton _ FancyButtonMorph new.
 	downButton
 		model: self;
@@ -3651,7 +3705,7 @@ testStylesInPaste8
 
 !StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'bp 4/22/2012 12:14'!
 tearDown
-	FileDirectory default deleteFileNamed: 'StyledTextModelTest.object'! !
+	(FmDirectoryEntry currentDirectory // 'StyledTextModelTest.object') delete! !
 
 !StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'bp 4/22/2012 13:15'!
 testFromFileNamed
@@ -3667,9 +3721,9 @@ testFromFileNamed
 testSave
 	| model |
 	model _ StyledTextModel new.
-	self deny: (FileDirectory default fileExists: 'StyledTextModelTest.object').
+	self deny:   (FmDirectoryEntry currentDirectory // 'StyledTextModelTest.object') exists.
 	model saveAs: 'StyledTextModelTest'.
-	self assert: (FileDirectory default fileExists: 'StyledTextModelTest.object')! !
+	self assert: (FmDirectoryEntry currentDirectory // 'StyledTextModelTest.object') exists! !
 
 !StyledTextTest methodsFor: 'tests' stamp: 'jmv 12/20/2011 12:41'!
 testAsStyledAsNonStyledSample5

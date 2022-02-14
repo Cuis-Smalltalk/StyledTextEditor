@@ -1,9 +1,9 @@
 'From Cuis 5.0 [latest update: #5004] on 21 December 2021 at 3:40:51 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 55!
+!provides: 'StyledText' 1 56!
 !requires: 'Cuis-Base' 42 2621 nil!
 !requires: 'ExtendedClipboard' 1 nil nil!
-!requires: 'Morphic-Widgets-Extras' 1 nil nil!
+!requires: 'UI-Entry' 1 nil nil!
 !requires: 'RTFExporting' 1 nil nil!
 !requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!

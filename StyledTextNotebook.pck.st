@@ -1,7 +1,10 @@
-'From Cuis 4.2 of 25 July 2013 [latest update: #1823] on 11 September 2013 at 12:34:41.318967 am'!
+'From Cuis 5.0 [latest update: #4362] on 24 August 2020 at 12:22:52 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledTextNotebook' 1 1!
+!provides: 'StyledTextNotebook' 1 4!
 !requires: 'StyledText' 1 nil nil!
+SystemOrganization addCategory: #StyledTextNotebook!
+
+
 !classDefinition: #BpStyledTextNotebook category: #StyledTextNotebook!
 Object subclass: #BpStyledTextNotebook
 	instanceVariableNames: ''
@@ -13,7 +16,18 @@ BpStyledTextNotebook class
 	instanceVariableNames: ''!
 
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 9/11/2013 00:17'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 5/31/2016 11:15'!
+startUp
+
+	[
+		MyModel _ Filename asFileEntry readStreamDo: [ :strm |
+			(SmartRefStream on: strm) next ].
+		AppMorph submorphs first
+			 model: MyModel;
+			 possiblyChanged
+	] on: FileDoesNotExistException do: nil.! !
+
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 8/23/2020 21:35:23'!
 createModelAndView
 	"
 	BpStyledTextNotebook createModelAndView
@@ -32,7 +46,7 @@ createModelAndView
 	topRow addMorphBack: saveButton.
 
 	w _ PasteUpMorph someInstance.
-	AppMorph morphBoundsInWorld: w morphBoundsInWorld.
+	AppMorph morphPositionInWorld: 0@0; morphExtentInWorld: w morphExtentInWorld.
 	w addMorph: AppMorph.
 	AppMorph startStepping! !
 
@@ -92,13 +106,3 @@ sMXW0FhY074+owh6FY7j6bMXqKmpYY9JfRrpnCwuEAjA6/XC4XCwix6PB665hyzXrs/gxk0n
 ZpyzuH3Hhdm799l178ITdg916R5Kf2H9yeJCoRAWFxcr/rtUChlk/QGoFPNClwN64wAAAABJ
 RU5ErkJggg==' base64Decoded asByteArray readStream ].
 	^SaveIcon! !
-
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 1/28/2011 18:44'!
-startUp
-	| file |
-	(FileStream isAFileNamed: Filename) ifTrue: [
-		file _ FileStream fileNamed: Filename.
-		[ MyModel _ (SmartRefStream on: file) next ] ensure: [ file close ].
-		AppMorph submorphs first
-			 model: MyModel;
-			 possiblyChanged ].! !

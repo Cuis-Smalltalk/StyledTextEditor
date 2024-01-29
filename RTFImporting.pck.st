@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #6025] on 12 September 2023 at 5:08:08 pm'!
+'From Cuis6.3 [latest update: #6200] on 29 January 2024 at 4:29:28 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'RTFImporting' 1 7!
+!provides: 'RTFImporting' 1 10!
 !requires: 'ExtendedClipboard' 1 nil nil!
 !requires: 'Graphics-Files-Additional' 1 nil nil!
 SystemOrganization addCategory: #RTFimporting!
@@ -189,7 +189,7 @@ RTFToken class
 !classDefinition: #RTFTokenizer category: #RTFimporting!
 Object subclass: #RTFTokenizer
 	instanceVariableNames: 'stream buffer chunkBuffer last next afterNext afterAfter'
-	classVariableNames: 'ControlSymbolSet EndOfKeywordSet'
+	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'RTFimporting'!
 !classDefinition: 'RTFTokenizer class' category: #RTFimporting!
@@ -329,7 +329,7 @@ scanCharactersFrom: startIndex to: stopIndex in: sourceString rightX: rightX sto
 	[lastIndex <= stopIndex]
 		whileTrue: 
 			[char _ (sourceString at: lastIndex).
-			ascii _ char numericValue + 1.
+			ascii _ char codePoint + 1.
 			(stops at: ascii) == nil ifFalse: [^stops at: ascii].
 			lastIndex _ lastIndex + 1].
 	lastIndex _ stopIndex.
@@ -406,10 +406,10 @@ initialize
 	ScannerTable at: CharacterScanner endOfRunCode put: #scanFinished.
 	ScannerTable at: CharacterScanner crossedXCode put: #scanFinished.
 
-	ScannerTable at: ${ numericValue + 1 put: #blockOpenAt:.
-	ScannerTable at: $} numericValue + 1 put: #blockCloseAt:.
-	ScannerTable at: Character lfCharacter numericValue + 1 put: #lfAt:.
-	ScannerTable at: Character crCharacter numericValue + 1 put: #crAt:.
+	ScannerTable at: ${ codePoint + 1 put: #blockOpenAt:.
+	ScannerTable at: $} codePoint + 1 put: #blockCloseAt:.
+	ScannerTable at: Character lf codePoint + 1 put: #lfAt:.
+	ScannerTable at: Character cr codePoint + 1 put: #crAt:.
 ! !
 
 !RTFChunkScanner class methodsFor: 'instance creation' stamp: 'mir 8/12/2006 16:04'!
@@ -545,13 +545,13 @@ createHandleMessage: token
 digitValue: char
 
 	| value |
-	value _ char numericValue.
-	value <= $9 numericValue 
-		ifTrue: [^value - $0 numericValue].
-	value >= $a numericValue 
-		ifTrue: [value <= $z numericValue ifTrue: [^value - $a numericValue + 10]].
-	value >= $A numericValue 
-		ifTrue: [value <= $Z numericValue ifTrue: [^value - $A numericValue + 10]].
+	value _ char codePoint.
+	value <= $9 codePoint 
+		ifTrue: [^value - $0 codePoint].
+	value >= $a codePoint 
+		ifTrue: [value <= $z codePoint ifTrue: [^value - $a codePoint + 10]].
+	value >= $A codePoint 
+		ifTrue: [value <= $Z codePoint ifTrue: [^value - $A codePoint + 10]].
 ! !
 
 !RTFParser methodsFor: 'utilities' stamp: 'tat 5/3/2006 02:18'!
@@ -2059,13 +2059,13 @@ default
 digitValue: char
 
 	| value |
-	value _ char numericValue.
-	value <= $9 numericValue 
-		ifTrue: [^value - $0 numericValue].
-	value >= $A numericValue 
-		ifTrue: [value <= $Z numericValue ifTrue: [^value - $A numericValue + 10]].
-	value >= $a numericValue 
-		ifTrue: [value <= $z numericValue ifTrue: [^value - $a numericValue + 10]].
+	value _ char codePoint.
+	value <= $9 codePoint 
+		ifTrue: [^value - $0 codePoint].
+	value >= $A codePoint 
+		ifTrue: [value <= $Z codePoint ifTrue: [^value - $A codePoint + 10]].
+	value >= $a codePoint 
+		ifTrue: [value <= $z codePoint ifTrue: [^value - $a codePoint + 10]].
 ! !
 
 !RTFLatin1TextConverter methodsFor: 'conversion' stamp: 'mir 8/13/2006 17:36'!
@@ -2080,7 +2080,7 @@ toSqueak: char
 toSqueak: char withTable: table
 
 	| value |
-	value _ char numericValue.
+	value _ char codePoint.
 	value < 128 ifTrue: [^ char].
 	value > 255 ifTrue: [^ char].
 	^ RTFUnicode codePoint: (table at: (value - 128 + 1)).
@@ -2282,14 +2282,6 @@ addStringToken: aString to: aBuffer
 chunkBuffer
 	^chunkBuffer ifNil: [chunkBuffer := String new: 2048]! !
 
-!RTFTokenizer methodsFor: 'private' stamp: 'mir 8/11/2006 20:54'!
-controlSymbolSet
-	^ControlSymbolSet! !
-
-!RTFTokenizer methodsFor: 'private' stamp: 'mir 8/11/2006 21:01'!
-endOfKeywordSet
-	^EndOfKeywordSet! !
-
 !RTFTokenizer methodsFor: 'private' stamp: 'tat 8/13/2007 11:00'!
 on: aStream
 
@@ -2311,7 +2303,7 @@ on: aStream
 	
 ! !
 
-!RTFTokenizer methodsFor: 'private' stamp: 'jmv 11/3/2016 10:13:12'!
+!RTFTokenizer methodsFor: 'private' stamp: 'jmv 1/29/2024 16:27:32'!
 parseChunk
 
 	"reads a string between two backslashes into buffer"
@@ -2330,12 +2322,12 @@ parseChunk
 
 	index := 1.
 	tokenFirst := token first.
-	(self controlSymbolSet includes: tokenFirst)
+	('|~-_:*{}' includes: tokenFirst)
 		ifTrue: [
 			buffer add: (RTFToken newKeyword: (tokenFirst asString)).
 			index := index+1]
 		ifFalse: [ "this is a keyword"
-			index :=  token indexOfAnyOf: self endOfKeywordSet.
+			index := token findFirst: [ :char | char isLetter not ].
 			(index = 0)
 				ifTrue: [
 					buffer add: (RTFToken newKeyword: token).
@@ -2346,7 +2338,7 @@ parseChunk
 						or: [(token at: index) = $-])
 						ifTrue: [
 							token := token copyFrom: index to: token size.
-							index _ token findFirst: [ :c | c isDigit not and: [ c ~= $- ]].
+							index := token findFirst: [ :c | c isDigit not and: [ c ~= $- ]].
 							(index = 0)
 								"if no separator or brace found, then whole chunk is a number"
 								ifTrue: [arg := token asNumber.
@@ -2412,13 +2404,13 @@ readStreamUpToNoEscapeInto: tokenStream
 	"convert newline (#10#13, #13#10) to \par
 	 convert \'HH to \specialDDD"
 	token ifNotEmpty: [
-		peekValue := (token at: 1) numericValue.
+		peekValue := (token at: 1) codePoint.
 		peekValue = 10
 			ifTrue: [
 				index := index + 1.
 				token size > 1
 					ifTrue: [
-						peekValue := (token at: 2) numericValue.
+						peekValue := (token at: 2) codePoint.
 						peekValue = 13
 							ifTrue: [index := index + 1]].
 				tokenStream
@@ -2430,14 +2422,14 @@ readStreamUpToNoEscapeInto: tokenStream
 						index := index + 1.
 						token size > 1
 							ifTrue: [
-								peekValue := (token at: 2) numericValue.
+								peekValue := (token at: 2) codePoint.
 								peekValue = 10
 									ifTrue: [index := index + 1]].
 						tokenStream
 							nextPutAll: 'par ';
 							nextPutAll: (token copyFrom: index to: token size)]
 		 			ifFalse: ["a non-ascii characters"
-						peekValue = 39 "$' numericValue"
+						peekValue = 39 "$' codePoint"
 							ifTrue: [
 								tokenStream
 									nextPutAll: 'SomeCodePageHexValue';
@@ -2511,21 +2503,6 @@ tokenClass
 	"the token class used by this tokenizer"
 	^RTFToken! !
 
-!RTFTokenizer class methodsFor: 'class initialization' stamp: 'jmv 11/3/2016 10:13:35'!
-initialize
-	"RTFTokenizer initialize"
-
-	EndOfKeywordSet := CharacterSet new.
-	(0 to: ($A numericValue - 1)) do:
-		[:v | EndOfKeywordSet add: (Character numericValue: v)].
-	(($Z numericValue + 1) to: ($a numericValue - 1)) do:
-		[:v | EndOfKeywordSet add: (Character numericValue: v)]. 
-	(($z numericValue + 1) to: 255) do:
-		[:v | EndOfKeywordSet add: (Character numericValue: v)].
-
-	" \'hh is handled separately. it is converted to \sophieUtfHexDDD"
-	ControlSymbolSet _ CharacterSet newFrom: '|~-_:*{}'! !
-
 !RTFTokenizer class methodsFor: 'instance creation' stamp: 'mir 8/11/2006 20:57'!
 newFromString: aString
 	^self on: aString readStream! !
@@ -2556,4 +2533,3 @@ RTFChunkScanner initialize!
 RTFParser initialize!
 RTFTextBuilder initialize!
 RTFToken initialize!
-RTFTokenizer initialize!

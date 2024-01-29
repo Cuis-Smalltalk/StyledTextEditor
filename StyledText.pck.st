@@ -1,11 +1,11 @@
-'From Cuis 6.0 [latest update: #6032] on 17 September 2023 at 8:00:49 pm'!
+'From Cuis6.3 [latest update: #6200] on 29 January 2024 at 4:32:17 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 62!
+!provides: 'StyledText' 1 63!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
 !requires: 'UI-Entry' 1 35 nil!
+!requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -1172,13 +1172,13 @@ addAttributesForPasting: replacement
 		ifFalse: [
 			^Text string: replacement attributes: emphasisHere ]! !
 
-!StyledTextEditor methodsFor: 'private' stamp: 'jmv 9/5/2016 21:15:05'!
+!StyledTextEditor methodsFor: 'private' stamp: 'jmv 1/29/2024 16:32:03'!
 buildCmdShortcuts
-	cmdShortcuts _ self class cmdShortcuts copy.
+	cmdShortcuts := self class cmdShortcuts copy.
 	model styleSet paragraphStyles do: [ :pair |
-		cmdShortcuts at: pair first numericValue + 1 put: #changeCurrentStyle: ].
+		cmdShortcuts at: pair first codePoint + 1 put: #changeCurrentStyle: ].
 	model styleSet characterStyles do: [ :pair |
-		cmdShortcuts at: pair first numericValue + 1 put: #changeCharacterStyle: ]! !
+		cmdShortcuts at: pair first codePoint + 1 put: #changeCharacterStyle: ]! !
 
 !StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 9/21/2011 10:54'!
 changeCharacterStyle: aKeyboardEvent

@@ -1,6 +1,6 @@
 'From Cuis6.3 [latest update: #6200] on 29 January 2024 at 4:29:28 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'RTFImporting' 1 10!
+!provides: 'RTFImporting' 1 11!
 !requires: 'ExtendedClipboard' 1 nil nil!
 !requires: 'Graphics-Files-Additional' 1 nil nil!
 SystemOrganization addCategory: #RTFimporting!
@@ -1423,7 +1423,7 @@ parseWithTokenizer: t buildWith: b
 initialize
 	"RTFParser initialize"
 
-	HandleMessages := Dictionary new: 11.
+	HandleMessages := Dictionary new.
 	HandleMessages
 		at: '*' put: #handleStar: ;
 		at: '|' put: #handleFormula: ;

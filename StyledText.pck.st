@@ -1,11 +1,11 @@
-'From Cuis6.3 [latest update: #6200] on 29 January 2024 at 4:32:17 pm'!
+'From Cuis7.1 [latest update: #6378] on 18 May 2024 at 4:50:58 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 63!
+!provides: 'StyledText' 1 64!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFImporting' 1 nil nil!
+!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -2090,7 +2090,7 @@ openBasicStyledTextEditor
 
 	SystemWindow editStyledText: StyledTextModel new label: 'Styled Text Editor'! !
 
-!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'bp 9/17/2023 15:01:32'!
+!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'jmv 5/17/2024 18:07:35'!
 withModel: aStyledTextModel in: aLayoutMorph
 	| topRow paragraphStyleList characterStyleList textMorph m topRowHeight labelFont topRowElementsWidth |
 	textMorph := self withModel: aStyledTextModel.
@@ -2121,7 +2121,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 		addMorph: m
 		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth fixedHeight: m morphHeight) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
 	paragraphStyleList := PluggableFilteringDropDownListMorph
-			model: textMorph
+			withModel: textMorph
 			listGetter: #paragraphStyleNamesAndShortcuts
 			indexGetter: #currentParagraphStyleIndex
 			indexSetter: #currentParagraphStyleIndex:.
@@ -2141,7 +2141,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 		addMorph: m
 		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth fixedHeight: m morphHeight) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
 	characterStyleList := PluggableFilteringDropDownListMorph 
-			model:textMorph
+			withModel:textMorph
 			listGetter: #characterStyleNamesAndShortcuts
 			indexGetter: #currentCharacterStyleIndex
 			indexSetter: #currentCharacterStyleIndex:.
@@ -2157,12 +2157,12 @@ withModel: aStyledTextModel in: aLayoutMorph
 
 	^aLayoutMorph! !
 
-!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 8/23/2020 21:07:30'!
+!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 5/17/2024 18:08:45'!
 basicOpenList
 	| xtraWidth xtraHeight bounds |
-	bounds _ self displayBounds.
-	listMorph _ PluggableActOnReturnKeyListMorph
-		model: self
+	bounds := self displayBounds.
+	listMorph := PluggableActOnReturnKeyListMorph
+		withModel: self
 		listGetter: #getList
 		indexGetter: #getIndex
 		indexSetter: #setIndex:.
@@ -2176,10 +2176,10 @@ basicOpenList
 		autoDeselect: false.
 	self world addMorph: listMorph.
 	listMorph updateList.
-	xtraWidth _ listMorph hLeftoverScrollRange + 4.
+	xtraWidth := listMorph hLeftoverScrollRange + 4.
 	xtraWidth > 0 ifTrue: [
 		listMorph morphWidth: listMorph morphWidth + xtraWidth ].
-	xtraHeight _ listMorph vLeftoverScrollRange + 4.
+	xtraHeight := listMorph vLeftoverScrollRange + 4.
 	xtraHeight > 0 ifTrue: [
 		listMorph morphHeight: (listMorph morphHeight + xtraHeight min: 100) ]! !
 
@@ -2339,11 +2339,11 @@ setIndex: index
 	self changed: self.
 	self closeList! !
 
-!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'jmv 9/16/2009 11:30'!
-model: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
+!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'jmv 5/17/2024 18:08:50'!
+with: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
 
 	^self new
-		model: anObject
+		withModel: anObject
 		listGetter: getListSel
 		indexGetter: getSelectionSel
 		indexSetter: setSelectionSel! !

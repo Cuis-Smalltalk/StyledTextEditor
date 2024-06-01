@@ -1,6 +1,6 @@
 'From Cuis7.1 [latest update: #6378] on 18 May 2024 at 4:50:58 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 64!
+!provides: 'StyledText' 1 65!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
@@ -2339,8 +2339,8 @@ setIndex: index
 	self changed: self.
 	self closeList! !
 
-!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'jmv 5/17/2024 18:08:50'!
-with: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
+!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'Ez3 5/30/2024 20:36:13'!
+withModel: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
 
 	^self new
 		withModel: anObject

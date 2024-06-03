@@ -1,6 +1,6 @@
 'From Cuis7.1 [latest update: #6378] on 18 May 2024 at 4:50:58 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 65!
+!provides: 'StyledText' 1 66!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
@@ -2343,7 +2343,7 @@ setIndex: index
 withModel: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
 
 	^self new
-		withModel: anObject
+		model: anObject
 		listGetter: getListSel
 		indexGetter: getSelectionSel
 		indexSetter: setSelectionSel! !

@@ -1,11 +1,11 @@
-'From Cuis7.1 [latest update: #6378] on 18 May 2024 at 4:50:58 pm'!
+'From Cuis7.1 [latest update: #6561] on 5 August 2024 at 11:48:31 am'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 66!
+!provides: 'StyledText' 1 67!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
 !requires: 'UI-Entry' 1 35 nil!
+!requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -16,14 +16,14 @@ SystemOrganization addCategory: #'StyledText-Completion'!
 SystemOrganization addCategory: #'StyledText-RTF-importing'!
 
 
-!classDefinition: #StyledTextModel category: #StyledText!
-TextModel subclass: #StyledTextModel
-	instanceVariableNames: 'styleSet fileName'
+!classDefinition: #STETheme category: #'StyledText-Themes'!
+Theme subclass: #STETheme
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'StyledText'!
-!classDefinition: 'StyledTextModel class' category: #StyledText!
-StyledTextModel class
+	category: 'StyledText-Themes'!
+!classDefinition: 'STETheme class' category: #'StyledText-Themes'!
+STETheme class
 	instanceVariableNames: ''!
 
 !classDefinition: #StyleSet category: #StyledText!
@@ -36,44 +36,14 @@ ActiveModel subclass: #StyleSet
 StyleSet class
 	instanceVariableNames: ''!
 
-!classDefinition: #StyledTextEditor category: #StyledText!
-TextEditor subclass: #StyledTextEditor
-	instanceVariableNames: 'cmdShortcuts cmdActions'
+!classDefinition: #StyledTextModel category: #StyledText!
+TextModel subclass: #StyledTextModel
+	instanceVariableNames: 'styleSet fileName'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'StyledText'!
-!classDefinition: 'StyledTextEditor class' category: #StyledText!
-StyledTextEditor class
-	instanceVariableNames: ''!
-
-!classDefinition: #CharacterStyleReference category: #StyledText!
-TextAttribute subclass: #CharacterStyleReference
-	instanceVariableNames: 'characterStyle'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText'!
-!classDefinition: 'CharacterStyleReference class' category: #StyledText!
-CharacterStyleReference class
-	instanceVariableNames: ''!
-
-!classDefinition: #ParagraphStyleReference category: #StyledText!
-TextAttribute subclass: #ParagraphStyleReference
-	instanceVariableNames: 'paragraphStyle'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText'!
-!classDefinition: 'ParagraphStyleReference class' category: #StyledText!
-ParagraphStyleReference class
-	instanceVariableNames: ''!
-
-!classDefinition: #ToolbarMorph category: #'StyledText-Morphic-Windows'!
-LayoutMorph subclass: #ToolbarMorph
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText-Morphic-Windows'!
-!classDefinition: 'ToolbarMorph class' category: #'StyledText-Morphic-Windows'!
-ToolbarMorph class
+!classDefinition: 'StyledTextModel class' category: #StyledText!
+StyledTextModel class
 	instanceVariableNames: ''!
 
 !classDefinition: #STEMainMorph category: #'StyledText-Morphic'!
@@ -84,6 +54,16 @@ LayoutMorph subclass: #STEMainMorph
 	category: 'StyledText-Morphic'!
 !classDefinition: 'STEMainMorph class' category: #'StyledText-Morphic'!
 STEMainMorph class
+	instanceVariableNames: ''!
+
+!classDefinition: #ToolbarMorph category: #'StyledText-Morphic-Windows'!
+LayoutMorph subclass: #ToolbarMorph
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText-Morphic-Windows'!
+!classDefinition: 'ToolbarMorph class' category: #'StyledText-Morphic-Windows'!
+ToolbarMorph class
 	instanceVariableNames: ''!
 
 !classDefinition: #PluggableActOnReturnKeyListMorph category: #'StyledText-Morphic-Windows'!
@@ -136,56 +116,6 @@ TextEntryMorph subclass: #FilteringDDLEditorMorph
 FilteringDDLEditorMorph class
 	instanceVariableNames: ''!
 
-!classDefinition: #STETheme category: #'StyledText-Themes'!
-Theme subclass: #STETheme
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText-Themes'!
-!classDefinition: 'STETheme class' category: #'StyledText-Themes'!
-STETheme class
-	instanceVariableNames: ''!
-
-!classDefinition: #StyledTextEditorTest category: #'StyledText-Tests'!
-TestCase subclass: #StyledTextEditorTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText-Tests'!
-!classDefinition: 'StyledTextEditorTest class' category: #'StyledText-Tests'!
-StyledTextEditorTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #StyledTextModelTest category: #'StyledText-Tests'!
-TestCase subclass: #StyledTextModelTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText-Tests'!
-!classDefinition: 'StyledTextModelTest class' category: #'StyledText-Tests'!
-StyledTextModelTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #StyledTextTest category: #'StyledText-Tests'!
-TestCase subclass: #StyledTextTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'StyledText-Tests'!
-!classDefinition: 'StyledTextTest class' category: #'StyledText-Tests'!
-StyledTextTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #STECompleter category: #'StyledText-Completion'!
-AutoCompleter subclass: #STECompleter
-	instanceVariableNames: 'words'
-	classVariableNames: 'EnglishDict'
-	poolDictionaries: ''
-	category: 'StyledText-Completion'!
-!classDefinition: 'STECompleter class' category: #'StyledText-Completion'!
-STECompleter class
-	instanceVariableNames: ''!
-
 !classDefinition: #RTFStyledTextBuilder category: #'StyledText-RTF-importing'!
 RTFTextBuilder subclass: #RTFStyledTextBuilder
 	instanceVariableNames: 'paragraphStyleInUse characterStyleInUse'
@@ -236,42 +166,82 @@ Object subclass: #SampleListModel
 SampleListModel class
 	instanceVariableNames: ''!
 
+!classDefinition: #StyledTextEditor category: #StyledText!
+TextEditor subclass: #StyledTextEditor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText'!
+!classDefinition: 'StyledTextEditor class' category: #StyledText!
+StyledTextEditor class
+	instanceVariableNames: ''!
 
-!StyledTextModel commentStamp: 'jmv 10/16/2013 21:43' prior: 0!
-A StyledText is a Text where every character has a ParagraphStyle. All the characters in a Paragraph (including the ending Character newLineCharacter) share the same ParagraphStyle.!
+!classDefinition: #CharacterStyleReference category: #StyledText!
+TextAttribute subclass: #CharacterStyleReference
+	instanceVariableNames: 'characterStyle'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText'!
+!classDefinition: 'CharacterStyleReference class' category: #StyledText!
+CharacterStyleReference class
+	instanceVariableNames: ''!
+
+!classDefinition: #ParagraphStyleReference category: #StyledText!
+TextAttribute subclass: #ParagraphStyleReference
+	instanceVariableNames: 'paragraphStyle'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText'!
+!classDefinition: 'ParagraphStyleReference class' category: #StyledText!
+ParagraphStyleReference class
+	instanceVariableNames: ''!
+
+!classDefinition: #STECompleter category: #'StyledText-Completion'!
+AutoCompleter subclass: #STECompleter
+	instanceVariableNames: 'words'
+	classVariableNames: 'EnglishDict'
+	poolDictionaries: ''
+	category: 'StyledText-Completion'!
+!classDefinition: 'STECompleter class' category: #'StyledText-Completion'!
+STECompleter class
+	instanceVariableNames: ''!
+
+!classDefinition: #StyledTextEditorTest category: #'StyledText-Tests'!
+TestCase subclass: #StyledTextEditorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText-Tests'!
+!classDefinition: 'StyledTextEditorTest class' category: #'StyledText-Tests'!
+StyledTextEditorTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #StyledTextModelTest category: #'StyledText-Tests'!
+TestCase subclass: #StyledTextModelTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText-Tests'!
+!classDefinition: 'StyledTextModelTest class' category: #'StyledText-Tests'!
+StyledTextModelTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #StyledTextTest category: #'StyledText-Tests'!
+TestCase subclass: #StyledTextTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'StyledText-Tests'!
+!classDefinition: 'StyledTextTest class' category: #'StyledText-Tests'!
+StyledTextTest class
+	instanceVariableNames: ''!
+
 
 !StyleSet commentStamp: '<historical>' prior: 0!
 My instances know some styles (and the keyboard shortcuts to apply them).!
 
-!CharacterStyleReference commentStamp: '<historical>' prior: 0!
-A CharacterStyleReference encodes a CharacterStyle change applicable over a given range of text. Instances of CharacterStyleReference (and other TextAttributes) are usually volatile, and they are usually referenced only from the Text.!
-
-!ParagraphStyleReference commentStamp: 'jmv 3/13/2012 11:45' prior: 0!
-A ParagraphStyleReference encodes a ParagraphStyle change applicable over a given range of text. Instances of CharacterStyleReference (and other TextAttributes) are usually volatile, and they are usually referenced only from the Text.
-
-Warning: TextAlignment and ParagraphStyleReference should always be applied to whole 'paragraphs' in the text. See #isParagraphAttribute
-
-(
-(Text string: 'THIS CLASS HAS NO COMMENT!!', String cStringr attribute: TextColor green),
-(Text string: ('Heading of Level 1', String crString) attribute: (ParagraphStyleReference named: 'Heading 1')),
-(Text string: ('Heading of Level 2', String crString) attribute: (ParagraphStyleReference named: 'Heading 2')),
-(Text string: ('Heading of Level 3', String crString) attribute: (ParagraphStyleReference named: 'Heading 3')),
-(Text string: ('This is some emphasized text. ', String crString) attribute: (ParagraphStyleReference named: 'Emphasized')),
-(Text string: ('This is some normal text. ', String crString) attribute: (ParagraphStyleReference named: 'Normal')),
-(Text string: ('This is some normal text. ', String crString) attribute: (ParagraphStyleReference named: 'Normal')),
-(Text string: 'This text has no tyle set')
-) edit
-
-This example shows how attributes such as ParagraphStyleReference, that must be applied to whole paragraphs, are indeed done so when concatenating Texts
-(
-(Text string: 'This text has no style set', String crString),
-(Text string: 'This is Heading 1', String crString attribute: (ParagraphStyleReference named: 'Heading 1')),
-(Text string: 'no tyle set'),
-(Text string: 'This is Heading 1', String crString attribute: (ParagraphStyleReference named: 'Heading 1')),
-(Text string: 'no style set'),
-(Text string: 'This is Heading 2', String crString attribute: (ParagraphStyleReference named: 'Heading 2')),
-(Text string: 'This text has no tsyle set', String cStringr)
-) edit!
+!StyledTextModel commentStamp: 'jmv 10/16/2013 21:43' prior: 0!
+A StyledText is a Text where every character has a ParagraphStyle. All the characters in a Paragraph (including the ending Character newLineCharacter) share the same ParagraphStyle.!
 
 !PluggableStyledTextMorph commentStamp: '<historical>' prior: 0!
 To be used with StyledTextEditors!
@@ -327,170 +297,47 @@ Advantages of this approach:
 	indexGetter: #sel 
 	indexSetter: #sel:) openInWorld!
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:27'!
-actualContents: aTextOrString
-	"Merge styles appropriately. Warning: modifies the argument."
-	super actualContents: (aTextOrString ifNotNil: [
-		aTextOrString
-			asText
-			beStyledTextWith: styleSet])! !
+!CharacterStyleReference commentStamp: '<historical>' prior: 0!
+A CharacterStyleReference encodes a CharacterStyle change applicable over a given range of text. Instances of CharacterStyleReference (and other TextAttributes) are usually volatile, and they are usually referenced only from the Text.!
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:27'!
-basicActualContents: aTextOrString
-	"Merge styles appropriately. Warning: modifies the argument."
-	super basicActualContents: (aTextOrString ifNotNil: [
-		aTextOrString
-			asText
-			beStyledTextWith: styleSet])! !
+!ParagraphStyleReference commentStamp: 'jmv 3/13/2012 11:45' prior: 0!
+A ParagraphStyleReference encodes a ParagraphStyle change applicable over a given range of text. Instances of CharacterStyleReference (and other TextAttributes) are usually volatile, and they are usually referenced only from the Text.
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'KenD 4/1/2016 14:35'!
-fileName
-	^fileName! !
+Warning: TextAlignment and ParagraphStyleReference should always be applied to whole 'paragraphs' in the text. See #isParagraphAttribute
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 4/30/2012 00:08'!
-fileName: aString
-	fileName _ aString! !
+(
+(Text string: 'THIS CLASS HAS NO COMMENT!!', String cStringr attribute: TextColor green),
+(Text string: ('Heading of Level 1', String crString) attribute: (ParagraphStyleReference named: 'Heading 1')),
+(Text string: ('Heading of Level 2', String crString) attribute: (ParagraphStyleReference named: 'Heading 2')),
+(Text string: ('Heading of Level 3', String crString) attribute: (ParagraphStyleReference named: 'Heading 3')),
+(Text string: ('This is some emphasized text. ', String crString) attribute: (ParagraphStyleReference named: 'Emphasized')),
+(Text string: ('This is some normal text. ', String crString) attribute: (ParagraphStyleReference named: 'Normal')),
+(Text string: ('This is some normal text. ', String crString) attribute: (ParagraphStyleReference named: 'Normal')),
+(Text string: 'This text has no tyle set')
+) edit
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/9/2011 14:40'!
-styleSet
-	^styleSet! !
+This example shows how attributes such as ParagraphStyleReference, that must be applied to whole paragraphs, are indeed done so when concatenating Texts
+(
+(Text string: 'This text has no style set', String crString),
+(Text string: 'This is Heading 1', String crString attribute: (ParagraphStyleReference named: 'Heading 1')),
+(Text string: 'no tyle set'),
+(Text string: 'This is Heading 1', String crString attribute: (ParagraphStyleReference named: 'Heading 1')),
+(Text string: 'no style set'),
+(Text string: 'This is Heading 2', String crString attribute: (ParagraphStyleReference named: 'Heading 2')),
+(Text string: 'This text has no tsyle set', String cStringr)
+) edit!
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:31'!
-styleSet: aStyleSet
-	"All assignments to the styleSet ivar should call this method."
-	styleSet ifNotNil: [ styleSet removeActionsWithReceiver: self ].
-	styleSet _ aStyleSet.
-	styleSet ifNotNil: [ styleSet when: #stylesChanged send: #styleSetChanged to: self ]! !
-
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
-autoCompleterClass
-	^STECompleter! !
-
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
-editorClass
-	^StyledTextEditor! !
-
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 11/3/2016 11:03:59'!
-textStylerClass
-	^SHTextStylerST80! !
-
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:15:15'!
-formatAndStyleIfNeededWith: anSHTextStyler
-
-	| toStyle |
-	anSHTextStyler ifNotNil: [
-		(self shouldStyle: self actualContents with: anSHTextStyler) ifTrue: [
-			self actualContents paragraphStyleChunksDo: [ :interval :paragraphStyle |
-				paragraphStyle ifNotNil: [ paragraphStyle doesShout ifTrue: [
-					toStyle _ actualContents copyFrom: interval first to: interval last.
-					anSHTextStyler formatAndStyle: toStyle allowBackgroundStyleProcess: false.
-					actualContents replaceFrom: interval first to: interval last with: anSHTextStyler formattedText ]]]]]! !
-
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:12:55'!
-shouldStyle: text with: anSHTextStyler
-	"This is a notification that aSHTextStyler is about to re-style its text."
-
-	anSHTextStyler classOrMetaClass: nil.
-	^true! !
-
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 9/22/2011 15:06'!
-logUndoAndRemoveCharacterStylesIn: anInterval
-	"Remove any char styles from selection"
-	"This is a user command, and generates undo"
-
-	| command |
-	command _ actualContents commandForRemoveCharacterStylesIn: anInterval.
-	undoRedoCommands
-		nextPut: command;
-		truncateAtPosition.	"To disable redo of previous commands, now invalidated."
-	command doOn: self! !
-
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 12/29/2011 15:38'!
-removeReferencesToCharacterStyle: oldCharacterStyle
-	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
-	"This is a user command, and generates undo"
-
-	"Undo not yet implemented. Reasons:
-	1) it would hold references to unused styles that we might want to die
-	2) it would require a slower implementation"
-	self flag: #jmv.
-
-	actualContents removeReferencesToCharacterStyle: oldCharacterStyle! !
-
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 9/21/2011 11:35'!
-replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle
-	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
-	"This is a user command, and generates undo"
-
-	"Undo not yet implemented. Reasons:
-	1) it would hold references to unused styles that we might want to die
-	2) it would require a slower implementation"
-	self flag: #jmv.
-
-	actualContents replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle! !
-
-!StyledTextModel methodsFor: 'file save' stamp: 'jmv 12/20/2012 12:21'!
-save
-	"Answer wether save was successful."
-	"Note: to enable the use of StyledText in applications, where 'accept' or 'save' have other meanings than 'save to file', we need to merge this class with PluggableTextModel, and have the textProvider be the application."
-	fileName ifNil: [
-		fileName _ FillInTheBlankMorph
-			request: 'File name?'
-			initialAnswer: ''.
-		fileName isEmpty ifTrue: [ ^false ]].
-
-	self saveAs: fileName.
-	^true! !
-
-!StyledTextModel methodsFor: 'file save' stamp: 'jmv 5/31/2016 11:24'!
-saveAs: aName
-	| refStream |
-	fileName _ self class withExtension: aName.
-	self flushUndoRedoCommands.
-	fileName asFileEntry forceWriteStreamDo: [ :strm |
-		refStream _ SmartRefStream on: strm.
-		refStream nextPut: self 
-	].! !
-
-!StyledTextModel methodsFor: 'events' stamp: 'jmv 8/11/2011 11:33'!
-styleSetChanged
-	"Our style set (or some style in it) changed.
-	Update text and any views."
-	actualContents beStyledTextWith: styleSet.
-	self triggerEvent: #stylesChanged! !
-
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 5/31/2016 11:16'!
-fromFileNamed: aFileName
-	| fileName model |
-	fileName _ self withExtension: aFileName.
-	fileName asFileEntry readStreamDo: [ :strm |
-		model _ (SmartRefStream on: strm) next
-	].
-	model fileName: fileName.
-	"Crude way to fix old Color subInstances in files"
+!STETheme methodsFor: 'colors' stamp: 'bp 4/22/2012 10:51'!
+textHighlight
 	"
-	Color allInstancesDo: [ :c | c fix ].
-	TranslucentColor allInstancesDo: [ :c | c fix ].
+	^ Color r: 0.71 g: 0.835 b: 1.0
+	^ Color hue: 214 chroma: 0.29 luminance: 0.816
 	"
-	^model! !
+	^Color r: 204 g: 235 b: 214 range: 255! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 12/21/2011 10:20'!
-new
-	^self styleSet: StyleSet sample! !
-
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 12/21/2011 10:19'!
-styleSet: aStyleSet
-	^super new
-		styleSet: aStyleSet;
-		yourself! !
-
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 4/28/2012 19:10'!
-withExtension: aName
-	| suffix |
-	suffix := '.object'.
-	^(aName endsWith: suffix)
-		ifTrue: [ aName ]
-		ifFalse: [ aName , suffix ]! !
+!STETheme methodsFor: 'colors' stamp: 'jmv 12/30/2011 11:42'!
+unfocusedTextHighlightFrom: aColor
+	^Color r: 218 g: 228 b: 228 range: 255! !
 
 !StyleSet methodsFor: 'accessing' stamp: 'jmv 8/9/2011 11:03'!
 autoCompletedStyle
@@ -1126,806 +973,170 @@ sample
 		createSampleParagraphStyleSet;
 		createSampleCharacterStyleSet! !
 
-!StyledTextEditor methodsFor: 'private' stamp: 'jmv 3/14/2012 08:25'!
-addAttributesForPasting: replacement
-	| start stop answer paragraphStyle |
-	(replacement is: #Text)
-		ifTrue: [
-			start _ self startIndex.
-			stop _ self stopIndex.
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:27'!
+actualContents: aTextOrString
+	"Merge styles appropriately. Warning: modifies the argument."
+	super actualContents: (aTextOrString ifNotNil: [
+		aTextOrString
+			asText
+			beStyledTextWith: styleSet])! !
 
-			"Version previous to 12/19/2011"
-			"If we are pasting a text that doesn't bring a ParagraphStyleReference in the last paragraph (because it doesn't end with a NewLine), and we need it,
-			but it won't be provided by our text, as we are at the end, then add any paragraph attribute from emphasisHere.
-			Note: If we are replacing all the current text (or we have no current text), then just leave whatever comes with replacement,
-				asuming that the pasted text knows better than our default for empty text
-				(unless it brings no  paragraph style at the end. In that case, add emphasisHere anyway)"
-"			(replacement notEmpty and: [
-				replacement last isLineSeparator not and: [ 
-					stop > model textSize and: [
-						start > 1 or: [(replacement paragraphStyleOrNilAt: replacement size + 1) isNil]
-					]
-				]
-			])".
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:27'!
+basicActualContents: aTextOrString
+	"Merge styles appropriately. Warning: modifies the argument."
+	super basicActualContents: (aTextOrString ifNotNil: [
+		aTextOrString
+			asText
+			beStyledTextWith: styleSet])! !
 
+!StyledTextModel methodsFor: 'accessing' stamp: 'KenD 4/1/2016 14:35'!
+fileName
+	^fileName! !
 
-			"If we are pasting a text that maybe doesn't bring a relevant ParagraphStyleReference in the last paragraph (because it doesn't include a NewLine),
-			but it won't be provided by our text, as we are at the end of it, then add any paragraph attribute from emphasisHere."
-			answer _ ((replacement includes: Character newLineCharacter) not and: [  stop > model textSize and: [
-				"Note: Do this only if the current paragraph is not empty, meaning that it is already using the current ParagraphStyle for some text."
-				(start > 1 and: [ (model actualContents at: start-1) isLineSeparator not ])
-			]])
-				ifTrue: [ (replacement, (Text string: String newLineString attributes: emphasisHere)) copyFrom: 1 to: replacement size ]
-				ifFalse: [ replacement ].
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 4/30/2012 00:08'!
+fileName: aString
+	fileName _ aString! !
 
-			"In any case, ensure ParagraphStyle. (we could reach this point without a ParagraphStyle, for example, by choosing autocompletion on an empty text,
-			i.e. Open new STE, type 'Aardv' open completion and select 'Aardvark')"
-			emphasisHere do: [ :each |
-				each forParagraphStyleReferenceDo: [ :s | paragraphStyle _ s ]].
-			answer runs mapValues: [ :attributes |
-				(attributes anySatisfy: [ :att | att class == ParagraphStyleReference ])
-					ifTrue: [ attributes ]
-					ifFalse: [ attributes copyWith: (ParagraphStyleReference for: paragraphStyle) ]].
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/9/2011 14:40'!
+styleSet
+	^styleSet! !
 
-			^answer ]
-
-		ifFalse: [
-			^Text string: replacement attributes: emphasisHere ]! !
-
-!StyledTextEditor methodsFor: 'private' stamp: 'jmv 1/29/2024 16:32:03'!
-buildCmdShortcuts
-	cmdShortcuts := self class cmdShortcuts copy.
-	model styleSet paragraphStyles do: [ :pair |
-		cmdShortcuts at: pair first codePoint + 1 put: #changeCurrentStyle: ].
-	model styleSet characterStyles do: [ :pair |
-		cmdShortcuts at: pair first codePoint + 1 put: #changeCharacterStyle: ]! !
-
-!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 9/21/2011 10:54'!
-changeCharacterStyle: aKeyboardEvent
-	"This is a user command, and generates undo"
-
-	(model styleSet characterStyleForShortcut: aKeyboardEvent keyCharacter)
-		ifNil: [ self removeCharacterStyles ]
-		ifNotNil: [ :style |
-			style isNullStyle
-				ifTrue: [ self removeCharacterStyles ]
-				ifFalse: [ self applyAttribute: (CharacterStyleReference for: style) ]].
-	^true! !
-
-!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 9/19/2011 17:22'!
-changeCurrentStyle: aKeyboardEvent
-	"This is a user command, and generates undo"
-
-	(model styleSet paragraphStyleForShortcut: aKeyboardEvent keyCharacter)
-		ifNotNil: [ :style |
-			self applyAttribute: (ParagraphStyleReference for: style) ].
-	^true! !
-
-!StyledTextEditor methodsFor: 'clipboard access' stamp: 'jmv 8/11/2011 11:27'!
-clipboardStringOrText
-
-	| clipContents |
-	clipContents _ Clipboard retrieveStringOrText.
-	^(clipContents is: #Text)
-		ifTrue: [	
-			"Merge styles appropriately, but in a copy."
-			clipContents asStyledTextWith: model styleSet ]
-		ifFalse: [ clipContents]! !
-
-!StyledTextEditor methodsFor: 'typing support' stamp: 'jmv 6/13/2012 18:06'!
-cmdShortcuts
-	"We have keyboard shortcuts on a per-instance basis."
-	^cmdShortcuts! !
-
-!StyledTextEditor methodsFor: 'typing support' stamp: 'jmv 1/13/2012 12:36'!
-setEmphasisHereFromTextForward: f
-
-	model isTextEmpty
-		ifTrue: [
-			"default emphasisHere already set, but reflect it if needed"
-			morph possiblyChanged ]
-		ifFalse: [ super setEmphasisHereFromTextForward: f ]! !
-
-!StyledTextEditor methodsFor: 'accessing' stamp: 'jmv 6/13/2012 18:30'!
-help
-	"
-	Editor help
-	SimpleEditor help
-	CellStyleEditor help
-	TextEditor help
-	SmalltalkEditor help
-	"
-	| allSpecs |
-	allSpecs _ self class cmdShortcutsSpec", self class basicCmdShortcutsSpec".
-	^String streamContents: [ :strm |
-		model styleSet paragraphStyles do: [ :pair |
-			strm nextPutAll: ('Cmd-', pair first asString, String tab, String tab, String tab, 'Paragraph Style: ', pair second name).
-			strm newLine ].
-		model styleSet characterStyles do: [ :pair |
-			strm nextPutAll: ('Cmd-', pair first asString, String tab, String tab, String tab, 'Character Style: ', pair second name).
-			strm newLine ].
-		allSpecs do: [ :triplet | | c |
-			c _ triplet first = Character space
-				ifFalse: [ triplet first asString, String tab ]
-				ifTrue: [ 'Space'].
-			strm nextPutAll: ('Cmd-', c, String tab, String tab, triplet third).
-			strm newLine ].
-		]! !
-
-!StyledTextEditor methodsFor: 'model access' stamp: 'jmv 6/13/2012 18:07'!
-model: aModel
-	super model: aModel.
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 8/11/2011 11:31'!
+styleSet: aStyleSet
 	"All assignments to the styleSet ivar should call this method."
-	model ifNotNil: [ model removeActionsWithReceiver: self ].
-	model _ aModel.
-	model ifNotNil: [ model when: #stylesChanged send: #someStyleChanged to: self ].
-	emphasisHere _ { ParagraphStyleReference for: model styleSet defaultStyle }.
-	self buildCmdShortcuts! !
+	styleSet ifNotNil: [ styleSet removeActionsWithReceiver: self ].
+	styleSet _ aStyleSet.
+	styleSet ifNotNil: [ styleSet when: #stylesChanged send: #styleSetChanged to: self ]! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 4/1/2016 13:47'!
-quit: aKeyboardEvent
-	morph hasUnacceptedEdits ifTrue: [
-		(self confirm: 'Save changes before quitting?' orCancel: [^ true]) ifTrue: [
-			self save: aKeyboardEvent ]].
-	Smalltalk 
-		snapshot: false
-		andQuit: true
-		clearAllClassState: false.
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
+autoCompleterClass
+	^STECompleter! !
+
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 2/16/2016 16:29'!
+editorClass
+	^StyledTextEditor! !
+
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 11/3/2016 11:03:59'!
+textStylerClass
+	^SHTextStylerST80! !
+
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:15:15'!
+formatAndStyleIfNeededWith: anSHTextStyler
+
+	| toStyle |
+	anSHTextStyler ifNotNil: [
+		(self shouldStyle: self actualContents with: anSHTextStyler) ifTrue: [
+			self actualContents paragraphStyleChunksDo: [ :interval :paragraphStyle |
+				paragraphStyle ifNotNil: [ paragraphStyle doesShout ifTrue: [
+					toStyle _ actualContents copyFrom: interval first to: interval last.
+					anSHTextStyler formatAndStyle: toStyle allowBackgroundStyleProcess: false.
+					actualContents replaceFrom: interval first to: interval last with: anSHTextStyler formattedText ]]]]]! !
+
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:12:55'!
+shouldStyle: text with: anSHTextStyler
+	"This is a notification that aSHTextStyler is about to re-style its text."
+
+	anSHTextStyler classOrMetaClass: nil.
 	^true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 5/2/2022 12:03:17'!
-removeCharacterStyles
-	"Let user remove character styles for the current selection."
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 9/22/2011 15:06'!
+logUndoAndRemoveCharacterStylesIn: anInterval
+	"Remove any char styles from selection"
 	"This is a user command, and generates undo"
-	| anythingDone interval |
-	emphasisHere _ emphasisHere reject: [ :att |
-		att class == CharacterStyleReference ].
 
-	anythingDone _ false.
-	interval _ self selectionInterval.
-	interval notEmpty ifTrue: [
-		anythingDone _ true.
-		model logUndoAndRemoveCharacterStylesIn: interval.
-		textComposition recomposeFrom: interval first to: interval last delta: 0 ].
+	| command |
+	command _ actualContents commandForRemoveCharacterStylesIn: anInterval.
+	undoRedoCommands
+		nextPut: command;
+		truncateAtPosition.	"To disable redo of previous commands, now invalidated."
+	command doOn: self! !
 
-	anythingDone ifTrue: [
-		self recomputeSelection.	"Needed so visible selection is updated to reflect new visual extent of selection"
-		self userHasEdited ].
-
-	"Even if nothing done, emphasisHere might have changed"
-	morph possiblyChanged! !
-
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/15/2018 10:21:48'!
-replaceAllCharacterStyle
-	"Let user add or change character styles for the current selection, or for text to be typed."
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 12/29/2011 15:38'!
+removeReferencesToCharacterStyle: oldCharacterStyle
+	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
 	"This is a user command, and generates undo"
-	| styles current menuList |
-	current _ self currentCharacterStyleOrNil.
-	styles _ model styleSet characterStyles collect: [ :pair | pair second ].
-	menuList _ model styleSet characterStyles collect: [ :pair |
-		((pair second = current or: [ pair second isNullStyle and: [current isNil]])
-				ifTrue: [ '<on>' ]
-				ifFalse: [ '<off>' ]),  
-			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpMenu)
-		ifNotNil: [ :style |
-			style isNullStyle ifTrue: [
-				model removeReferencesToCharacterStyle: current.
-				self someStyleChanged.
-				^true ].
-			style = current
-				ifFalse: [
-					model replaceReferencesToStyle: current with: style.
-					self someStyleChanged ] ].
-	^ true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/15/2018 10:21:44'!
-replaceAllCurrentStyle
-	"Let user change styles for the current selection or pragraph."
+	"Undo not yet implemented. Reasons:
+	1) it would hold references to unused styles that we might want to die
+	2) it would require a slower implementation"
+	self flag: #jmv.
+
+	actualContents removeReferencesToCharacterStyle: oldCharacterStyle! !
+
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 9/21/2011 11:35'!
+replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle
+	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
 	"This is a user command, and generates undo"
-	| styles current menuList |
 
-	current _ self currentParagraphStyle.
-	styles _ model styleSet paragraphStyles collect: [ :pair | pair second ].
-	menuList _ model styleSet paragraphStyles collect: [ :pair |
-		(pair second = current
-				ifTrue: [ '<on>' ]
-				ifFalse: [ '<off>' ]),  
-			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpMenu)
-		ifNotNil: [ :style |
-			style = current
-				ifFalse: [
-					model replaceReferencesToStyle: current with: style.
-					self someStyleChanged ]].
-	^ true! !
+	"Undo not yet implemented. Reasons:
+	1) it would hold references to unused styles that we might want to die
+	2) it would require a slower implementation"
+	self flag: #jmv.
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 4/1/2016 14:36'!
+	actualContents replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle! !
+
+!StyledTextModel methodsFor: 'file save' stamp: 'jmv 12/20/2012 12:21'!
 save
-	"Save command"
-	model fileName ifNotNil: [
-		model save
-			ifTrue: [ morph hasUnacceptedEdits: false ]
-		]
-		 ifNil: [ self saveAs ].
-	^true! !
-
-!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 4/1/2016 14:37'!
-save: aKeyboardEvent
-	"Save keystroke"
-	^self save! !
-
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 4/7/2016 17:48'!
-saveAs
-	"SaveAs command"
-	| fileName |
-	fileName _ FillInTheBlankMorph
+	"Answer wether save was successful."
+	"Note: to enable the use of StyledText in applications, where 'accept' or 'save' have other meanings than 'save to file', we need to merge this class with PluggableTextModel, and have the textProvider be the application."
+	fileName ifNil: [
+		fileName _ FillInTheBlankMorph
 			request: 'File name?'
 			initialAnswer: ''.
-	fileName isEmpty ifTrue: [ ^false ]. "abort"
+		fileName isEmpty ifTrue: [ ^false ]].
 
-	model saveAs: fileName.	
-	morph hasUnacceptedEdits: false.
-	morph owningWindow
-		setLabel: model fileName;
-		invalidateTitleArea.
-	
+	self saveAs: fileName.
 	^true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/24/2016 11:14'!
-selectCharacterStyle
-	"Let user add or change character styles for the current selection, or for text to be typed."
-	"This is a user command, and generates undo"
+!StyledTextModel methodsFor: 'file save' stamp: 'jmv 5/31/2016 11:24'!
+saveAs: aName
+	| refStream |
+	fileName _ self class withExtension: aName.
+	self flushUndoRedoCommands.
+	fileName asFileEntry forceWriteStreamDo: [ :strm |
+		refStream _ SmartRefStream on: strm.
+		refStream nextPut: self 
+	].! !
 
-	| styles current menuList |
-	current _ self currentCharacterStyleOrNil.
-	styles _ model styleSet characterStyles collect: [ :pair | pair second ].
-	menuList _ model styleSet characterStyles collect: [ :pair |
-		((pair second = current or: [ pair second isNullStyle and: [current isNil]])
-				ifTrue: [ '<on>' ]
-				ifFalse: [ '<off>' ]),  
-			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
-		ifNotNil: [ :style |
-			style isNullStyle ifTrue: [
-				self removeCharacterStyles.
-				^true ].
-			style = current
-				ifFalse: [ self applyAttribute: (CharacterStyleReference for: style) ]
-				ifTrue: [ self unapplyAttributes: {CharacterStyleReference for: style} ] ].
-	^ true! !
+!StyledTextModel methodsFor: 'events' stamp: 'jmv 8/11/2011 11:33'!
+styleSetChanged
+	"Our style set (or some style in it) changed.
+	Update text and any views."
+	actualContents beStyledTextWith: styleSet.
+	self triggerEvent: #stylesChanged! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 9/15/2009 09:27'!
-selectCharacterStyle: aKeyboardEvent
-	"Let user add or change character styles for the current selection, or for text to be typed."
-
-	^self selectCharacterStyle! !
-
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/24/2016 11:14'!
-selectCurrentStyle
-	"Let user change styles for the current selection or pragraph."
-	"This is a user command, and generates undo"
-
-	| styles current menuList |
-	current _ self currentParagraphStyle.
-	styles _ model styleSet paragraphStyles collect: [ :pair | pair second ].
-	menuList _ model styleSet paragraphStyles collect: [ :pair |
-		(pair second = current
-				ifTrue: [ '<on>' ]
-				ifFalse: [ '<off>' ]),  
-			pair second name, ' (', pair first asString, ')' ].
-	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
-		ifNotNil: [ :style |
-			style = current
-				ifFalse: [ self applyAttribute: (ParagraphStyleReference for: style) ]
-				ifTrue: [ self unapplyAttributes: {ParagraphStyleReference for: style} ] ].
-	^ true! !
-
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 9/15/2009 09:26'!
-selectCurrentStyle: aKeyboardEvent
-	"Let user change styles for the current selection or pragraph."
-
-	^self selectCurrentStyle! !
-
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 11/18/2011 14:08'!
-selectAllWithCurrentCharStyle
-
-	self selectAllWithStyle: self currentCharacterStyleOrNil! !
-
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 11/18/2011 14:08'!
-selectAllWithCurrentStyle
-
-	self selectAllWithStyle: self currentParagraphStyle! !
-
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 6/6/2016 10:10'!
-selectAllWithStyle: aParagraphOrCharacterStyle
-
-	| i startIndexes stopIndexes start stop includeInSelection wasLastIncludedInSelection |
-	i _ 1.
-	startIndexes _ OrderedCollection new.
-	stopIndexes _ OrderedCollection new.
-	start _ nil.
-	stop _ nil.
-	wasLastIncludedInSelection _ false.
-	model actualContents runs runsAndValuesDo: [ :count :attributes |
-		includeInSelection _ attributes anySatisfy: [ :att | att isStyle and: [ att style == aParagraphOrCharacterStyle ]].
-		includeInSelection
-			ifTrue: [
-				wasLastIncludedInSelection
-					ifTrue: [ stop _ stop + count ]
-					ifFalse: [ start _ i. stop _ i+count ]] 
-			ifFalse: [
-				start ifNotNil: [
-					startIndexes add: start. stopIndexes add: stop.
-					start _ nil. stop _ nil ]].
-		i _ i + count.
-		wasLastIncludedInSelection _ includeInSelection ].
-	wasLastIncludedInSelection ifTrue: [
-		startIndexes add: start. stopIndexes add: stop ].
-	selectionStartBlocks _ startIndexes collect: [ :index | (textComposition characterBlockForIndex: index) ].
-	selectionStopBlocks _ stopIndexes collect: [ :index | (textComposition characterBlockForIndex: index) ].
-	self storeSelectionInComposition! !
-
-!StyledTextEditor methodsFor: 'notifications' stamp: 'jmv 10/16/2013 20:10'!
-someStyleChanged
-	textComposition composeAll.
-	self recomputeSelection.
-	morph updateFromTextComposition.
-
-	"Update keyboard shortcuts"
-	self buildCmdShortcuts! !
-
-!StyledTextEditor methodsFor: 'menu' stamp: 'jmv 5/14/2018 11:27:55'!
-getMenu
-	
-	^ (MenuMorph new defaultTarget: self)
-		addTitle: self class name;
-		addStayUpIcons;
-		addItemsFromDictionaries: `{
-			{
-				#label 			-> 		'Help...'.
-				#selector 		-> 		#openHelp.
-				#icon 			-> 		#helpIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Save (s)'.
-				#selector 		-> 		#save.
-				#icon 			-> 		#saveIcon
-			} asDictionary.
-			{
-				#label 			-> 		'SaveAs...'.
-				#selector 		-> 		#saveAs.
-				#icon 			-> 		#saveIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Find...(f)'.
-				#selector 		-> 		#find.
-				#icon 			-> 		#findIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Find Again (g)'.
-				#selector 		-> 		#findAgain.
-				#icon 			-> 		#systemIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Use Selection for Find (j)'.
-				#selector 		-> 		#setSearchString.
-				#icon 			-> 		#saveAsIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Undo - multiple (z)'.
-				#selector 		-> 		#undo.
-				#icon 			-> 		#undoIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Redo - multiple (Z)'.
-				#selector 		-> 		#redo.
-				#icon 			-> 		#redoIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Undo / Redo history'.
-				#selector 		-> 		#offerUndoHistory.
-				#icon 			-> 		#changesIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Forget Undo / Redo history'.
-				#selector 		-> 		#flushUndoRedoCommands.
-				#icon 			-> 		#cancelIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Copy (c)'.
-				#selector 		-> 		#copySelection.
-				#icon 			-> 		#copyIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Cut (x)'.
-				#selector 		-> 		#cut.
-				#icon 			-> 		#cutIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Paste (v)'.
-				#selector 		-> 		#paste.
-				#icon 			-> 		#pasteIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Paste without Format'.
-				#selector 		-> 		#pasteString.
-				#icon 			-> 		#pasteIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Paste...'.
-				#selector 		-> 		#pasteRecent.
-				#icon 			-> 		#worldIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Select text with Paragraph Style'.
-				#selector 		-> 		#selectAllWithCurrentStyle.
-				#icon 			-> 		#selectAllIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Select text with Character Style'.
-				#selector 		-> 		#selectAllWithCurrentCharStyle.
-				#icon 			-> 		#selectAllIcon
-			} asDictionary.
-			nil.
-			{
-				#label 			-> 		'Change Paragraph Style...'.
-				#selector 		-> 		#selectCurrentStyle.
-				#icon 			-> 		#fontXGenericIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Change Character Style...'.	
-				#selector 		-> 		#selectCharacterStyle.
-				#icon 			-> 		#fontXGenericIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Remove Character Style'.
-				#selector 		-> 		#removeCharacterStyles.
-				#icon 			-> 		#fontXGenericIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Replace all uses of Paragraph Style...'.
-				#selector 		-> 		#replaceAllCurrentStyle.
-				#icon 			-> 		#fontXGenericIcon
-			} asDictionary.
-			{
-				#label 			-> 		'Replace all uses of Character Style...'.
-				#selector 		-> 		#replaceAllCharacterStyle.
-				#icon 			-> 		#fontXGenericIcon
-			} asDictionary.
-		}`! !
-
-!StyledTextEditor class methodsFor: 'keyboard shortcut tables' stamp: 'jmv 6/13/2012 18:02'!
-cmdShortcutsSpec
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 5/31/2016 11:16'!
+fromFileNamed: aFileName
+	| fileName model |
+	fileName _ self withExtension: aFileName.
+	fileName asFileEntry readStreamDo: [ :strm |
+		model _ (SmartRefStream on: strm) next
+	].
+	model fileName: fileName.
+	"Crude way to fix old Color subInstances in files"
 	"
-	Editor initialize
+	Color allInstancesDo: [ :c | c fix ].
+	TranslucentColor allInstancesDo: [ :c | c fix ].
 	"
-	"arranged in QWERTY keyboard order"
-	^#(
-		#(		$q 	#quit:							'Quit')
+	^model! !
 
-		#(		$s 	#save: 						'Save')
-		#(		$j 	#selectCurrentStyle: 		'Select Paragraph Style')
-		#(		$k 	#selectCharacterStyle:	'Select Character Style')
-	)! !
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 12/21/2011 10:20'!
+new
+	^self styleSet: StyleSet sample! !
 
-!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'jmv 3/24/2020 10:06:29'!
-fileReaderServicesForFileEntry: filename suffix: suffix
-	"FileList buttons that open a CodeFileBrowserWindow on contents."
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 12/21/2011 10:19'!
+styleSet: aStyleSet
+	^super new
+		styleSet: aStyleSet;
+		yourself! !
 
-	(#('object' 'ste') includes: suffix) ifTrue: [
-		^ { self serviceSTEEdit } ].
-
-	^#()! !
-
-!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 2/3/2016 16:07'!
-serviceSTEEdit
-	"Answer the service of opening a file in a STEditor"
-
-	^ (SimpleServiceEntry
-		provider: self 
-		label: 'open Styled Text Editor file'
-		selector: #openFromFileEntry:
-		description: 'open this file with a Styled Text Editor'
-		buttonLabel: 'open STE')
-		argumentGetter: [ :fileList | fileList selectedFileEntry ]! !
-
-!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 4/1/2016 13:46'!
-open
-	"Open a new instance on an empty file"
-"
-	StyledTextEditor open.
-"
-	| model |
-	model _ StyledTextModel new.
-	^SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
-
-!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 2/3/2016 16:07'!
-openFromFileEntry: fileEntry
-	| model |
-	model _ StyledTextModel fromFileNamed: fileEntry pathName.
-	^SystemWindow editFancierStyledText: model label: fileEntry name! !
-
-!StyledTextEditor class methodsFor: 'menu-world' stamp: 'jmv 9/20/2018 08:53:38'!
-worldMenuForOpenGroup
-	^ `{{
-			#itemGroup 	-> 		10.
-			#itemOrder 	-> 		10.
-			#label 			->		'Styled Text Editor'.
-			#object 			-> 		StyledTextEditor.
-			#selector 		-> 		#open.
-			#icon 			-> 		#textEditorIcon.
-			#balloonText 	-> 		'A window for composing Styled text'.
-		} asDictionary}`! !
-
-!CharacterStyleReference methodsFor: 'printing' stamp: 'jmv 4/6/2011 18:12'!
-printOn: strm
-	super printOn: strm.
-	strm nextPutAll: ': '.
-	characterStyle shortPrintOn: strm! !
-
-!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 9/21/2011 11:14'!
-= other 
-	^ (other class == self class) 
-		and: [other style isEquivalentTo: characterStyle]! !
-
-!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 4/11/2011 21:33'!
-hash
-	"Rather cheap. Can be improved."
-	^ characterStyle shortDescription hash! !
-
-!CharacterStyleReference methodsFor: 'scanning' stamp: 'jmv 1/25/2011 14:26'!
-dominates: other
-	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
-	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
-	^ other class == self class! !
-
-!CharacterStyleReference methodsFor: 'iterating' stamp: 'jmv 9/1/2009 15:36'!
-forCharacterStyleReferenceDo: aBlock
-	aBlock value: characterStyle! !
-
-!CharacterStyleReference methodsFor: 'testing' stamp: 'jmv 4/11/2011 19:35'!
-isStyle
-	^true! !
-
-!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
-style
-	^characterStyle! !
-
-!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
-style: aCharacterStyle
-	characterStyle _ aCharacterStyle! !
-
-!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
-writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
-	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
-	
-	"familyName and pointSize"
-	characterStyle pointSize ifNotNil: [ :ps |
-		aStream nextPutAll: '\fs'; nextPutAll: ((ps * Text pointSizeConversionFactor ) rounded * 2) asString; space ].
-
-	"emphasis"
-	(characterStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
-		aStream nextPutAll: '\b ' ].
-	(characterStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
-		aStream nextPutAll: '\i ' ].
-	(characterStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
-		aStream nextPutAll: '\ul ' ].
-	(characterStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
-		aStream nextPutAll: '\strike \strikec0 ' ].
-
-	"color"
-	characterStyle color ifNotNil: [ :c |
-		aStream nextPutAll: '\cf'; nextPutAll: (colorArray indexOf: c) asString; space ].
-
-	^0! !
-
-!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
-writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
-	"Write the RTF code for attribute stop.
-	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
-
-	"kern"
-	aStream nextPutAll: '\kerning1\expnd0\expndtw0 ' .
-
-	"color"
-	aStream nextPutAll: '\cf0 '.
-
-	"emphasis"
-	(characterStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
-		aStream nextPutAll: '\strike0\striked0 ' ].
-	(characterStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
-		aStream nextPutAll: '\ulnone ' ].
-	(characterStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
-		aStream nextPutAll: '\i0 ' ].
-	(characterStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
-		aStream nextPutAll: '\b0 ' ].
-
-	"familyName and pointSize"
-	characterStyle pointSize ifNotNil: [ :ps |
-		aStream nextPutAll: '\fs0 ' ]! !
-
-!CharacterStyleReference class methodsFor: 'instance creation' stamp: 'jmv 9/21/2011 11:14'!
-for: aCharacterStyle
-	| attribute |
-self assert: aCharacterStyle notNil.
-	attribute _ self new.
-	attribute style: aCharacterStyle.
-	^attribute! !
-
-!ParagraphStyleReference methodsFor: 'printing' stamp: 'jmv 4/7/2011 17:06'!
-printOn: strm
-	super printOn: strm.
-	strm nextPutAll: ': ('.
-	paragraphStyle name printOn: strm.
-	strm nextPutAll: ') '.
-	paragraphStyle shortPrintOn: strm! !
-
-!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 9/21/2011 11:12'!
-= other 
-	^ (other class == self class) 
-		and: [other style isEquivalentTo: paragraphStyle]! !
-
-!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 4/11/2011 21:33'!
-hash
-	"Rather cheap. Can be improved."
-	^ paragraphStyle shortDescription hash! !
-
-!ParagraphStyleReference methodsFor: 'scanning' stamp: 'jmv 11/29/2011 13:50'!
-dominates: other
-	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
-	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
-
-	"Leave TextAnchors and such alone!!"
-	other isForFormatting ifFalse: [ ^false ].
-
-	^ other class == self class
-		or: [
-			"Any ParagraphStyle precludes the use of regular CharacterAttributes.
-			This restriction is not usually needed, as the StyledTextEditor doesn't allow the use of regular attributes.
-			But it was needed to add this, because the 'Smalltalk Code' ParagraphStyle uses shout to decorate text, and this adds regular Attributes
-			such as color, bold, italic... Later, if we remove that ParagraphStyle (to use a regular one), we need to ensure that all those attributes
-			are removed"
-			other isStyle not
-				or: [
-					"A ParahraphStyle that does Shout (auto code formatting) precludes the use of CharacterStyles and other CharacterAttributes"
-					paragraphStyle doesShout and: [ other isParagraphAttribute not ] ] ]! !
-
-!ParagraphStyleReference methodsFor: 'iterating' stamp: 'jmv 1/25/2011 13:42'!
-forParagraphStyleReferenceDo: aBlock
-	aBlock value: paragraphStyle! !
-
-!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 9/1/2009 23:02'!
-isParagraphAttribute
-	"Attributes that answer true will always be applied to whole paragraphs, i.e. starting at the position after a cr (or 1) and ending at a cr (or text size)"
-	
-	^true! !
-
-!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 4/11/2011 19:35'!
-isStyle
-	^true! !
-
-!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
-style
-	^paragraphStyle! !
-
-!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
-style: aParagraphStyle
-	paragraphStyle _ aParagraphStyle! !
-
-!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
-writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
-	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
-	"paragraph attributes still missing..."
-
-	| twips k |
-
-	"familyName and pointSize"
-	paragraphStyle pointSize ifNotNil: [ :ps |
-		aStream nextPutAll: '\fs'; nextPutAll: ((ps * Text pointSizeConversionFactor ) rounded * 2) asString; space ].
-
-	"emphasis"
-	(paragraphStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
-		aStream nextPutAll: '\b ' ].
-	(paragraphStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
-		aStream nextPutAll: '\i ' ].
-	(paragraphStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
-		aStream nextPutAll: '\ul ' ].
-	(paragraphStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
-		aStream nextPutAll: '\strike \strikec0 ' ].
-
-	"color"
-	paragraphStyle color ifNotNil: [ :c |
-		aStream nextPutAll: '\cf'; nextPutAll: (colorArray indexOf: c) asString; space ].
-
-	"alignment"
-	paragraphStyle alignment caseOf: {
-		[ 0 ] -> [ aStream nextPutAll: '\ql ' ].
-		[ 1 ] -> [ aStream nextPutAll: '\qr ' ].
-		[ 2 ] -> [ aStream nextPutAll: '\qc ' ].
-		[ 3 ] -> [ aStream nextPutAll: '\qj ' ] }.
-
-	"Exportar. Cerrar tambien, y despues, importar!!
-	tabsArray listBulletPattern
-	"
-
-	"indent"
-	k _ 20.
-	twips _ (paragraphStyle firstIndent-paragraphStyle restIndent) * k.
-	twips = 0 ifFalse: [
-		aStream nextPutAll: '\fi', twips asString; space ].
-	twips _ paragraphStyle restIndent * k.
-	twips = 0 ifFalse: [
-		aStream nextPutAll: '\li', twips asString; space ].
-	"Have no idea why, but it seems that on paste, an extra inch is added!!"
-	twips _ (paragraphStyle rightIndent-72) * k.
-	twips = 0 ifFalse: [
-		aStream nextPutAll: '\ri', twips asString; space ].
-
-	k _ 20.
-	"paragraph spacing"
-	twips _ paragraphStyle spaceBefore * k.
-	twips = 0 ifFalse: [
-		aStream nextPutAll: '\sb', twips asString; space ].
-	twips _ paragraphStyle spaceAfter * k.
-	twips = 0 ifFalse: [
-		aStream nextPutAll: '\sa', twips asString; space ].
-
-	^0! !
-
-!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
-writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
-	"Write the RTF code for attribute stop.
-	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
-
-	"alignment"
-	aStream nextPutAll: '\ql '.
-
-	"kern"
-	aStream nextPutAll: '\kerning1\expnd0\expndtw0 ' .
-
-	"color"
-	aStream nextPutAll: '\cf0 '.
-
-	"emphasis"
-	(paragraphStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
-		aStream nextPutAll: '\strike0\striked0 ' ].
-	(paragraphStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
-		aStream nextPutAll: '\ulnone ' ].
-	(paragraphStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
-		aStream nextPutAll: '\i0 ' ].
-	(paragraphStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
-		aStream nextPutAll: '\b0 ' ].
-
-	"familyName and pointSize"
-	paragraphStyle pointSize ifNotNil: [ :ps |
-		aStream nextPutAll: '\fs0 ' ].
-
-	"paragraph defaults (i.e. paragraph end). Needed to honor spaceBefore and spaceAfter"
-	aStream nextPutAll: '\pard '! !
-
-!ParagraphStyleReference class methodsFor: 'instance creation' stamp: 'jmv 9/21/2011 11:09'!
-for: aParagraphStyle
-	| attribute |
-self assert: aParagraphStyle notNil.
-	attribute _ self new.
-	attribute style: aParagraphStyle.
-	^attribute! !
-
-!ToolbarMorph methodsFor: 'hacks' stamp: 'jmv 8/4/2014 08:37'!
-adoptWidgetsColor: paneColor
-	"We hold a Form in the color instance variable..."! !
-
-!ToolbarMorph methodsFor: 'drawing' stamp: 'jmv 12/21/2021 15:09:53'!
-drawOn: aCanvas
-	aCanvas
-		fillRectangle: (0@0 extent: self morphExtent)
-		color: color! !
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 4/28/2012 19:10'!
+withExtension: aName
+	| suffix |
+	suffix := '.object'.
+	^(aName endsWith: suffix)
+		ifTrue: [ aName ]
+		ifFalse: [ aName , suffix ]! !
 
 !STEMainMorph methodsFor: 'stepping' stamp: 'jmv 2/27/2016 20:07'!
 stepAt: millisecondSinceLast
@@ -1946,6 +1157,16 @@ stepAt: millisecondSinceLast
 !STEMainMorph methodsFor: 'stepping' stamp: 'jmv 5/24/2011 09:04'!
 stepTime
 	^ 0  "every cycle"! !
+
+!ToolbarMorph methodsFor: 'hacks' stamp: 'jmv 8/4/2014 08:37'!
+adoptWidgetsColor: paneColor
+	"We hold a Form in the color instance variable..."! !
+
+!ToolbarMorph methodsFor: 'drawing' stamp: 'jmv 12/21/2021 15:09:53'!
+drawOn: aCanvas
+	aCanvas
+		fillRectangle: (0@0 extent: self morphExtent)
+		color: color! !
 
 !PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 3/13/2012 10:10'!
 getCurrentSelectionIndex
@@ -2509,17 +1730,1243 @@ keyStroke: aKeyboardEvent
 	"We know that our owner is a PluggableFilteringDropDownListMorph"
 	owner keyStrokeInText: aKeyboardEvent! !
 
-!STETheme methodsFor: 'colors' stamp: 'bp 4/22/2012 10:51'!
-textHighlight
-	"
-	^ Color r: 0.71 g: 0.835 b: 1.0
-	^ Color hue: 214 chroma: 0.29 luminance: 0.816
-	"
-	^Color r: 204 g: 235 b: 214 range: 255! !
+!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 4/19/2014 19:31'!
+addToText: aString specialAttributes: nonFormattingAttributesOrNil
+	"nonFormattingAttributesOrNil should only contains attributes that answer false to #isForFormatting"
+	| attributes emphasis ps cs |
 
-!STETheme methodsFor: 'colors' stamp: 'jmv 12/30/2011 11:42'!
-unfocusedTextHighlightFrom: aColor
-	^Color r: 218 g: 228 b: 228 range: 255! !
+	ps _ self paragraphStyle.
+	emphasis _ 0.
+	bold ifTrue: [ emphasis _ emphasis + 1 ].
+	italic ifTrue: [ emphasis _ emphasis + 2 ].
+	underline ifTrue: [ emphasis _ emphasis + 4 ].
+	attributes _ Array streamContents: [ :strm |
+		strm nextPut: (ParagraphStyleReference for: ps).
+		(fontFamilyName = ps familyName and: [ fontPointSize = ps pointSize and: [ emphasis = ps emphasis and: [ currentFgColor = ps color ]]]) ifFalse: [
+			cs _ CharacterStyle new
+				privateFamilyName: fontFamilyName pointSize: fontPointSize emphasis: emphasis color: currentFgColor.
+			strm nextPut: (CharacterStyleReference for: cs) ].
+		nonFormattingAttributesOrNil ifNotNil: [ strm nextPutAll: nonFormattingAttributesOrNil ]].
+	textStream nextPutAllString: aString withAttributes: attributes! !
+
+!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 8/11/2011 10:40'!
+paragraphStyle
+	"We need a paragraph style to be actually used.
+	If we don't have it, take whatever is in construction and use it."
+	| emphasis |
+	paragraphStyleInUse ifNil: [
+		"Build it"
+		emphasis _ 0.
+		bold ifTrue: [ emphasis _ emphasis + 1 ].
+		italic ifTrue: [ emphasis _ emphasis + 2 ].
+		underline ifTrue: [ emphasis _ emphasis + 4 ].
+		paragraphStyleInUse _ ParagraphStyle new.
+		paragraphStyleInUse
+			privateFamilyName: fontFamilyName pointSize: fontPointSize emphasis: emphasis color: currentFgColor
+			alignment: align firstIndent: firstIndent+leftIndent restIndent: leftIndent
+			"nil means that we didn't get any value from rtf. therefore, the +72 is not needed"
+			rightIndent:  (rightIndent ifNil: [ 0 ] ifNotNil: [ rightIndent +72 ])
+			spaceBefore: spaceBefore spaceAfter: spaceAfter ].
+	^paragraphStyleInUse! !
+
+!RTFStyledTextBuilder methodsFor: 'building-paragraph' stamp: 'jmv 3/13/2012 16:57'!
+finishParagraph
+
+	textStream
+		nextPutAllString: String newLineString
+		withAttributes: { ParagraphStyleReference for: self paragraphStyle }.
+	paragraphStyleInUse _ nil.	"So we can build a new one"! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
+color
+	^color! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
+emphasis
+	^emphasis! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
+familyName
+	^familyName! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/11/2020 16:47:34'!
+font
+	| base |
+	base _ (FontFamily familyName: familyName pointSize: pointSize)
+		ifNil: [ FontFamily defaultFamilyAndPointSize baseFont ].
+	^base emphasized: emphasis! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
+name
+	^name! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
+pointSize
+	^pointSize! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
+printOn: aStream
+	super printOn: aStream.
+	aStream space; nextPutAll: self name! !
+
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:11'!
+shortDescription
+	"note: Does not use all state. Two different instances could answer the same shortDescription."
+	^String streamContents: [ :strm | self shortPrintOn: strm ]! !
+
+!CharacterStyle methodsFor: 'initialization' stamp: 'jmv 4/19/2014 11:09'!
+initialize
+	name _ ''.
+	emphasis _ 0! !
+
+!CharacterStyle methodsFor: 'comparing' stamp: 'jmv 4/19/2014 11:08'!
+isEquivalentTo: aStyle
+	"Compare all 'functional' attributes. I.e. ignore name."
+	self class == aStyle class ifFalse: [ ^false ].
+
+	^ pointSize = aStyle pointSize and: [
+		emphasis = aStyle emphasis and: [
+			color = aStyle color and: [
+				familyName = aStyle familyName ]]]! !
+
+!CharacterStyle methodsFor: 'testing' stamp: 'jmv 8/9/2011 10:44'!
+isNullStyle
+	^ name = '-none-'! !
+
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:29'!
+privateFamilyName: otherString pointSize: aNumber emphasis: otherNumber color: aColor
+	"To be used from CharacterStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+
+	familyName _ otherString.
+	pointSize _ aNumber.
+	emphasis _ otherNumber.
+	color _ aColor! !
+
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:48'!
+privateName: aString
+	"To be used from CharacterStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+	name _ aString! !
+
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:48'!
+privatePointSize: aNumber
+	"To be used from CharacterStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+	pointSize _ aNumber! !
+
+!CharacterStyle methodsFor: 'printing' stamp: 'KenD 12/5/2015 08:31'!
+shortPrintOn: strm
+	familyName ifNotNil: [
+		strm nextPutAll: familyName ].
+	pointSize ifNotNil: [
+		strm nextPut: $ .
+		pointSize printOn: strm].
+	(emphasis anyMask: AbstractFont boldCode) ifTrue: [
+		strm nextPutAll: ' bold' ].
+	(emphasis anyMask: AbstractFont italicCode) ifTrue: [
+		strm nextPutAll: ' italic' ].
+	(emphasis anyMask: AbstractFont underlinedCode) ifTrue: [
+		strm nextPutAll: ' underlined' ].
+	(emphasis anyMask: AbstractFont struckThroughCode) ifTrue: [
+		strm nextPutAll: ' struckThrough' ].
+	(emphasis anyMask: AbstractFont normalCode) ifTrue: [
+		strm nextPutAll: ' plain' ].
+	color ifNotNil: [
+		strm nextPut: $ .
+		color printOn: strm ]! !
+
+!CharacterStyle class methodsFor: 'instance creation' stamp: 'jmv 8/9/2011 10:45'!
+nullStyle
+
+	^self new
+		privateName: '-none-'! !
+
+!ParagraphStyle methodsFor: 'accessing'!
+alignment
+	"Answer the code for the current setting of the alignment."
+
+	^alignment! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
+doNotShout
+	doesShout _ false! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
+doShout
+	doesShout _ true! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
+doesShout
+	^doesShout! !
+
+!ParagraphStyle methodsFor: 'accessing'!
+firstIndent
+	"Answer the horizontal indenting of the first line of a paragraph in the 
+	style of the receiver."
+
+	^firstIndent! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 9/29/2009 09:39'!
+isListStyle
+	^listBulletPattern notNil! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 9/29/2009 09:15'!
+listBulletPattern
+	"Answer the string patter to be used to display bullets at the start of each line."
+
+	^listBulletPattern! !
+
+!ParagraphStyle methodsFor: 'accessing'!
+restIndent
+	"Answer the indent for all but the first line of a paragraph in the style 
+	of the receiver."
+
+	^restIndent! !
+
+!ParagraphStyle methodsFor: 'accessing'!
+rightIndent
+	"Answer the right margin indent for the lines of a paragraph in the style 
+	of the receiver."
+
+	^rightIndent! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:15'!
+spaceAfter
+	^spaceAfter! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:14'!
+spaceBefore
+	^spaceBefore! !
+
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 13:44'!
+tabsArray
+	^tabsArray! !
+
+!ParagraphStyle methodsFor: 'initialization' stamp: 'jmv 8/11/2011 08:08'!
+initialize
+	super initialize.
+	firstIndent _ restIndent _ rightIndent _ spaceBefore _ spaceAfter _ 0.
+	listBulletPattern _ nil.
+	doesShout _ false.
+	alignment _ 0.
+	tabsArray _ ParagraphStyle defaultTabsArray! !
+
+!ParagraphStyle methodsFor: 'comparing' stamp: 'jmv 8/9/2011 15:50'!
+isEquivalentTo: aStyle
+	(super isEquivalentTo: aStyle) ifFalse: [ ^false ].
+
+	^alignment = aStyle alignment and: [
+		doesShout = aStyle doesShout and: [
+			firstIndent = aStyle firstIndent and: [
+				restIndent = aStyle restIndent and: [
+					rightIndent = aStyle rightIndent and: [
+						spaceBefore = aStyle spaceBefore and: [
+							spaceAfter = aStyle spaceAfter and: [
+								listBulletPattern = aStyle listBulletPattern and: [
+									tabsArray = aStyle tabsArray ]]]]]]]]! !
+
+!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 6/29/2010 10:03'!
+nextTabXFrom: anX leftMargin: leftMargin rightMargin: rightMargin 
+	"Tab stops are distances from the left margin. Set the distance into the 
+	argument, anX, normalized for the paragraph's left margin."
+
+	| normalizedX tabX |
+
+	"Doing columns (i.e. using tabsArray) only makes sense if left flush. Otherwise, just answer a wider space"
+
+	alignment = CharacterScanner leftFlushCode ifFalse: [
+		^anX + self tabWidth min: rightMargin ].
+
+	normalizedX _ anX - leftMargin.
+	1 to: tabsArray size do: 
+		[:i | (tabX _ tabsArray at: i) > normalizedX 
+				ifTrue: [^leftMargin + tabX min: rightMargin]].
+	^rightMargin! !
+
+!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 7/27/2009 13:05'!
+tabWidth
+	"Answer the width of a tab."
+
+	^ParagraphStyle defaultTab! !
+
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:30'!
+privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code
+	"To be used from ParagraphStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+	familyName _ aString.
+	pointSize _ aNumber.
+	emphasis _ otherNumber.
+	color _ aColor.
+	alignment _ code.
+"	tabsArray _ ParagraphStyle defaultTabsArray."
+"	firstIndent _ fi.
+	restIndent _ ri.
+	rightIndent _ rri.
+	spaceBefore _ sb.
+	spaceAfter _ sa."
+"	listBulletPattern 
+	doesShout"! !
+
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:30'!
+privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code firstIndent: fi restIndent: ri rightIndent: rri spaceBefore: sb spaceAfter: sa
+	"To be used from ParagraphStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+	familyName _ aString.
+	pointSize _ aNumber.
+	emphasis _ otherNumber.
+	color _ aColor.
+	alignment _ code.
+"	tabsArray _ ParagraphStyle defaultTabsArray."
+	firstIndent _ fi.
+	restIndent _ ri.
+	rightIndent _ rri.
+	spaceBefore _ sb.
+	spaceAfter _ sa.
+"	listBulletPattern 
+	doesShout"! !
+
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:49'!
+privateListBulletPattern: aString 
+	"If this is notNil, then this style is a Bullet List Style
+	Some examples are:
+		'%. ' -> '1. ' '2. ' etc.
+		'z) ' -> 'a) ' 'b) ' etc.
+		'Z- ' -> 'A- ' 'B- ' etc
+	"
+	"To be used from ParagraphStyle instance creation methods.
+	If used on existing instances, existing text will be modified, but in any case, senders are responsible
+	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
+
+	listBulletPattern _ aString! !
+
+!ParagraphStyle methodsFor: 'printing' stamp: 'jmv 4/7/2011 11:11'!
+shortPrintOn: strm
+	"note: Does not use all state. Two different instances could print the same."
+
+	super shortPrintOn: strm.
+
+	alignment > 0 ifTrue: [
+		strm nextPut: $ .
+		strm nextPutAll: (#(right centered justified) at: alignment) ]! !
+
+!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 7/27/2009 13:05'!
+defaultTab
+	^24! !
+
+!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 7/27/2009 13:07'!
+defaultTabsArray
+	^#(24 48 72 96 120 144 168 192 216 240 264 288 312 336 360 384 408 432 456 480 504 528 552 576 600 624 648 672 696 720 744 768 792 816 840 864 888 912 936 960 984 1008 1032 1056 1080 1104 1128 1152 1176 1200 1224 1248 1272 1296 1320 1344 1368 1392 1416 1440 1464 1488 1512 1536 1560)! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:32'!
+, aString
+	"Add aString to the Text we are building, using current style."
+	textStream
+		nextPutAllString: aString
+		withAttributes:
+			(characterStyleStack isEmpty
+				ifTrue: [ #() ]
+				ifFalse: [ {CharacterStyleReference for: (styleDict at: characterStyleStack last)} ])! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 10/16/2013 21:40'!
+/ aParagraphStyleKey
+	"Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. "
+	textStream
+		nextPutAllString: String newLineString
+		withAttributes: {ParagraphStyleReference for: (styleDict at: aParagraphStyleKey)}! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:31'!
+< aCharacterStyleKey
+	"Add a new CharacterStyle to the stack. This is the new current style.
+	aKey is for accessing the styles dictionary that was given on setup."
+	characterStyleStack addLast: aCharacterStyleKey! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:32'!
+> aString
+	"We finished using the CharacterStyle that was last set. Remove it from the stack, to go on with the previous one. Then, add aString to the text being built."
+	characterStyleStack removeLast.
+	self , aString! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 10/16/2013 21:40'!
+>/ aParagraphStyleKey
+	"Stop using the CharacterStyle that was added last.
+	Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. 
+	The effect is the same as sending
+		> ''
+		/ aParagraphStyleKey"
+	characterStyleStack removeLast.
+	self / aParagraphStyleKey! !
+
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:31'!
+>< aCharacterStyleKey
+	"Stop using the CharacterStyle that was added last, and start using a new one.
+	The effect is the same as sending
+		> ''
+		< aCharacterStyleKey
+	but the implementation is optimized"
+	characterStyleStack at: characterStyleStack size put: aCharacterStyleKey! !
+
+!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 1/3/2017 21:10:04'!
+styles: aDictionary
+	styleDict _ aDictionary.
+	characterStyleStack _ OrderedCollection new.
+	textStream _ WriteStream on: (Text string: (String new: 400))! !
+
+!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 9/9/2010 09:05'!
+text
+	^textStream contents! !
+
+!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 1/30/2021 12:38:05'!
+example1
+	"
+	StyledTextBuilder example1
+	"
+	| model heading3 greenBig redBold greenItalic t |
+	model _ StyledTextModel new.
+	heading3 _ model styleSet paragraphStyleNamed: 'Heading 3'.
+	greenBig _ model styleSet characterStyleNamed: 'Green Big'.
+	redBold _ model styleSet characterStyleNamed: 'Red Bold'.
+	greenItalic _ model styleSet characterStyleNamed: 'Green Italic'.
+	t _ Text
+			buildWithStyles: ({
+				#H3 -> heading3.
+				#gBig -> greenBig.
+				#rb -> redBold.
+				#gi -> greenItalic
+				} as: Dictionary)
+			contents: [ :builder |
+				builder , 'Starts as Heading 3. But later gets' < #gBig , ' big and green' , ' and stays like that. Then' >< #rb , ' red & bold and inside this,' < #gi , ' green and italic' > ' for a while. Later' > ' back to Heading 3.' / #H3].
+
+	model contents: t.
+	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
+
+!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 1/30/2021 12:47:59'!
+example2
+	"
+	StyledTextBuilder example2
+	"
+	|model heading1 heading2 heading3 emphasized normal greenBig redBold greenItalic t |
+	model _ StyledTextModel new.
+	heading1 _ model styleSet paragraphStyleNamed: 'Heading 1'.
+	heading2 _ model styleSet paragraphStyleNamed: 'Heading 2'.
+	heading3 _ model styleSet paragraphStyleNamed: 'Heading 3'.
+	emphasized _ model styleSet paragraphStyleNamed: 'Emphasized'.
+	normal _ model styleSet paragraphStyleNamed: 'Normal'.
+	greenBig _ model styleSet characterStyleNamed: 'Green Big'.
+	redBold _ model styleSet characterStyleNamed: 'Red Bold'.
+	greenItalic _ model styleSet characterStyleNamed: 'Green Italic'.
+	t _ Text
+			buildWithStyles: ({
+				#H1 -> heading1.
+				#H2 -> heading2.
+				#H3 -> heading3.
+				#E -> emphasized.
+				#N -> normal.
+				#gBig -> greenBig.
+				#rb -> redBold.
+				#gi -> greenItalic
+				} as: Dictionary)
+			contents: [ :builder |
+				builder,
+					'This is the main title' / #H1,
+					'This is the title of level 2' / #H2,
+					'This is title 3' / #H3,
+					'Then, we have some normal text. But later gets' < #gBig , ' big and green' , ' and stays like that. Then' >< #rb , ' red & bold and inside this,' < #gi , ' green and italic' > ' for a while.' > ' Lets make this look like a paragraph, i.e. add enough text so that we''l be using more than one display line. Is this enough? Who knows... Let''s add a bit more. Maybe this is enough.' / #N,
+					'This is an emphasized paragraph. It uses a Paragraph Style, not a Character Style, and therefore it has the same style all over the paragraph' / #E,
+					'This' < #rb, ' is' > ' again a' < #gBig, ' title 2' >/ #H2,
+					'And now another paragraph. This one may be smaller than previous ones' / #N ].
+	model contents: t.
+	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
+
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:35'!
+initialize
+	sel _ 3! !
+
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 14:39'!
+list
+	^#('first' 'second' 'third' 'first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third')! !
+
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:09'!
+sel
+^sel! !
+
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:35'!
+sel:x
+sel _ x.
+self changed: #list
+
+"
+(PluggableListMorph
+	on: SampleListModel new
+	list: #list
+	selected: #sel
+	changeSelected: #sel:) autoDeselect: false; openInWorld
+"! !
+
+!StyledTextEditor methodsFor: 'private' stamp: 'jmv 3/14/2012 08:25'!
+addAttributesForPasting: replacement
+	| start stop answer paragraphStyle |
+	(replacement is: #Text)
+		ifTrue: [
+			start _ self startIndex.
+			stop _ self stopIndex.
+
+			"Version previous to 12/19/2011"
+			"If we are pasting a text that doesn't bring a ParagraphStyleReference in the last paragraph (because it doesn't end with a NewLine), and we need it,
+			but it won't be provided by our text, as we are at the end, then add any paragraph attribute from emphasisHere.
+			Note: If we are replacing all the current text (or we have no current text), then just leave whatever comes with replacement,
+				asuming that the pasted text knows better than our default for empty text
+				(unless it brings no  paragraph style at the end. In that case, add emphasisHere anyway)"
+"			(replacement notEmpty and: [
+				replacement last isLineSeparator not and: [ 
+					stop > model textSize and: [
+						start > 1 or: [(replacement paragraphStyleOrNilAt: replacement size + 1) isNil]
+					]
+				]
+			])".
+
+
+			"If we are pasting a text that maybe doesn't bring a relevant ParagraphStyleReference in the last paragraph (because it doesn't include a NewLine),
+			but it won't be provided by our text, as we are at the end of it, then add any paragraph attribute from emphasisHere."
+			answer _ ((replacement includes: Character newLineCharacter) not and: [  stop > model textSize and: [
+				"Note: Do this only if the current paragraph is not empty, meaning that it is already using the current ParagraphStyle for some text."
+				(start > 1 and: [ (model actualContents at: start-1) isLineSeparator not ])
+			]])
+				ifTrue: [ (replacement, (Text string: String newLineString attributes: emphasisHere)) copyFrom: 1 to: replacement size ]
+				ifFalse: [ replacement ].
+
+			"In any case, ensure ParagraphStyle. (we could reach this point without a ParagraphStyle, for example, by choosing autocompletion on an empty text,
+			i.e. Open new STE, type 'Aardv' open completion and select 'Aardvark')"
+			emphasisHere do: [ :each |
+				each forParagraphStyleReferenceDo: [ :s | paragraphStyle _ s ]].
+			answer runs mapValues: [ :attributes |
+				(attributes anySatisfy: [ :att | att class == ParagraphStyleReference ])
+					ifTrue: [ attributes ]
+					ifFalse: [ attributes copyWith: (ParagraphStyleReference for: paragraphStyle) ]].
+
+			^answer ]
+
+		ifFalse: [
+			^Text string: replacement attributes: emphasisHere ]! !
+
+!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 8/5/2024 10:01:28'!
+changeCharacterStyle: shortcutCharacter
+	"This is a user command, and generates undo"
+
+	(model styleSet characterStyleForShortcut: shortcutCharacter)
+		ifNil: [ self removeCharacterStyles ]
+		ifNotNil: [ :style |
+			style isNullStyle
+				ifTrue: [ self removeCharacterStyles ]
+				ifFalse: [ self applyAttribute: (CharacterStyleReference for: style) ]].! !
+
+!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 8/5/2024 10:01:32'!
+changeCurrentStyle: shortcutCharacter
+	"This is a user command, and generates undo"
+
+	(model styleSet paragraphStyleForShortcut: shortcutCharacter)
+		ifNotNil: [ :style |
+			self applyAttribute: (ParagraphStyleReference for: style) ].! !
+
+!StyledTextEditor methodsFor: 'clipboard access' stamp: 'jmv 8/11/2011 11:27'!
+clipboardStringOrText
+
+	| clipContents |
+	clipContents _ Clipboard retrieveStringOrText.
+	^(clipContents is: #Text)
+		ifTrue: [	
+			"Merge styles appropriately, but in a copy."
+			clipContents asStyledTextWith: model styleSet ]
+		ifFalse: [ clipContents]! !
+
+!StyledTextEditor methodsFor: 'typing support' stamp: 'jmv 1/13/2012 12:36'!
+setEmphasisHereFromTextForward: f
+
+	model isTextEmpty
+		ifTrue: [
+			"default emphasisHere already set, but reflect it if needed"
+			morph possiblyChanged ]
+		ifFalse: [ super setEmphasisHereFromTextForward: f ]! !
+
+!StyledTextEditor methodsFor: 'accessing' stamp: 'jmv 8/5/2024 09:28:27'!
+help
+	"
+	Editor help
+	SimpleEditor help
+	CellStyleEditor help
+	TextEditor help
+	SmalltalkEditor help
+	"
+	| allSpecs |
+"ehhhhh"
+	allSpecs := self class cmdShortcutsSpec", self class basicCmdShortcutsSpec".
+	^String streamContents: [ :strm |
+		model styleSet paragraphStyles do: [ :pair |
+			strm nextPutAll: ('Cmd-', pair first asString, String tab, String tab, String tab, 'Paragraph Style: ', pair second name).
+			strm newLine ].
+		model styleSet characterStyles do: [ :pair |
+			strm nextPutAll: ('Cmd-', pair first asString, String tab, String tab, String tab, 'Character Style: ', pair second name).
+			strm newLine ].
+		allSpecs do: [ :triplet | | c |
+			c := triplet first = Character space
+				ifFalse: [ triplet first asString, String tab ]
+				ifTrue: [ 'Space'].
+			strm nextPutAll: ('Cmd-', c, String tab, String tab, triplet third).
+			strm newLine ].
+		]! !
+
+!StyledTextEditor methodsFor: 'model access' stamp: 'jmv 8/5/2024 10:11:10'!
+model: aModel
+	super model: aModel.
+	"All assignments to the styleSet ivar should call this method."
+	model ifNotNil: [ model removeActionsWithReceiver: self ].
+	model := aModel.
+	model ifNotNil: [ model when: #stylesChanged send: #someStyleChanged to: self ].
+	emphasisHere := { ParagraphStyleReference for: model styleSet defaultStyle }.! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 8/3/2024 15:39:35'!
+quit
+	morph hasUnacceptedEdits ifTrue: [
+		(self confirm: 'Save changes before quitting?' orCancel: [^ true]) ifTrue: [
+			self save ]].
+	Smalltalk quit.
+	^true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 5/2/2022 12:03:17'!
+removeCharacterStyles
+	"Let user remove character styles for the current selection."
+	"This is a user command, and generates undo"
+	| anythingDone interval |
+	emphasisHere _ emphasisHere reject: [ :att |
+		att class == CharacterStyleReference ].
+
+	anythingDone _ false.
+	interval _ self selectionInterval.
+	interval notEmpty ifTrue: [
+		anythingDone _ true.
+		model logUndoAndRemoveCharacterStylesIn: interval.
+		textComposition recomposeFrom: interval first to: interval last delta: 0 ].
+
+	anythingDone ifTrue: [
+		self recomputeSelection.	"Needed so visible selection is updated to reflect new visual extent of selection"
+		self userHasEdited ].
+
+	"Even if nothing done, emphasisHere might have changed"
+	morph possiblyChanged! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/15/2018 10:21:48'!
+replaceAllCharacterStyle
+	"Let user add or change character styles for the current selection, or for text to be typed."
+	"This is a user command, and generates undo"
+	| styles current menuList |
+	current _ self currentCharacterStyleOrNil.
+	styles _ model styleSet characterStyles collect: [ :pair | pair second ].
+	menuList _ model styleSet characterStyles collect: [ :pair |
+		((pair second = current or: [ pair second isNullStyle and: [current isNil]])
+				ifTrue: [ '<on>' ]
+				ifFalse: [ '<off>' ]),  
+			pair second name, ' (', pair first asString, ')' ].
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpMenu)
+		ifNotNil: [ :style |
+			style isNullStyle ifTrue: [
+				model removeReferencesToCharacterStyle: current.
+				self someStyleChanged.
+				^true ].
+			style = current
+				ifFalse: [
+					model replaceReferencesToStyle: current with: style.
+					self someStyleChanged ] ].
+	^ true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/15/2018 10:21:44'!
+replaceAllCurrentStyle
+	"Let user change styles for the current selection or pragraph."
+	"This is a user command, and generates undo"
+	| styles current menuList |
+
+	current _ self currentParagraphStyle.
+	styles _ model styleSet paragraphStyles collect: [ :pair | pair second ].
+	menuList _ model styleSet paragraphStyles collect: [ :pair |
+		(pair second = current
+				ifTrue: [ '<on>' ]
+				ifFalse: [ '<off>' ]),  
+			pair second name, ' (', pair first asString, ')' ].
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpMenu)
+		ifNotNil: [ :style |
+			style = current
+				ifFalse: [
+					model replaceReferencesToStyle: current with: style.
+					self someStyleChanged ]].
+	^ true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 4/1/2016 14:36'!
+save
+	"Save command"
+	model fileName ifNotNil: [
+		model save
+			ifTrue: [ morph hasUnacceptedEdits: false ]
+		]
+		 ifNil: [ self saveAs ].
+	^true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 4/7/2016 17:48'!
+saveAs
+	"SaveAs command"
+	| fileName |
+	fileName _ FillInTheBlankMorph
+			request: 'File name?'
+			initialAnswer: ''.
+	fileName isEmpty ifTrue: [ ^false ]. "abort"
+
+	model saveAs: fileName.	
+	morph hasUnacceptedEdits: false.
+	morph owningWindow
+		setLabel: model fileName;
+		invalidateTitleArea.
+	
+	^true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/24/2016 11:14'!
+selectCharacterStyle
+	"Let user add or change character styles for the current selection, or for text to be typed."
+	"This is a user command, and generates undo"
+
+	| styles current menuList |
+	current _ self currentCharacterStyleOrNil.
+	styles _ model styleSet characterStyles collect: [ :pair | pair second ].
+	menuList _ model styleSet characterStyles collect: [ :pair |
+		((pair second = current or: [ pair second isNullStyle and: [current isNil]])
+				ifTrue: [ '<on>' ]
+				ifFalse: [ '<off>' ]),  
+			pair second name, ' (', pair first asString, ')' ].
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
+		ifNotNil: [ :style |
+			style isNullStyle ifTrue: [
+				self removeCharacterStyles.
+				^true ].
+			style = current
+				ifFalse: [ self applyAttribute: (CharacterStyleReference for: style) ]
+				ifTrue: [ self unapplyAttributes: {CharacterStyleReference for: style} ] ].
+	^ true! !
+
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 6/24/2016 11:14'!
+selectCurrentStyle
+	"Let user change styles for the current selection or pragraph."
+	"This is a user command, and generates undo"
+
+	| styles current menuList |
+	current _ self currentParagraphStyle.
+	styles _ model styleSet paragraphStyles collect: [ :pair | pair second ].
+	menuList _ model styleSet paragraphStyles collect: [ :pair |
+		(pair second = current
+				ifTrue: [ '<on>' ]
+				ifFalse: [ '<off>' ]),  
+			pair second name, ' (', pair first asString, ')' ].
+	((SelectionMenu labelList: menuList lines: #() selections: styles) startUpWithCaption: 'Set Style')
+		ifNotNil: [ :style |
+			style = current
+				ifFalse: [ self applyAttribute: (ParagraphStyleReference for: style) ]
+				ifTrue: [ self unapplyAttributes: {ParagraphStyleReference for: style} ] ].
+	^ true! !
+
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 11/18/2011 14:08'!
+selectAllWithCurrentCharStyle
+
+	self selectAllWithStyle: self currentCharacterStyleOrNil! !
+
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 11/18/2011 14:08'!
+selectAllWithCurrentStyle
+
+	self selectAllWithStyle: self currentParagraphStyle! !
+
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 8/5/2024 09:20:42'!
+selectAllWithStyle: aParagraphOrCharacterStyle
+
+	| i startIndexes stopIndexes start stop includeInSelection wasLastIncludedInSelection 
+	selectionStartBlocks
+	selectionStopBlocks
+	|
+	i := 1.
+	startIndexes := OrderedCollection new.
+	stopIndexes := OrderedCollection new.
+	start := nil.
+	stop := nil.
+	wasLastIncludedInSelection := false.
+	model actualContents runs runsAndValuesDo: [ :count :attributes |
+		includeInSelection := attributes anySatisfy: [ :att | att isStyle and: [ att style == aParagraphOrCharacterStyle ]].
+		includeInSelection
+			ifTrue: [
+				wasLastIncludedInSelection
+					ifTrue: [ stop := stop + count ]
+					ifFalse: [ start := i. stop := i+count ]] 
+			ifFalse: [
+				start ifNotNil: [
+					startIndexes add: start. stopIndexes add: stop.
+					start := nil. stop := nil ]].
+		i := i + count.
+		wasLastIncludedInSelection := includeInSelection ].
+	wasLastIncludedInSelection ifTrue: [
+		startIndexes add: start. stopIndexes add: stop ].
+
+	"Support for Multiple Selection was removed from Cuis.
+	selectionStartBlocks and selectionStopBlocks used to be instance variables.
+	If this feature is desired for StyledText, these variables and behavior could be moved to this class."
+	selectionStartBlocks := startIndexes collect: [ :index | (textComposition characterBlockForIndex: index) ].
+	selectionStopBlocks := stopIndexes collect: [ :index | (textComposition characterBlockForIndex: index) ].
+	markBlock := selectionStartBlocks notEmpty ifTrue: [selectionStartBlocks first].
+	pointBlock := selectionStopBlocks notEmpty ifTrue: [selectionStopBlocks first].
+
+	self storeSelectionInComposition.
+	morph selectionChanged.! !
+
+!StyledTextEditor methodsFor: 'notifications' stamp: 'jmv 8/5/2024 10:11:16'!
+someStyleChanged
+	textComposition composeAll.
+	self recomputeSelection.
+	morph updateFromTextComposition.! !
+
+!StyledTextEditor methodsFor: 'menu & kbd shortcuts' stamp: 'jmv 8/5/2024 10:10:10'!
+defaultMenuSpec
+	"Spec for the menu and shortcut keys for the regular text editors.
+	See coment at Morph >> #getMenu
+	"
+	| entryId shortcutCharacter takenShortcutCharacters |
+	takenShortcutCharacters := Set new.
+	entryId := 1900.
+	^Array streamContents: [ :strm |
+		model styleSet paragraphStyles do: [ :pair |
+			shortcutCharacter := pair first.
+			takenShortcutCharacters add: shortcutCharacter.
+			entryId := entryId + 1.
+			strm nextPut: { entryId. nil. shortcutCharacter. #editor. #changeCurrentStyle:. nil. ''. shortcutCharacter } ].
+		model styleSet characterStyles do: [ :pair |
+			shortcutCharacter := pair first.
+			takenShortcutCharacters add: shortcutCharacter.
+			entryId := entryId + 1.
+			strm nextPut: { entryId. nil. shortcutCharacter. #editor. #changeCharacterStyle:. nil. ''. shortcutCharacter } ].
+	
+		#(
+			#(0 		'Styled Text Editor' 					true)
+			#(10		'Help... (h)' 									$h 	editor 			openHelp 								helpIcon 								'Open Help')
+			#(20 		'-----')
+			#(30		'Save (s)' 									$s 	editor 			save 								saveIcon 								'Save')
+			#(40		'Save As...' 									nil 	editor 			saveAs 								saveIcon 								'Save (Ask for a file name)')
+			#(50 		'-----')
+			#(60		'Find...(f)' 									$f 	editor 			find 								findIcon 								'Find')
+			#(70		'Find Again (g)' 									$g 	editor 			findAgain 								systemIcon 								'Find again')
+			#(80		'Use Selection for Find (j)' 									$j 	editor 			setSearchString 								saveAsIcon 								'Set selection as search string for find again')
+			#(90 		'-----')
+			#(100		'Undo - multiple (z)' 									$z 	editor 			undo 								undoIcon 								'Undo (multiple levels)')
+			#(110		'Redo - multiple (Z)' 									$Z 	editor 			redo 								redoIcon 								'Redo (multiple levels)')
+			#(120		'Undo / Redo history' 									nil 	editor 			offerUndoHistory 								changesIcon)
+			#(130		'Forget Undo / Redo history' 									nil 	editor 			flushUndoRedoCommands 								cancelIcon)
+			#(140 		'-----')
+			#(150		'Copy (c)' 									$c 	editor 			copySelection 								copyIcon 								'Copy selection to the Clipboard')
+			#(160		'Cut (x)' 									$x 	editor 			cut 								cutIcon 								'Cut selection and store it in the Clipboard')
+			#(170		'Paste (v)' 									$v 	editor 			paste 								pasteIcon 								'Paste Clipboard contents')
+			#(180		'Paste without Format' 									nil 	editor 			pasteString 								pasteIcon)
+			#(190		'Paste...' 									nil 	editor 			pasteRecent 								worldIcon)
+			#(200 		'-----')
+			#(210		'Select text with Paragraph Style' 									nil 	editor 			selectAllWithCurrentStyle 								selectAllIcon)
+			#(220		'Select text with Character Style' 									nil 	editor 			selectAllWithCurrentCharStyle 								selectAllIcon)
+			#(230 		'-----')
+			#(240		'Change Paragraph Style...' 									nil 	editor 			selectCurrentStyle 								fontXGenericIcon)
+			#(250		'Change Character Style...' 									nil 	editor 			selectCharacterStyle 								fontXGenericIcon)
+			#(260		'Remove Character Style' 									nil 	editor 			removeCharacterStyles 								fontXGenericIcon)
+			#(270		'Replace all uses of Paragraph Style...' 									nil 	editor 			replaceAllCurrentStyle 								fontXGenericIcon)
+			#(280		'Replace all uses of Character Style...' 									nil 	editor 			replaceAllCharacterStyle 								fontXGenericIcon)
+			"Keyboard shortcuts only"
+			#(999		nil 									$q 	editor  			quit								nil 								'Quit')
+		) do: [ :entry |
+			shortcutCharacter := entry size >= 3 ifTrue: [entry third].
+			strm nextPut: 
+				((shortcutCharacter notNil and: [ takenShortcutCharacters includes: shortcutCharacter ])
+					ifTrue: [entry copy at: 3 put: nil; yourself]
+					ifFalse: [entry]) ]].! !
+
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'jmv 3/24/2020 10:06:29'!
+fileReaderServicesForFileEntry: filename suffix: suffix
+	"FileList buttons that open a CodeFileBrowserWindow on contents."
+
+	(#('object' 'ste') includes: suffix) ifTrue: [
+		^ { self serviceSTEEdit } ].
+
+	^#()! !
+
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 2/3/2016 16:07'!
+serviceSTEEdit
+	"Answer the service of opening a file in a STEditor"
+
+	^ (SimpleServiceEntry
+		provider: self 
+		label: 'open Styled Text Editor file'
+		selector: #openFromFileEntry:
+		description: 'open this file with a Styled Text Editor'
+		buttonLabel: 'open STE')
+		argumentGetter: [ :fileList | fileList selectedFileEntry ]! !
+
+!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 4/1/2016 13:46'!
+open
+	"Open a new instance on an empty file"
+"
+	StyledTextEditor open.
+"
+	| model |
+	model _ StyledTextModel new.
+	^SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
+
+!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 2/3/2016 16:07'!
+openFromFileEntry: fileEntry
+	| model |
+	model _ StyledTextModel fromFileNamed: fileEntry pathName.
+	^SystemWindow editFancierStyledText: model label: fileEntry name! !
+
+!StyledTextEditor class methodsFor: 'menu-world' stamp: 'jmv 9/20/2018 08:53:38'!
+worldMenuForOpenGroup
+	^ `{{
+			#itemGroup 	-> 		10.
+			#itemOrder 	-> 		10.
+			#label 			->		'Styled Text Editor'.
+			#object 			-> 		StyledTextEditor.
+			#selector 		-> 		#open.
+			#icon 			-> 		#textEditorIcon.
+			#balloonText 	-> 		'A window for composing Styled text'.
+		} asDictionary}`! !
+
+!CharacterStyleReference methodsFor: 'printing' stamp: 'jmv 4/6/2011 18:12'!
+printOn: strm
+	super printOn: strm.
+	strm nextPutAll: ': '.
+	characterStyle shortPrintOn: strm! !
+
+!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 9/21/2011 11:14'!
+= other 
+	^ (other class == self class) 
+		and: [other style isEquivalentTo: characterStyle]! !
+
+!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 4/11/2011 21:33'!
+hash
+	"Rather cheap. Can be improved."
+	^ characterStyle shortDescription hash! !
+
+!CharacterStyleReference methodsFor: 'scanning' stamp: 'jmv 1/25/2011 14:26'!
+dominates: other
+	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
+	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
+	^ other class == self class! !
+
+!CharacterStyleReference methodsFor: 'iterating' stamp: 'jmv 9/1/2009 15:36'!
+forCharacterStyleReferenceDo: aBlock
+	aBlock value: characterStyle! !
+
+!CharacterStyleReference methodsFor: 'testing' stamp: 'jmv 4/11/2011 19:35'!
+isStyle
+	^true! !
+
+!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
+style
+	^characterStyle! !
+
+!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
+style: aCharacterStyle
+	characterStyle _ aCharacterStyle! !
+
+!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
+writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
+	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
+	
+	"familyName and pointSize"
+	characterStyle pointSize ifNotNil: [ :ps |
+		aStream nextPutAll: '\fs'; nextPutAll: ((ps * Text pointSizeConversionFactor ) rounded * 2) asString; space ].
+
+	"emphasis"
+	(characterStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
+		aStream nextPutAll: '\b ' ].
+	(characterStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
+		aStream nextPutAll: '\i ' ].
+	(characterStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
+		aStream nextPutAll: '\ul ' ].
+	(characterStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
+		aStream nextPutAll: '\strike \strikec0 ' ].
+
+	"color"
+	characterStyle color ifNotNil: [ :c |
+		aStream nextPutAll: '\cf'; nextPutAll: (colorArray indexOf: c) asString; space ].
+
+	^0! !
+
+!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
+writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
+	"Write the RTF code for attribute stop.
+	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
+
+	"kern"
+	aStream nextPutAll: '\kerning1\expnd0\expndtw0 ' .
+
+	"color"
+	aStream nextPutAll: '\cf0 '.
+
+	"emphasis"
+	(characterStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
+		aStream nextPutAll: '\strike0\striked0 ' ].
+	(characterStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
+		aStream nextPutAll: '\ulnone ' ].
+	(characterStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
+		aStream nextPutAll: '\i0 ' ].
+	(characterStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
+		aStream nextPutAll: '\b0 ' ].
+
+	"familyName and pointSize"
+	characterStyle pointSize ifNotNil: [ :ps |
+		aStream nextPutAll: '\fs0 ' ]! !
+
+!CharacterStyleReference class methodsFor: 'instance creation' stamp: 'jmv 9/21/2011 11:14'!
+for: aCharacterStyle
+	| attribute |
+self assert: aCharacterStyle notNil.
+	attribute _ self new.
+	attribute style: aCharacterStyle.
+	^attribute! !
+
+!ParagraphStyleReference methodsFor: 'printing' stamp: 'jmv 4/7/2011 17:06'!
+printOn: strm
+	super printOn: strm.
+	strm nextPutAll: ': ('.
+	paragraphStyle name printOn: strm.
+	strm nextPutAll: ') '.
+	paragraphStyle shortPrintOn: strm! !
+
+!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 9/21/2011 11:12'!
+= other 
+	^ (other class == self class) 
+		and: [other style isEquivalentTo: paragraphStyle]! !
+
+!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 4/11/2011 21:33'!
+hash
+	"Rather cheap. Can be improved."
+	^ paragraphStyle shortDescription hash! !
+
+!ParagraphStyleReference methodsFor: 'scanning' stamp: 'jmv 11/29/2011 13:50'!
+dominates: other
+	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
+	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
+
+	"Leave TextAnchors and such alone!!"
+	other isForFormatting ifFalse: [ ^false ].
+
+	^ other class == self class
+		or: [
+			"Any ParagraphStyle precludes the use of regular CharacterAttributes.
+			This restriction is not usually needed, as the StyledTextEditor doesn't allow the use of regular attributes.
+			But it was needed to add this, because the 'Smalltalk Code' ParagraphStyle uses shout to decorate text, and this adds regular Attributes
+			such as color, bold, italic... Later, if we remove that ParagraphStyle (to use a regular one), we need to ensure that all those attributes
+			are removed"
+			other isStyle not
+				or: [
+					"A ParahraphStyle that does Shout (auto code formatting) precludes the use of CharacterStyles and other CharacterAttributes"
+					paragraphStyle doesShout and: [ other isParagraphAttribute not ] ] ]! !
+
+!ParagraphStyleReference methodsFor: 'iterating' stamp: 'jmv 1/25/2011 13:42'!
+forParagraphStyleReferenceDo: aBlock
+	aBlock value: paragraphStyle! !
+
+!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 9/1/2009 23:02'!
+isParagraphAttribute
+	"Attributes that answer true will always be applied to whole paragraphs, i.e. starting at the position after a cr (or 1) and ending at a cr (or text size)"
+	
+	^true! !
+
+!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 4/11/2011 19:35'!
+isStyle
+	^true! !
+
+!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
+style
+	^paragraphStyle! !
+
+!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 9/21/2011 11:08'!
+style: aParagraphStyle
+	paragraphStyle _ aParagraphStyle! !
+
+!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
+writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
+	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
+	"paragraph attributes still missing..."
+
+	| twips k |
+
+	"familyName and pointSize"
+	paragraphStyle pointSize ifNotNil: [ :ps |
+		aStream nextPutAll: '\fs'; nextPutAll: ((ps * Text pointSizeConversionFactor ) rounded * 2) asString; space ].
+
+	"emphasis"
+	(paragraphStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
+		aStream nextPutAll: '\b ' ].
+	(paragraphStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
+		aStream nextPutAll: '\i ' ].
+	(paragraphStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
+		aStream nextPutAll: '\ul ' ].
+	(paragraphStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
+		aStream nextPutAll: '\strike \strikec0 ' ].
+
+	"color"
+	paragraphStyle color ifNotNil: [ :c |
+		aStream nextPutAll: '\cf'; nextPutAll: (colorArray indexOf: c) asString; space ].
+
+	"alignment"
+	paragraphStyle alignment caseOf: {
+		[ 0 ] -> [ aStream nextPutAll: '\ql ' ].
+		[ 1 ] -> [ aStream nextPutAll: '\qr ' ].
+		[ 2 ] -> [ aStream nextPutAll: '\qc ' ].
+		[ 3 ] -> [ aStream nextPutAll: '\qj ' ] }.
+
+	"Exportar. Cerrar tambien, y despues, importar!!
+	tabsArray listBulletPattern
+	"
+
+	"indent"
+	k _ 20.
+	twips _ (paragraphStyle firstIndent-paragraphStyle restIndent) * k.
+	twips = 0 ifFalse: [
+		aStream nextPutAll: '\fi', twips asString; space ].
+	twips _ paragraphStyle restIndent * k.
+	twips = 0 ifFalse: [
+		aStream nextPutAll: '\li', twips asString; space ].
+	"Have no idea why, but it seems that on paste, an extra inch is added!!"
+	twips _ (paragraphStyle rightIndent-72) * k.
+	twips = 0 ifFalse: [
+		aStream nextPutAll: '\ri', twips asString; space ].
+
+	k _ 20.
+	"paragraph spacing"
+	twips _ paragraphStyle spaceBefore * k.
+	twips = 0 ifFalse: [
+		aStream nextPutAll: '\sb', twips asString; space ].
+	twips _ paragraphStyle spaceAfter * k.
+	twips = 0 ifFalse: [
+		aStream nextPutAll: '\sa', twips asString; space ].
+
+	^0! !
+
+!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 4/1/2016 13:45'!
+writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
+	"Write the RTF code for attribute stop.
+	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
+
+	"alignment"
+	aStream nextPutAll: '\ql '.
+
+	"kern"
+	aStream nextPutAll: '\kerning1\expnd0\expndtw0 ' .
+
+	"color"
+	aStream nextPutAll: '\cf0 '.
+
+	"emphasis"
+	(paragraphStyle emphasis allMask: AbstractFont struckThroughCode) ifTrue: [
+		aStream nextPutAll: '\strike0\striked0 ' ].
+	(paragraphStyle emphasis allMask: AbstractFont underlinedCode) ifTrue: [
+		aStream nextPutAll: '\ulnone ' ].
+	(paragraphStyle emphasis allMask: AbstractFont italicCode) ifTrue: [
+		aStream nextPutAll: '\i0 ' ].
+	(paragraphStyle emphasis allMask: AbstractFont boldCode) ifTrue: [
+		aStream nextPutAll: '\b0 ' ].
+
+	"familyName and pointSize"
+	paragraphStyle pointSize ifNotNil: [ :ps |
+		aStream nextPutAll: '\fs0 ' ].
+
+	"paragraph defaults (i.e. paragraph end). Needed to honor spaceBefore and spaceAfter"
+	aStream nextPutAll: '\pard '! !
+
+!ParagraphStyleReference class methodsFor: 'instance creation' stamp: 'jmv 9/21/2011 11:09'!
+for: aParagraphStyle
+	| attribute |
+self assert: aParagraphStyle notNil.
+	attribute _ self new.
+	attribute style: aParagraphStyle.
+	^attribute! !
+
+!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 8/5/2013 10:44'!
+comeFullyUpOnReload: smartRefStream
+	"This is not the proper way to handle multiple dictionaries!!"
+	
+	words _ EnglishDict.
+	^ self! !
+
+!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 8/5/2013 10:45'!
+objectForDataStream: refStrm
+
+	^self shallowCopy clearWords; yourself! !
+
+!STECompleter methodsFor: 'entries' stamp: 'jmv 7/14/2011 13:58'!
+addEntriesTo: aStream
+	| s count capitalize |
+	s _ 400.
+	count _ 0.
+	"Capitalize options if user's word is capitalized"
+	capitalize _ prefix notEmpty and: [ prefix first isUppercase ].
+	words forPrefix: prefix keysAndValuesDo: [ :key :value |
+		count = s
+			ifTrue: [ ^self ].
+		aStream nextPut: (capitalize ifTrue: [key capitalized] ifFalse: [key]).
+		count _ count + 1 ]! !
+
+!STECompleter methodsFor: 'entries' stamp: 'jmv 9/21/2011 11:14'!
+selectedEntry
+	^(Text
+		string: (self entries at: menuMorph selected)
+		attribute: (CharacterStyleReference new style: model styleSet autoCompletedStyle)), ' '! !
+
+!STECompleter methodsFor: 'initialization' stamp: 'jmv 8/5/2013 10:45'!
+clearWords
+	words _ nil! !
+
+!STECompleter methodsFor: 'initialization' stamp: 'jmv 7/14/2011 13:58'!
+initialize
+	words _ EnglishDict! !
+
+!STECompleter class methodsFor: 'class initialization' stamp: 'jmv 5/31/2016 11:16'!
+initialize
+	"
+	STECompleter initialize
+	An English dictionary with (at this time of writing) 166211 words, taking 7.5Mbytes.
+	Load a dictionary from (for example)  ./scowl-7.1/final/ up to a certain level.
+	"
+	| level baseDirectory possibleDirs dirEntry |
+	level _ 70.
+	EnglishDict _ Trie new.
+	baseDirectory := self package fullFileName asFileEntry parent.
+	possibleDirs := baseDirectory directories select: [ :dir | 'scowl*' match: dir name ]  .
+	possibleDirs ifEmpty: [
+		Transcript newLine; show: 'No word list for English spell checker was found.'.
+		^self 
+	].
+	dirEntry := possibleDirs detect: [ :dir | dir directoryNames includes: 'final' ].
+	dirEntry ifNil: [
+		Transcript newLine; show: 'No word list for English spell checker was  found.'.
+		^self 
+	].
+	dirEntry allFilesDo: [ :fileEntry | | fileLevel |
+		fileLevel := fileEntry extension findPositiveInteger.
+		((fileLevel isNil not) and: [fileLevel <= level])
+		ifTrue: [ fileEntry readStreamDo: [ :strm |
+				fileEntry name print.
+				[ strm atEnd ] whileFalse: [
+					strm nextLine substrings do: [ :word | 
+						EnglishDict add: word asLowercase 
+					]
+				]
+			]
+		]
+	].
+
+	'Spell Checker importing done.' print.! !
 
 !StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 11/9/2021 17:27:55'!
 testClickAndHalf
@@ -3839,560 +4286,6 @@ testStylesInPaste6
 	self assert: concatenation runs values first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the first part'.
 	self deny: concatenation runs values second first style == heading1 description: 'Should not apply the "Heading 1" paragraph style to the second part'! !
 
-!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 8/5/2013 10:44'!
-comeFullyUpOnReload: smartRefStream
-	"This is not the proper way to handle multiple dictionaries!!"
-	
-	words _ EnglishDict.
-	^ self! !
-
-!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 8/5/2013 10:45'!
-objectForDataStream: refStrm
-
-	^self shallowCopy clearWords; yourself! !
-
-!STECompleter methodsFor: 'entries' stamp: 'jmv 7/14/2011 13:58'!
-addEntriesTo: aStream
-	| s count capitalize |
-	s _ 400.
-	count _ 0.
-	"Capitalize options if user's word is capitalized"
-	capitalize _ prefix notEmpty and: [ prefix first isUppercase ].
-	words forPrefix: prefix keysAndValuesDo: [ :key :value |
-		count = s
-			ifTrue: [ ^self ].
-		aStream nextPut: (capitalize ifTrue: [key capitalized] ifFalse: [key]).
-		count _ count + 1 ]! !
-
-!STECompleter methodsFor: 'entries' stamp: 'jmv 9/21/2011 11:14'!
-selectedEntry
-	^(Text
-		string: (self entries at: menuMorph selected)
-		attribute: (CharacterStyleReference new style: model styleSet autoCompletedStyle)), ' '! !
-
-!STECompleter methodsFor: 'initialization' stamp: 'jmv 8/5/2013 10:45'!
-clearWords
-	words _ nil! !
-
-!STECompleter methodsFor: 'initialization' stamp: 'jmv 7/14/2011 13:58'!
-initialize
-	words _ EnglishDict! !
-
-!STECompleter class methodsFor: 'class initialization' stamp: 'jmv 5/31/2016 11:16'!
-initialize
-	"
-	STECompleter initialize
-	An English dictionary with (at this time of writing) 166211 words, taking 7.5Mbytes.
-	Load a dictionary from (for example)  ./scowl-7.1/final/ up to a certain level.
-	"
-	| level baseDirectory possibleDirs dirEntry |
-	level _ 70.
-	EnglishDict _ Trie new.
-	baseDirectory := self package fullFileName asFileEntry parent.
-	possibleDirs := baseDirectory directories select: [ :dir | 'scowl*' match: dir name ]  .
-	possibleDirs ifEmpty: [
-		Transcript newLine; show: 'No word list for English spell checker was found.'.
-		^self 
-	].
-	dirEntry := possibleDirs detect: [ :dir | dir directoryNames includes: 'final' ].
-	dirEntry ifNil: [
-		Transcript newLine; show: 'No word list for English spell checker was  found.'.
-		^self 
-	].
-	dirEntry allFilesDo: [ :fileEntry | | fileLevel |
-		fileLevel := fileEntry extension findPositiveInteger.
-		((fileLevel isNil not) and: [fileLevel <= level])
-		ifTrue: [ fileEntry readStreamDo: [ :strm |
-				fileEntry name print.
-				[ strm atEnd ] whileFalse: [
-					strm nextLine substrings do: [ :word | 
-						EnglishDict add: word asLowercase 
-					]
-				]
-			]
-		]
-	].
-
-	'Spell Checker importing done.' print.! !
-
-!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 4/19/2014 19:31'!
-addToText: aString specialAttributes: nonFormattingAttributesOrNil
-	"nonFormattingAttributesOrNil should only contains attributes that answer false to #isForFormatting"
-	| attributes emphasis ps cs |
-
-	ps _ self paragraphStyle.
-	emphasis _ 0.
-	bold ifTrue: [ emphasis _ emphasis + 1 ].
-	italic ifTrue: [ emphasis _ emphasis + 2 ].
-	underline ifTrue: [ emphasis _ emphasis + 4 ].
-	attributes _ Array streamContents: [ :strm |
-		strm nextPut: (ParagraphStyleReference for: ps).
-		(fontFamilyName = ps familyName and: [ fontPointSize = ps pointSize and: [ emphasis = ps emphasis and: [ currentFgColor = ps color ]]]) ifFalse: [
-			cs _ CharacterStyle new
-				privateFamilyName: fontFamilyName pointSize: fontPointSize emphasis: emphasis color: currentFgColor.
-			strm nextPut: (CharacterStyleReference for: cs) ].
-		nonFormattingAttributesOrNil ifNotNil: [ strm nextPutAll: nonFormattingAttributesOrNil ]].
-	textStream nextPutAllString: aString withAttributes: attributes! !
-
-!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 8/11/2011 10:40'!
-paragraphStyle
-	"We need a paragraph style to be actually used.
-	If we don't have it, take whatever is in construction and use it."
-	| emphasis |
-	paragraphStyleInUse ifNil: [
-		"Build it"
-		emphasis _ 0.
-		bold ifTrue: [ emphasis _ emphasis + 1 ].
-		italic ifTrue: [ emphasis _ emphasis + 2 ].
-		underline ifTrue: [ emphasis _ emphasis + 4 ].
-		paragraphStyleInUse _ ParagraphStyle new.
-		paragraphStyleInUse
-			privateFamilyName: fontFamilyName pointSize: fontPointSize emphasis: emphasis color: currentFgColor
-			alignment: align firstIndent: firstIndent+leftIndent restIndent: leftIndent
-			"nil means that we didn't get any value from rtf. therefore, the +72 is not needed"
-			rightIndent:  (rightIndent ifNil: [ 0 ] ifNotNil: [ rightIndent +72 ])
-			spaceBefore: spaceBefore spaceAfter: spaceAfter ].
-	^paragraphStyleInUse! !
-
-!RTFStyledTextBuilder methodsFor: 'building-paragraph' stamp: 'jmv 3/13/2012 16:57'!
-finishParagraph
-
-	textStream
-		nextPutAllString: String newLineString
-		withAttributes: { ParagraphStyleReference for: self paragraphStyle }.
-	paragraphStyleInUse _ nil.	"So we can build a new one"! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
-color
-	^color! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
-emphasis
-	^emphasis! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
-familyName
-	^familyName! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/11/2020 16:47:34'!
-font
-	| base |
-	base _ (FontFamily familyName: familyName pointSize: pointSize)
-		ifNil: [ FontFamily defaultFamilyAndPointSize baseFont ].
-	^base emphasized: emphasis! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
-name
-	^name! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/6/2011 16:18'!
-pointSize
-	^pointSize! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 8/26/2009 22:52'!
-printOn: aStream
-	super printOn: aStream.
-	aStream space; nextPutAll: self name! !
-
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:11'!
-shortDescription
-	"note: Does not use all state. Two different instances could answer the same shortDescription."
-	^String streamContents: [ :strm | self shortPrintOn: strm ]! !
-
-!CharacterStyle methodsFor: 'initialization' stamp: 'jmv 4/19/2014 11:09'!
-initialize
-	name _ ''.
-	emphasis _ 0! !
-
-!CharacterStyle methodsFor: 'comparing' stamp: 'jmv 4/19/2014 11:08'!
-isEquivalentTo: aStyle
-	"Compare all 'functional' attributes. I.e. ignore name."
-	self class == aStyle class ifFalse: [ ^false ].
-
-	^ pointSize = aStyle pointSize and: [
-		emphasis = aStyle emphasis and: [
-			color = aStyle color and: [
-				familyName = aStyle familyName ]]]! !
-
-!CharacterStyle methodsFor: 'testing' stamp: 'jmv 8/9/2011 10:44'!
-isNullStyle
-	^ name = '-none-'! !
-
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:29'!
-privateFamilyName: otherString pointSize: aNumber emphasis: otherNumber color: aColor
-	"To be used from CharacterStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-
-	familyName _ otherString.
-	pointSize _ aNumber.
-	emphasis _ otherNumber.
-	color _ aColor! !
-
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:48'!
-privateName: aString
-	"To be used from CharacterStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-	name _ aString! !
-
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:48'!
-privatePointSize: aNumber
-	"To be used from CharacterStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-	pointSize _ aNumber! !
-
-!CharacterStyle methodsFor: 'printing' stamp: 'KenD 12/5/2015 08:31'!
-shortPrintOn: strm
-	familyName ifNotNil: [
-		strm nextPutAll: familyName ].
-	pointSize ifNotNil: [
-		strm nextPut: $ .
-		pointSize printOn: strm].
-	(emphasis anyMask: AbstractFont boldCode) ifTrue: [
-		strm nextPutAll: ' bold' ].
-	(emphasis anyMask: AbstractFont italicCode) ifTrue: [
-		strm nextPutAll: ' italic' ].
-	(emphasis anyMask: AbstractFont underlinedCode) ifTrue: [
-		strm nextPutAll: ' underlined' ].
-	(emphasis anyMask: AbstractFont struckThroughCode) ifTrue: [
-		strm nextPutAll: ' struckThrough' ].
-	(emphasis anyMask: AbstractFont normalCode) ifTrue: [
-		strm nextPutAll: ' plain' ].
-	color ifNotNil: [
-		strm nextPut: $ .
-		color printOn: strm ]! !
-
-!CharacterStyle class methodsFor: 'instance creation' stamp: 'jmv 8/9/2011 10:45'!
-nullStyle
-
-	^self new
-		privateName: '-none-'! !
-
-!ParagraphStyle methodsFor: 'accessing'!
-alignment
-	"Answer the code for the current setting of the alignment."
-
-	^alignment! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
-doNotShout
-	doesShout _ false! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
-doShout
-	doesShout _ true! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 1/25/2011 13:32'!
-doesShout
-	^doesShout! !
-
-!ParagraphStyle methodsFor: 'accessing'!
-firstIndent
-	"Answer the horizontal indenting of the first line of a paragraph in the 
-	style of the receiver."
-
-	^firstIndent! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 9/29/2009 09:39'!
-isListStyle
-	^listBulletPattern notNil! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 9/29/2009 09:15'!
-listBulletPattern
-	"Answer the string patter to be used to display bullets at the start of each line."
-
-	^listBulletPattern! !
-
-!ParagraphStyle methodsFor: 'accessing'!
-restIndent
-	"Answer the indent for all but the first line of a paragraph in the style 
-	of the receiver."
-
-	^restIndent! !
-
-!ParagraphStyle methodsFor: 'accessing'!
-rightIndent
-	"Answer the right margin indent for the lines of a paragraph in the style 
-	of the receiver."
-
-	^rightIndent! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:15'!
-spaceAfter
-	^spaceAfter! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 11:14'!
-spaceBefore
-	^spaceBefore! !
-
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 4/7/2011 13:44'!
-tabsArray
-	^tabsArray! !
-
-!ParagraphStyle methodsFor: 'initialization' stamp: 'jmv 8/11/2011 08:08'!
-initialize
-	super initialize.
-	firstIndent _ restIndent _ rightIndent _ spaceBefore _ spaceAfter _ 0.
-	listBulletPattern _ nil.
-	doesShout _ false.
-	alignment _ 0.
-	tabsArray _ ParagraphStyle defaultTabsArray! !
-
-!ParagraphStyle methodsFor: 'comparing' stamp: 'jmv 8/9/2011 15:50'!
-isEquivalentTo: aStyle
-	(super isEquivalentTo: aStyle) ifFalse: [ ^false ].
-
-	^alignment = aStyle alignment and: [
-		doesShout = aStyle doesShout and: [
-			firstIndent = aStyle firstIndent and: [
-				restIndent = aStyle restIndent and: [
-					rightIndent = aStyle rightIndent and: [
-						spaceBefore = aStyle spaceBefore and: [
-							spaceAfter = aStyle spaceAfter and: [
-								listBulletPattern = aStyle listBulletPattern and: [
-									tabsArray = aStyle tabsArray ]]]]]]]]! !
-
-!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 6/29/2010 10:03'!
-nextTabXFrom: anX leftMargin: leftMargin rightMargin: rightMargin 
-	"Tab stops are distances from the left margin. Set the distance into the 
-	argument, anX, normalized for the paragraph's left margin."
-
-	| normalizedX tabX |
-
-	"Doing columns (i.e. using tabsArray) only makes sense if left flush. Otherwise, just answer a wider space"
-
-	alignment = CharacterScanner leftFlushCode ifFalse: [
-		^anX + self tabWidth min: rightMargin ].
-
-	normalizedX _ anX - leftMargin.
-	1 to: tabsArray size do: 
-		[:i | (tabX _ tabsArray at: i) > normalizedX 
-				ifTrue: [^leftMargin + tabX min: rightMargin]].
-	^rightMargin! !
-
-!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 7/27/2009 13:05'!
-tabWidth
-	"Answer the width of a tab."
-
-	^ParagraphStyle defaultTab! !
-
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:30'!
-privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code
-	"To be used from ParagraphStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-	familyName _ aString.
-	pointSize _ aNumber.
-	emphasis _ otherNumber.
-	color _ aColor.
-	alignment _ code.
-"	tabsArray _ ParagraphStyle defaultTabsArray."
-"	firstIndent _ fi.
-	restIndent _ ri.
-	rightIndent _ rri.
-	spaceBefore _ sb.
-	spaceAfter _ sa."
-"	listBulletPattern 
-	doesShout"! !
-
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 4/19/2014 19:30'!
-privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code firstIndent: fi restIndent: ri rightIndent: rri spaceBefore: sb spaceAfter: sa
-	"To be used from ParagraphStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-	familyName _ aString.
-	pointSize _ aNumber.
-	emphasis _ otherNumber.
-	color _ aColor.
-	alignment _ code.
-"	tabsArray _ ParagraphStyle defaultTabsArray."
-	firstIndent _ fi.
-	restIndent _ ri.
-	rightIndent _ rri.
-	spaceBefore _ sb.
-	spaceAfter _ sa.
-"	listBulletPattern 
-	doesShout"! !
-
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 8/11/2011 10:49'!
-privateListBulletPattern: aString 
-	"If this is notNil, then this style is a Bullet List Style
-	Some examples are:
-		'%. ' -> '1. ' '2. ' etc.
-		'z) ' -> 'a) ' 'b) ' etc.
-		'Z- ' -> 'A- ' 'B- ' etc
-	"
-	"To be used from ParagraphStyle instance creation methods.
-	If used on existing instances, existing text will be modified, but in any case, senders are responsible
-	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
-
-	listBulletPattern _ aString! !
-
-!ParagraphStyle methodsFor: 'printing' stamp: 'jmv 4/7/2011 11:11'!
-shortPrintOn: strm
-	"note: Does not use all state. Two different instances could print the same."
-
-	super shortPrintOn: strm.
-
-	alignment > 0 ifTrue: [
-		strm nextPut: $ .
-		strm nextPutAll: (#(right centered justified) at: alignment) ]! !
-
-!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 7/27/2009 13:05'!
-defaultTab
-	^24! !
-
-!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 7/27/2009 13:07'!
-defaultTabsArray
-	^#(24 48 72 96 120 144 168 192 216 240 264 288 312 336 360 384 408 432 456 480 504 528 552 576 600 624 648 672 696 720 744 768 792 816 840 864 888 912 936 960 984 1008 1032 1056 1080 1104 1128 1152 1176 1200 1224 1248 1272 1296 1320 1344 1368 1392 1416 1440 1464 1488 1512 1536 1560)! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:32'!
-, aString
-	"Add aString to the Text we are building, using current style."
-	textStream
-		nextPutAllString: aString
-		withAttributes:
-			(characterStyleStack isEmpty
-				ifTrue: [ #() ]
-				ifFalse: [ {CharacterStyleReference for: (styleDict at: characterStyleStack last)} ])! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 10/16/2013 21:40'!
-/ aParagraphStyleKey
-	"Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. "
-	textStream
-		nextPutAllString: String newLineString
-		withAttributes: {ParagraphStyleReference for: (styleDict at: aParagraphStyleKey)}! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:31'!
-< aCharacterStyleKey
-	"Add a new CharacterStyle to the stack. This is the new current style.
-	aKey is for accessing the styles dictionary that was given on setup."
-	characterStyleStack addLast: aCharacterStyleKey! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:32'!
-> aString
-	"We finished using the CharacterStyle that was last set. Remove it from the stack, to go on with the previous one. Then, add aString to the text being built."
-	characterStyleStack removeLast.
-	self , aString! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 10/16/2013 21:40'!
->/ aParagraphStyleKey
-	"Stop using the CharacterStyle that was added last.
-	Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. 
-	The effect is the same as sending
-		> ''
-		/ aParagraphStyleKey"
-	characterStyleStack removeLast.
-	self / aParagraphStyleKey! !
-
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 1/25/2011 14:31'!
->< aCharacterStyleKey
-	"Stop using the CharacterStyle that was added last, and start using a new one.
-	The effect is the same as sending
-		> ''
-		< aCharacterStyleKey
-	but the implementation is optimized"
-	characterStyleStack at: characterStyleStack size put: aCharacterStyleKey! !
-
-!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 1/3/2017 21:10:04'!
-styles: aDictionary
-	styleDict _ aDictionary.
-	characterStyleStack _ OrderedCollection new.
-	textStream _ WriteStream on: (Text string: (String new: 400))! !
-
-!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 9/9/2010 09:05'!
-text
-	^textStream contents! !
-
-!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 1/30/2021 12:38:05'!
-example1
-	"
-	StyledTextBuilder example1
-	"
-	| model heading3 greenBig redBold greenItalic t |
-	model _ StyledTextModel new.
-	heading3 _ model styleSet paragraphStyleNamed: 'Heading 3'.
-	greenBig _ model styleSet characterStyleNamed: 'Green Big'.
-	redBold _ model styleSet characterStyleNamed: 'Red Bold'.
-	greenItalic _ model styleSet characterStyleNamed: 'Green Italic'.
-	t _ Text
-			buildWithStyles: ({
-				#H3 -> heading3.
-				#gBig -> greenBig.
-				#rb -> redBold.
-				#gi -> greenItalic
-				} as: Dictionary)
-			contents: [ :builder |
-				builder , 'Starts as Heading 3. But later gets' < #gBig , ' big and green' , ' and stays like that. Then' >< #rb , ' red & bold and inside this,' < #gi , ' green and italic' > ' for a while. Later' > ' back to Heading 3.' / #H3].
-
-	model contents: t.
-	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
-
-!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 1/30/2021 12:47:59'!
-example2
-	"
-	StyledTextBuilder example2
-	"
-	|model heading1 heading2 heading3 emphasized normal greenBig redBold greenItalic t |
-	model _ StyledTextModel new.
-	heading1 _ model styleSet paragraphStyleNamed: 'Heading 1'.
-	heading2 _ model styleSet paragraphStyleNamed: 'Heading 2'.
-	heading3 _ model styleSet paragraphStyleNamed: 'Heading 3'.
-	emphasized _ model styleSet paragraphStyleNamed: 'Emphasized'.
-	normal _ model styleSet paragraphStyleNamed: 'Normal'.
-	greenBig _ model styleSet characterStyleNamed: 'Green Big'.
-	redBold _ model styleSet characterStyleNamed: 'Red Bold'.
-	greenItalic _ model styleSet characterStyleNamed: 'Green Italic'.
-	t _ Text
-			buildWithStyles: ({
-				#H1 -> heading1.
-				#H2 -> heading2.
-				#H3 -> heading3.
-				#E -> emphasized.
-				#N -> normal.
-				#gBig -> greenBig.
-				#rb -> redBold.
-				#gi -> greenItalic
-				} as: Dictionary)
-			contents: [ :builder |
-				builder,
-					'This is the main title' / #H1,
-					'This is the title of level 2' / #H2,
-					'This is title 3' / #H3,
-					'Then, we have some normal text. But later gets' < #gBig , ' big and green' , ' and stays like that. Then' >< #rb , ' red & bold and inside this,' < #gi , ' green and italic' > ' for a while.' > ' Lets make this look like a paragraph, i.e. add enough text so that we''l be using more than one display line. Is this enough? Who knows... Let''s add a bit more. Maybe this is enough.' / #N,
-					'This is an emphasized paragraph. It uses a Paragraph Style, not a Character Style, and therefore it has the same style all over the paragraph' / #E,
-					'This' < #rb, ' is' > ' again a' < #gBig, ' title 2' >/ #H2,
-					'And now another paragraph. This one may be smaller than previous ones' / #N ].
-	model contents: t.
-	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
-
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:35'!
-initialize
-	sel _ 3! !
-
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 14:39'!
-list
-	^#('first' 'second' 'third' 'first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third')! !
-
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:09'!
-sel
-^sel! !
-
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 9/16/2009 10:35'!
-sel:x
-sel _ x.
-self changed: #list
-
-"
-(PluggableListMorph
-	on: SampleListModel new
-	list: #list
-	selected: #sel
-	changeSelected: #sel:) autoDeselect: false; openInWorld
-"! !
-
 !Text methodsFor: '*styledText' stamp: 'jmv 4/11/2011 19:37'!
 asNonStyledText
 	self usesAnyStyles ifFalse: [ ^self ].
@@ -4565,10 +4458,6 @@ buildWithStyles: aDictionary contents: aBlock
 	aBlock value: builder.
 	^builder text! !
 
-!TextAttribute methodsFor: '*styledText' stamp: 'jmv 11/1/2011 11:32'!
-isStyle
-	^false! !
-
 !SystemWindow class methodsFor: '*styledText' stamp: 'jmv 7/24/2014 10:26'!
 editFancierStyledText: aTextModel label: labelString
 	| window textMorph |
@@ -4591,4 +4480,8 @@ editStyledText: aTextModel label: labelString
 			wrapFlag: true)
 		proportionalHeight: 1.
 	^ window openInWorld! !
+
+!TextAttribute methodsFor: '*styledText' stamp: 'jmv 11/1/2011 11:32'!
+isStyle
+	^false! !
 STECompleter initialize!

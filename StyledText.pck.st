@@ -1,11 +1,11 @@
-'From Cuis7.1 [latest update: #6561] on 5 August 2024 at 11:48:31 am'!
+'From Cuis7.1 [latest update: #6618] on 22 August 2024 at 3:20:57 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 67!
+!provides: 'StyledText' 1 68!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFImporting' 1 nil nil!
+!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -1020,24 +1020,22 @@ editorClass
 textStylerClass
 	^SHTextStylerST80! !
 
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:15:15'!
-formatAndStyleIfNeededWith: anSHTextStyler
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 8/22/2024 15:09:16'!
+aboutToStyleWith: anSHTextStyler
+	"This is a notification that anSHTextStyler is about to re-style its text."
+
+	anSHTextStyler classOrMetaClass: nil! !
+
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 8/22/2024 15:16:29'!
+convertAndStyleIfNeededWith: anSHTextStyler
 
 	| toStyle |
-	anSHTextStyler ifNotNil: [
-		(self shouldStyle: self actualContents with: anSHTextStyler) ifTrue: [
-			self actualContents paragraphStyleChunksDo: [ :interval :paragraphStyle |
-				paragraphStyle ifNotNil: [ paragraphStyle doesShout ifTrue: [
-					toStyle _ actualContents copyFrom: interval first to: interval last.
-					anSHTextStyler formatAndStyle: toStyle allowBackgroundStyleProcess: false.
-					actualContents replaceFrom: interval first to: interval last with: anSHTextStyler formattedText ]]]]]! !
-
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 9/9/2017 16:12:55'!
-shouldStyle: text with: anSHTextStyler
-	"This is a notification that aSHTextStyler is about to re-style its text."
-
-	anSHTextStyler classOrMetaClass: nil.
-	^true! !
+	self aboutToStyleWith: anSHTextStyler.
+	self actualContents paragraphStyleChunksDo: [ :interval :paragraphStyle |
+		paragraphStyle ifNotNil: [ paragraphStyle doesShout ifTrue: [
+			toStyle := actualContents copyFrom: interval first to: interval last.
+			anSHTextStyler convertAndStyle: toStyle allowBackgroundStyleProcess: false.
+			actualContents replaceFrom: interval first to: interval last with: anSHTextStyler convertedAndStyledText ]]]! !
 
 !StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 9/22/2011 15:06'!
 logUndoAndRemoveCharacterStylesIn: anInterval

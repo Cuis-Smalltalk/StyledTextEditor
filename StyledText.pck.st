@@ -1,11 +1,11 @@
-'From Cuis7.1 [latest update: #6618] on 22 August 2024 at 3:20:57 pm'!
+'From Cuis7.1 [latest update: #6669] on 2 September 2024 at 7:59:18 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 68!
+!provides: 'StyledText' 1 70!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
 !requires: 'UI-Entry' 1 35 nil!
+!requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -1189,19 +1189,19 @@ setSelectionIndex: anInteger
 	currentIndex _ anInteger.
 	^ false! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 7/19/2021 16:09:47'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 9/2/2024 19:58:04'!
 updateScrollBarsBounds
 	
 	| t |
 	hideScrollBars = #hide ifTrue: [^self].
-	t _ ScrollBar scrollbarThickness.
+	t := ScrollBar scrollbarThickness.
 	(hideScrollBars = #hideVertical)
 	ifFalse: [
 		scrollBar
-			morphPosition: extent x - t - borderWidth - 4 @ borderWidth
+			position: extent x - t - borderWidth - 4 @ borderWidth
 			extent: t @ (self vScrollBarHeight-4) ].
 	hScrollBar
-		morphPosition: borderWidth @ (extent y - t - borderWidth - 4)
+		position: borderWidth @ (extent y - t - borderWidth - 4)
 		extent: self hScrollBarWidth - 4@t! !
 
 !PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 2/25/2013 15:26'!
@@ -1527,15 +1527,15 @@ model: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter:
 	getIndexSelector _ getSelectionSel.
 	setIndexSelector _ setSelectionSel.! !
 
-!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 8/23/2020 21:15:58'!
+!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 9/2/2024 19:36:24'!
 layoutSubmorphs
 	| e innerBounds |
 	"innerBounds _ self innerBounds".
-	innerBounds _ (self morphPositionInWorld extent: self morphExtentInWorld) insetBy: borderWidth.
-	e _ innerBounds height.
+	innerBounds := (self positionInWorld extent: self extentInWorld) insetBy: borderWidth.
+	e := innerBounds height.
 	downButton 
-		morphPositionInWorld: innerBounds bottomRight - e;
-		morphExtentInWorld: e asPoint! !
+		positionInWorld: innerBounds bottomRight - e;
+		extentInWorld: e asPoint! !
 
 !STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 8/23/2020 21:07:34'!
 mouseLeave: evt
@@ -1705,16 +1705,16 @@ initialize
 	editorMorph keyboardFocusWatcher: self.
 	self addMorph: editorMorph! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'layout' stamp: 'jmv 8/23/2020 21:18:50'!
+!PluggableFilteringDropDownListMorph methodsFor: 'layout' stamp: 'jmv 9/2/2024 19:36:27'!
 layoutSubmorphs
 	| b innerBounds |
 	super layoutSubmorphs.
 	"innerBounds _ self innerBounds".
-	innerBounds _ (self morphPositionInWorld extent: self morphExtentInWorld) insetBy: borderWidth.
-	b _ innerBounds insetBy: 8@4.
+	innerBounds := (self positionInWorld extent: self extentInWorld) insetBy: borderWidth.
+	b := innerBounds insetBy: 8@4.
 	editorMorph
-		morphPositionInWorld: b topLeft;
-		morphExtentInWorld: b extent - (downButton morphWidth@0)! !
+		positionInWorld: b topLeft;
+		extentInWorld: b extent - (downButton morphWidth@0)! !
 
 !FilteringDDLEditorMorph methodsFor: 'events' stamp: 'jmv 11/3/2016 11:42:30'!
 keyStroke: aKeyboardEvent

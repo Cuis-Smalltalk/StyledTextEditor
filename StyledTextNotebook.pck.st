@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4362] on 24 August 2020 at 12:22:52 pm'!
+'From Cuis7.1 [latest update: #6669] on 2 September 2024 at 7:37:40 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledTextNotebook' 1 4!
+!provides: 'StyledTextNotebook' 1 5!
 !requires: 'StyledText' 1 nil nil!
 SystemOrganization addCategory: #StyledTextNotebook!
 
@@ -16,37 +16,26 @@ BpStyledTextNotebook class
 	instanceVariableNames: ''!
 
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 5/31/2016 11:15'!
-startUp
-
-	[
-		MyModel _ Filename asFileEntry readStreamDo: [ :strm |
-			(SmartRefStream on: strm) next ].
-		AppMorph submorphs first
-			 model: MyModel;
-			 possiblyChanged
-	] on: FileDoesNotExistException do: nil.! !
-
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 8/23/2020 21:35:23'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 9/2/2024 19:36:31'!
 createModelAndView
 	"
 	BpStyledTextNotebook createModelAndView
 	"
 
 	| saveButton topRow w |
-	MyModel _ StyledTextModel new.
-	AppMorph _ PluggableStyledTextMorph withModel: MyModel in: STEMainMorph newColumn.
+	MyModel := StyledTextModel new.
+	AppMorph := PluggableStyledTextMorph withModel: MyModel in: STEMainMorph newColumn.
 	AppMorph adoptWidgetsColor: MyModel class windowColor.
-	saveButton _ (PluggableButtonMorph model: self action: #save)
+	saveButton := (PluggableButtonMorph model: self action: #save)
 		morphExtent: 22@22;
 		icon: self saveIcon;
 		layoutSpec: LayoutSpec keepMorphExtent;
 		yourself.
-	topRow _ AppMorph submorphs last.
+	topRow := AppMorph submorphs last.
 	topRow addMorphBack: saveButton.
 
-	w _ PasteUpMorph someInstance.
-	AppMorph morphPositionInWorld: 0@0; morphExtentInWorld: w morphExtentInWorld.
+	w := PasteUpMorph someInstance.
+	AppMorph positionInWorld: 0@0; extentInWorld: w extentInWorld.
 	w addMorph: AppMorph.
 	AppMorph startStepping! !
 
@@ -106,3 +95,14 @@ sMXW0FhY074+owh6FY7j6bMXqKmpYY9JfRrpnCwuEAjA6/XC4XCwix6PB665hyzXrs/gxk0n
 ZpyzuH3Hhdm799l178ITdg916R5Kf2H9yeJCoRAWFxcr/rtUChlk/QGoFPNClwN64wAAAABJ
 RU5ErkJggg==' base64Decoded asByteArray readStream ].
 	^SaveIcon! !
+
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 5/31/2016 11:15'!
+startUp
+
+	[
+		MyModel _ Filename asFileEntry readStreamDo: [ :strm |
+			(SmartRefStream on: strm) next ].
+		AppMorph submorphs first
+			 model: MyModel;
+			 possiblyChanged
+	] on: FileDoesNotExistException do: nil.! !

@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #6032] on 17 September 2023 at 6:19:19 pm'!
+'From Cuis7.1 [latest update: #6715] on 12 September 2024 at 12:33:47 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'RTFTests' 1 6!
+!provides: 'RTFTests' 1 7!
 !requires: 'RTFExporting' 1 nil nil!
 !requires: 'RTFImporting' 1 nil nil!
 SystemOrganization addCategory: #RTFtests!
@@ -688,7 +688,7 @@ textSample4
 		(Text string: 'normal ' attributes: #())
 	)! !
 
-!RTFConversionTest class methodsFor: 'text samples' stamp: 'jmv 12/7/2012 22:38'!
+!RTFConversionTest class methodsFor: 'text samples' stamp: 'jmv 9/12/2024 12:33:00'!
 textSample5
 	"
 	| text |
@@ -696,7 +696,7 @@ textSample5
 	text edit.
 	Clipboard default storeObject: text
 	"
-	^'Hello', (Text withForm: (BoxedMorph new imageForm: 32)), 'world'! !
+	^'Hello', (Text withForm: (ColoredBoxMorph new imageForm: 32)), 'world'! !
 
 !RTFConversionTest class methodsFor: 'text samples' stamp: 'bp 9/17/2023 18:19:11'!
 textSample6

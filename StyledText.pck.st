@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7116] on 5 May 2025 at 12:02:26 pm'!
+'From Cuis7.3 [latest update: #7116] on 5 May 2025 at 12:26:19 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 72!
+!provides: 'StyledText' 1 74!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
@@ -1204,10 +1204,10 @@ updateScrollBarsBounds
 		position: borderWidth @ (extent y - t - borderWidth - 4)
 		extent: self hScrollBarWidth - 4@t! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 2/25/2013 15:26'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 5/5/2025 12:19:32'!
 viewableExtent
 
-	^self focusIndicatorExtent - (self xtraBorder * 2) - 4! !
+	^self focusIndicatorExtent - ("self xtraBorder"3 * 2) - 4! !
 
 !PluggableActOnReturnKeyListMorph methodsFor: 'drawing' stamp: 'jmv 2/25/2013 15:18'!
 drawOn: aCanvas
@@ -1309,7 +1309,7 @@ openBasicStyledTextEditor
 
 	SystemWindow editStyledText: StyledTextModel new label: 'Styled Text Editor'! !
 
-!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'jmv 5/5/2025 11:56:35'!
+!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'jmv 5/5/2025 12:25:21'!
 withModel: aStyledTextModel in: aLayoutMorph
 	| topRow paragraphStyleList characterStyleList textMorph m topRowHeight labelFont topRowElementsWidth |
 	textMorph := self withModel: aStyledTextModel.
@@ -1347,7 +1347,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 	paragraphStyleList borderWidth: 0"; height: ddlHeight".
 	topRow
 		addMorph: paragraphStyleList
-		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth+120 fixedHeight: topRowHeight-4) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
+		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth+200 fixedHeight: topRowHeight-4) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
 	textMorph when: #possiblyChanged send: #modelChanged to: paragraphStyleList.
 
 	m := BorderedBoxMorph new.
@@ -1367,7 +1367,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 	characterStyleList borderWidth: 0"; height: ddlHeight". 
 	topRow
 		addMorph: characterStyleList
-		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth+120 fixedHeight: topRowHeight-4) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
+		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth+200 fixedHeight: topRowHeight-4) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
 	textMorph when: #possiblyChanged send: #modelChanged to: characterStyleList.
 
 	aLayoutMorph
@@ -1527,14 +1527,14 @@ model: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter:
 	getIndexSelector _ getSelectionSel.
 	setIndexSelector _ setSelectionSel.! !
 
-!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 9/2/2024 19:36:24'!
+!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 5/5/2025 12:21:56'!
 layoutSubmorphs
 	| e innerBounds |
 	"innerBounds _ self innerBounds".
 	innerBounds := (self positionInWorld extent: self extentInWorld) insetBy: borderWidth.
-	e := innerBounds height.
+	e := innerBounds height-12.
 	downButton 
-		positionInWorld: innerBounds bottomRight - e;
+		positionInWorld: innerBounds bottomRight - e - (5@10);
 		extentInWorld: e asPoint! !
 
 !STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 8/23/2020 21:07:34'!
@@ -1557,6 +1557,13 @@ setIndex: index
 	self getLabel.
 	self changed: self.
 	self closeList! !
+
+!STEPluggableDropDownListMorph methodsFor: 'geometry' stamp: 'jmv 5/5/2025 12:18:02'!
+extentChanged: oldExtent
+	"Our extent changed. Must layout submorphs again."
+
+	super extentChanged: oldExtent.
+	self layoutSubmorphs! !
 
 !STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'Ez3 5/30/2024 20:36:13'!
 withModel: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel

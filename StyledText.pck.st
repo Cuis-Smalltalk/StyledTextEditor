@@ -1,11 +1,11 @@
-'From Cuis7.1 [latest update: #6715] on 12 September 2024 at 12:33:51 pm'!
+'From Cuis7.3 [latest update: #7116] on 5 May 2025 at 12:02:26 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 71!
+!provides: 'StyledText' 1 72!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
 !requires: 'UI-Entry' 1 35 nil!
+!requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -1309,7 +1309,7 @@ openBasicStyledTextEditor
 
 	SystemWindow editStyledText: StyledTextModel new label: 'Styled Text Editor'! !
 
-!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'jmv 9/12/2024 12:32:30'!
+!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'jmv 5/5/2025 11:56:35'!
 withModel: aStyledTextModel in: aLayoutMorph
 	| topRow paragraphStyleList characterStyleList textMorph m topRowHeight labelFont topRowElementsWidth |
 	textMorph := self withModel: aStyledTextModel.
@@ -1350,7 +1350,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 		layoutSpec: (((LayoutSpec fixedWidth: topRowElementsWidth+120 fixedHeight: topRowHeight-4) offAxisEdgeWeight: #center) offAxisEdgeWeight: #center).
 	textMorph when: #possiblyChanged send: #modelChanged to: paragraphStyleList.
 
-	m := ColoredBoxMorph new.
+	m := BorderedBoxMorph new.
 	m color: Color transparent; borderColor: Color transparent.
 	topRow addMorph: m layoutSpec: (LayoutSpec fixedWidth: 8).
 

@@ -1,6 +1,6 @@
 'From Cuis7.3 [latest update: #7116] on 5 May 2025 at 12:26:19 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 74!
+!provides: 'StyledText' 1 75!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
@@ -47,7 +47,7 @@ StyledTextModel class
 	instanceVariableNames: ''!
 
 !classDefinition: #STEMainMorph category: #'StyledText-Morphic'!
-LayoutMorph subclass: #STEMainMorph
+LinearLayoutMorph subclass: #STEMainMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -57,7 +57,7 @@ STEMainMorph class
 	instanceVariableNames: ''!
 
 !classDefinition: #ToolbarMorph category: #'StyledText-Morphic-Windows'!
-LayoutMorph subclass: #ToolbarMorph
+LinearLayoutMorph subclass: #ToolbarMorph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''

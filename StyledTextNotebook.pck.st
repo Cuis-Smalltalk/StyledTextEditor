@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6669] on 2 September 2024 at 7:37:40 pm'!
+'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 7:00:27 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledTextNotebook' 1 5!
+!provides: 'StyledTextNotebook' 1 6!
 !requires: 'StyledText' 1 nil nil!
 SystemOrganization addCategory: #StyledTextNotebook!
 
@@ -16,7 +16,7 @@ BpStyledTextNotebook class
 	instanceVariableNames: ''!
 
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 9/2/2024 19:36:31'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 2/Sep/2024 19:36:31'!
 createModelAndView
 	"
 	BpStyledTextNotebook createModelAndView
@@ -39,18 +39,17 @@ createModelAndView
 	w addMorph: AppMorph.
 	AppMorph startStepping! !
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 9/11/2013 00:33'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 28/Apr/2026 18:20:02'!
 install
 	"
-	BpStyledTextNotebook install
-	Preferences enable: #focusFollowsMouse
+	BpStyledTextNotebook install.
+	Preferences name: #focusFollowsMouse category: #gui value: true.
 	"
 	| newName |
-	Preferences disable: #focusFollowsMouse.
-	Preferences disable: #commandClickOpensHalo.
+	Preferences name: #focusFollowsMouse category: #gui value: false.
 	Smalltalk addToStartUpList: self.
 
-	Filename _ 'StyledText.object'.
+	Filename := 'StyledText.object'.
 	PasteUpMorph allInstancesDo: [ :w |
 		w submorphs copy do: [ :m | m delete ].
 		w color: Color white ].
@@ -58,7 +57,7 @@ install
 	self createModelAndView.
 
 	"Save image"
-	newName _ 'StyledTextEditor.image'.
+	newName := 'StyledTextEditor.image'.
 	"
 	(SourceFiles at: 2) ifNotNil: [
 		Smalltalk
@@ -68,13 +67,13 @@ install
 	"
 	Smalltalk saveAs: newName! !
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 1/6/2012 14:17'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 6/Jan/2012 14:17:00'!
 save
 	"Maybe we're still saving too much...
 	Besides, check if new instances of ParagraphStyle et al are created on startup..."
 	MyModel saveAs: Filename! !
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 3/11/2011 17:39'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 11/Mar/2011 17:39:00'!
 saveIcon
 	"Created using:
 	Clipboard default storeObject:
@@ -96,7 +95,7 @@ ZpyzuH3Hhdm799l178ITdg916R5Kf2H9yeJCoRAWFxcr/rtUChlk/QGoFPNClwN64wAAAABJ
 RU5ErkJggg==' base64Decoded asByteArray readStream ].
 	^SaveIcon! !
 
-!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 5/31/2016 11:15'!
+!BpStyledTextNotebook class methodsFor: 'StyledText Notebook' stamp: 'jmv 31/May/2016 11:15:00'!
 startUp
 
 	[

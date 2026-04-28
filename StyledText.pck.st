@@ -1,11 +1,11 @@
-'From Cuis7.7 [latest update: #7879] on 18 April 2026 at 3:21:21 pm'!
+'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 7:03:52 pm'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 77!
+!provides: 'StyledText' 1 78!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'RTFImporting' 1 nil nil!
 !requires: 'UI-Entry' 1 35 nil!
+!requires: 'RTFImporting' 1 nil nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -1822,12 +1822,12 @@ setIndex: index
 		i _ (model perform: getListSelector) indexOf: ( self getList at: i ) ].
 	super setIndex: i! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 3/Sep/2019 08:15:56'!
+!PluggableFilteringDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 28/Apr/2026 17:59:15'!
 initialize
 	| labelFont |
 	super initialize.
-	labelFont _ Preferences standardListFont.
-	editorMorph _ FilteringDDLEditorMorph contents: self label font: labelFont emphasis: 1.
+	labelFont := Preferences at: #standardListFont.
+	editorMorph := FilteringDDLEditorMorph contents: self label font: labelFont emphasis: 1.
 	editorMorph keyboardFocusWatcher: self.
 	self addMorph: editorMorph! !
 
@@ -3110,76 +3110,77 @@ initialize
 
 	'Spell Checker importing done.' print.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:27:55'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:10:40'!
 testClickAndHalf
 	"
 	StyledTextEditorTest new testClickAndHalf
 	"
 	| hand ev morph textModelMorph |
-	hand _ HandMorph new.
-	ev _ MouseButtonEvent new 
-		setType: #mouseDown
-		position: 10@10
+	hand := HandMorph new.
+	ev := MouseButtonEvent new
+		mouseDownPosition: 10@10
 		which: 4
 		buttons: 4
 		hand: hand
 		stamp: nil.
-	textModelMorph _ TextModelMorph withModel: (StyledTextModel new contents: '').
+	textModelMorph := TextModelMorph withModel: (StyledTextModel new contents: '').
 	textModelMorph openInWorld: UISupervisor ui.
-	morph _ textModelMorph innerTextMorph.
+	morph := textModelMorph innerTextMorph.
 	morph world activeHand newKeyboardFocus: morph.
 	morph mouseButton1Down: ev localPosition: 10@10.
 	self assert: ((hand instVarNamed: 'mouseClickState') instVarNamed: 'clickAndHalfSelector') notNil description: 'Click-n-half should be handled'.
 	textModelMorph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:29:11'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:11:41'!
 testClickAndHalfSelection
 	"
 	StyledTextEditorTest new testClickAndHalfSelection
 	"
 	| morph model style text hand point1 |
-	model _ StyledTextModel new.
-	style _ model styleSet paragraphStyleNamed: 'Normal'.
-	text _ Text string: 'This is a test.' attribute: (ParagraphStyleReference for: style).
+	model := StyledTextModel new.
+	style := model styleSet paragraphStyleNamed: 'Normal'.
+	text := Text string: 'This is a test.' attribute: (ParagraphStyleReference for: style).
 	model contents: text.
-	morph _ (PluggableStyledTextMorph withModel: model) openInWorld: UISupervisor ui.
+	morph := (PluggableStyledTextMorph withModel: model) openInWorld: UISupervisor ui.
 	morph world activeHand  newKeyboardFocus: morph innerTextMorph.
 
-	point1 _ 60@20.
-	hand _ HandMorph new.
+	point1 := 60@20.
+	hand := HandMorph new.
 	morph mouseButton1Down:
-		(MouseButtonEvent new 
-			setType: #mouseDown position: point1
+		(MouseButtonEvent new
+			mouseDownPosition: point1
 			which: 4 buttons: 4 hand: hand stamp: nil)
 			localPosition: point1.
 	morph mouseButton1Up:
-		(MouseButtonEvent new 
-			setType: #mouseUp position: point1
+		(MouseButtonEvent new
+			mouseUpPosition: point1
 			which: 4 buttons: 4 hand: hand stamp: nil)
 			localPosition: point1.
 	morph innerTextMorph clickAndHalf:
-		(MouseButtonEvent new 
-			setType: nil position: point1
+		(MouseButtonEvent new
+			mouseDownPosition: point1
 			which: 4 buttons: 4 hand: hand stamp: nil)
 			localPosition: point1.
 	self assert: morph editor selectionInterval = (1 to: 4) description: 'Click-n-half does not set selection properly.'.
 	morph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:28:01'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:39:53'!
 testDropDownKeyboardNavigation
 	"
 	StyledTextEditorTest new testDropDownKeyboardNavigation
 	"
 	| model style text window editorMorph listMorph |
-	model _ StyledTextModel new.
-	style _ model styleSet paragraphStyleNamed: 'Normal'.
-	text _ Text string: 'x' attribute: (ParagraphStyleReference for: style).
+	model := StyledTextModel new.
+	style := model styleSet paragraphStyleNamed: 'Normal'.
+	text := Text string: 'x' attribute: (ParagraphStyleReference for: style).
 	model contents: text.
-	window _ SystemWindow editFancierStyledText: model label: 'Styled Text Editor'.
-	window world ifNil: [ window openInWorld: UISupervisor ui ].
-	editorMorph _ window findDeepSubmorphThat: [:m | m class = PluggableStyledTextMorph ] ifAbsent: nil.
-	editorMorph _ editorMorph innerTextMorph.
-	listMorph _ window
+	window := SystemWindow editFancierStyledText: model label: 'Styled Text Editor'.
+	window world ifNil: [
+		window openInWorld: UISupervisor ui ].
+	UISupervisor ui doOneCycleNow.
+	editorMorph := window findDeepSubmorphThat: [:m | m class = PluggableStyledTextMorph ] ifAbsent: nil.
+	editorMorph := editorMorph innerTextMorph.
+	listMorph := window
 		findDeepSubmorphThat: [ :any |
 			any class = PluggableFilteringDropDownListMorph and: [
 				(any instVarNamed: 'getListSelector') = #paragraphStyleNamesAndShortcuts ]]
@@ -3298,7 +3299,7 @@ testEmptyText
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:28:10'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:12:54'!
 testEmptyTextClick
 	"
 	StyledTextEditorTest new testEmptyTextClick
@@ -3306,26 +3307,26 @@ testEmptyTextClick
 	
 	| model morph block style oldFont evt |
 
-	model _ StyledTextModel new contents: '' asText.
-	morph _ (TextModelMorph withModel: model) innerTextMorph.
-	block _ morph textComposition characterBlockAtPoint: 0@0.
-	style _ model styleSet paragraphStyleNamed: 'Normal'.
+	model := StyledTextModel new contents: '' asText.
+	morph := (TextModelMorph withModel: model) innerTextMorph.
+	block := morph textComposition characterBlockAtPoint: 0@0.
+	style := model styleSet paragraphStyleNamed: 'Normal'.
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.
 
-	oldFont _ style font.
-	style _ model styleSet paragraphStyleNamed: 'Emphasized'.
+	oldFont := style font.
+	style := model styleSet paragraphStyleNamed: 'Emphasized'.
 	morph editor applyAttribute: (ParagraphStyleReference for: style).
 	morph editor pointIndex: model actualContents size + 1.
 	
-	evt _ MouseEvent new setType: #mouseMove position: 100@100 buttons: 0 hand: nil.
+	evt := MouseMoveEvent new setPosition: 100@100 buttons: 0 hand: nil stamp: nil.
 	morph editor mouseButton1Down: evt localPosition: 100@100.
 	morph editor mouseButton1Up: evt
 			localPosition: 100@100.
 	
 	self deny: morph editor lastFont = oldFont.
 	self assert: morph editor lastFont = style font.
-	block _ morph textComposition characterBlockAtPoint: 0@0.
+	block := morph textComposition characterBlockAtPoint: 0@0.
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.! !
 
@@ -3409,7 +3410,7 @@ testEmptyTrailingLineNumberedStyle
 	form1 addDeltasFrom: form2.
 	self assert: form1 primCountBits = 0 description: 'Incorrect text cursor for empty text.'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:54:05'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:30'!
 testKeepParagraphStyleOnDeleteAll
 	"
 	StyledTextEditorTest new testKeepParagraphStyleOnDeleteAll
@@ -3426,7 +3427,9 @@ testKeepParagraphStyleOnDeleteAll
 	composition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: composition; resetState.
 
@@ -3443,7 +3446,7 @@ testRecentClipping
 	Clipboard default: Clipboard new.
 	self shouldnt: [ Clipboard chooseRecentClipping ] raise: Error! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:54:21'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:35'!
 testSelectStyle
 	"Create a few instances of styled text (i.e. Text using various styles)
 	and assert their properties
@@ -3467,7 +3470,9 @@ testSelectStyle
 	composition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: composition; resetState.
 	
@@ -3502,50 +3507,50 @@ testSelectStyle
 		assert: (text paragraphStyleOrNilAt: unstyled size + 1) = heading2
 		description: 'Should have new style affected line'.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:29:13'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:36:07'!
 testShiftClickSelection
 	"
 	StyledTextEditorTest new testShiftClickSelection
 	"
 	| morph model hand editor point1 point2 p textMorph text style |
-	model _ StyledTextModel new.
-	style _ model styleSet paragraphStyleNamed: 'Normal'.
-	text _ Text string: 'This is a test.' attribute: (ParagraphStyleReference for: style).
+	model := StyledTextModel new.
+	style := model styleSet paragraphStyleNamed: 'Normal'.
+	text := Text string: 'This is a test.' attribute: (ParagraphStyleReference for: style).
 	model contents: text.
-	morph _ (PluggableStyledTextMorph withModel: model) openInWorld: UISupervisor ui.
+	morph := (PluggableStyledTextMorph withModel: model) openInWorld: UISupervisor ui.
 	morph world activeHand newKeyboardFocus: morph innerTextMorph.
 
-	point1 _ 64@20.
-	point2 _ 110@20.
-	hand _ HandMorph new.
-	textMorph _ morph innerTextMorph.
-	p _  textMorph morphPosition.
+	point1 := 64@20.
+	point2 := 110@20.
+	hand := HandMorph new.
+	textMorph := morph innerTextMorph.
+	p :=  textMorph morphPosition.
 	morph mouseButton1Down:
-		(MouseButtonEvent new 
-			setType: #mouseDown position: point1
+		(MouseButtonEvent new
+			mouseDownPosition: point1
 			which: 4 buttons: 4 hand: hand stamp: nil)
 			localPosition: point1-p.
 	morph mouseButton1Up:
-		(MouseButtonEvent new 
-			setType: #mouseUp position: point1
+		(MouseButtonEvent new
+			mouseUpPosition: point1
 			which: 4 buttons: 4 hand: hand stamp: nil)
 			localPosition: point1-p.
 	morph mouseButton1Down:
-		(MouseButtonEvent new 
-			setType: #mouseDown position: point2
+		(MouseButtonEvent new
+			mouseDownPosition: point2
 			which: 4 buttons: 12 hand: hand stamp: nil)
 			localPosition: point2-p.
 	morph mouseButton1Up:
-		(MouseButtonEvent new 
-			setType: #mouseUp position: point2
+		(MouseButtonEvent new
+			mouseUpPosition: point2
 			which: 4 buttons: 12 hand: hand stamp: nil)
 			localPosition: point2-p.
-	editor _ textMorph editor.
+	editor := textMorph editor.
 	self assert: (editor startBlock containsPoint: (point1 - p)) description: 'Incorrect selection when shift-click'.
-	self assert: (editor stopBlock left > (point2 - p)) description: 'Incorrect selection when shift-click'.
+	self assert: (editor stopBlock right > (point2 - p)) description: 'Incorrect selection when shift-click'.
 	morph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:05'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:26:52'!
 testStylesInPaste1
 	"
 	StyledTextEditorTest new testStylesInPaste1
@@ -3564,7 +3569,9 @@ testStylesInPaste1
 	composition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: composition; resetState.
 
@@ -3575,7 +3582,7 @@ testStylesInPaste1
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:48:11'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:40'!
 testStylesInPaste2
 	"
 	StyledTextEditorTest new testStylesInPaste2
@@ -3594,7 +3601,9 @@ testStylesInPaste2
 	composition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: composition; resetState.
 
@@ -3610,7 +3619,7 @@ testStylesInPaste2
 	self assert: concatenation runs values second size = 1 description: 'Should apply the "Heading 1" paragraph style to the second part'.
 	self assert: concatenation runs values second first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:16'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:46'!
 testStylesInPaste3
 	"
 	StyledTextEditorTest new testStylesInPaste3
@@ -3629,7 +3638,9 @@ testStylesInPaste3
 	composition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: composition; resetState.
 
@@ -3639,7 +3650,7 @@ testStylesInPaste3
 	self assert: concatenation runs runs size = 1 description: 'Should apply no character style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:23'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:50'!
 testStylesInPaste4
 	"
 	StyledTextEditorTest new testStylesInPaste4
@@ -3658,7 +3669,9 @@ testStylesInPaste4
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -3674,7 +3687,7 @@ testStylesInPaste4
 	self assert: concatenation runs values first first style name = 'Heading 1'.
 	self assert: concatenation runs values second first style name = 'Normal'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:30'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:54'!
 testStylesInPaste5
 	"
 	StyledTextEditorTest new testStylesInPaste5
@@ -3693,7 +3706,9 @@ testStylesInPaste5
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -3706,7 +3721,7 @@ testStylesInPaste5
 	self assert: concatenation runs runs size = 1 description: 'Should apply same attributes to the whole text'.
 	self assert: concatenation runs runs first = concatenation size description: 'Should apply the "Heading 1" paragraph style to all the text'.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:46'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:58'!
 testStylesInPaste6
 	"
 	StyledTextEditorTest new testStylesInPaste6
@@ -3726,7 +3741,9 @@ testStylesInPaste6
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -3742,7 +3759,7 @@ testStylesInPaste6
 	self assert: concatenation runs values first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the first part'.
 	self deny: concatenation runs values second first style == heading1 description: 'Should not apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:49:56'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:02'!
 testStylesInPaste7
 	"
 	StyledTextEditorTest new testStylesInPaste7
@@ -3761,7 +3778,9 @@ testStylesInPaste7
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -3772,7 +3791,7 @@ testStylesInPaste7
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text, as no part of original text is left.'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text, as no part of original text is left.'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:50:07'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:05'!
 testStylesInPaste8
 	"
 	Not exactly a Paste operation, but #replaceSelectionWith: , as done by the autocompletter
@@ -3792,7 +3811,9 @@ testStylesInPaste8
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -3817,13 +3838,19 @@ testFromFileNamed
 	model3 _ StyledTextModel fromFileNamed: 'StyledTextModelTest'.
 	self assert: model1 actualContents equals: model3 actualContents! !
 
-!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 31/May/2016 10:34:00'!
+!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 28/Apr/2026 18:43:17'!
 testSave
-	| model |
-	model _ StyledTextModel new.
-	self deny:   (DirectoryEntry currentDirectory // 'StyledTextModelTest.object') exists.
+	"
+	self new testSave
+	"
+	| model fileEntry |
+	model := StyledTextModel new.
+	fileEntry := DirectoryEntry userBaseDirectory // 'StyledTextModelTest.object'.
+	fileEntry exists ifTrue: [ fileEntry delete ].
+	self deny: fileEntry exists.
 	model saveAs: 'StyledTextModelTest'.
-	self assert: (DirectoryEntry currentDirectory // 'StyledTextModelTest.object') exists! !
+	self assert: fileEntry exists.
+	fileEntry delete.! !
 
 !StyledTextTest methodsFor: 'tests' stamp: 'jmv 20/Dec/2011 12:41:00'!
 testAsStyledAsNonStyledSample5
@@ -4216,7 +4243,7 @@ And now another paragraph. This one may be smaller than previous ones
 	self assert: (t paragraphStyleOrNilAt: t size) name = 'Normal' description: 'Wrong paragraphStyle'.
 	self assert: (t characterStyleOrNilAt: t size) isNil description: 'Should not have a char style any longer'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:05'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:09'!
 testStylesInPaste1
 	"
 	self new testStylesInPaste1
@@ -4235,7 +4262,9 @@ testStylesInPaste1
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4249,7 +4278,7 @@ testStylesInPaste1
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:13'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:13'!
 testStylesInPaste2
 	"
 	self new testStylesInPaste2
@@ -4268,7 +4297,9 @@ testStylesInPaste2
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4287,7 +4318,7 @@ testStylesInPaste2
 	self assert: concatenation runs values second size = 1 description: 'Should apply the "Heading 1" paragraph style to the second part'.
 	self assert: concatenation runs values second first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:20'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:17'!
 testStylesInPaste3
 	"
 	self new testStylesInPaste3
@@ -4306,7 +4337,9 @@ testStylesInPaste3
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4319,7 +4352,7 @@ testStylesInPaste3
 	self assert: concatenation runs runs size = 1 description: 'Should apply no character style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:27'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:20'!
 testStylesInPaste4
 	"
 	self new testStylesInPaste4
@@ -4338,7 +4371,9 @@ testStylesInPaste4
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4356,7 +4391,7 @@ testStylesInPaste4
 	self assert: concatenation runs values first first style name = 'Heading 1'.
 	self assert: concatenation runs values second first style name = 'Imported '! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:34'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:24'!
 testStylesInPaste5
 	"
 	self new testStylesInPaste5
@@ -4375,7 +4410,9 @@ testStylesInPaste5
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4390,7 +4427,7 @@ testStylesInPaste5
 	self assert: concatenation runs runs size = 1 description: 'Should apply same attributes to the whole text'.
 	self assert: concatenation runs runs first = concatenation size description: 'Should apply the "Heading 1" paragraph style to all the text'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 14:52:50'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:27'!
 testStylesInPaste6
 	"
 	self new testStylesInPaste6
@@ -4409,7 +4446,9 @@ testStylesInPaste6
 	textComposition composeAll.
 	innerMorph := TextModelMorph new innerTextMorph.
 	innerMorph model: model.
-	innerMorph editor: editor.
+	innerMorph instVarNamed: 'editor' put: editor.
+	innerMorph stylerClass: model textStylerClass.
+	innerMorph autoCompleterClass: model autoCompleterClass.
 	editor morph: innerMorph.
 	editor textComposition: textComposition; resetState.
 
@@ -4439,7 +4478,7 @@ asStyledTextWith: aStyleSet
 "	self isStyledText ifTrue: [ ^self ]."
 	^self copy beStyledTextWith: aStyleSet! !
 
-!Text methodsFor: '*styledText' stamp: 'bp 12/Sep/2023 17:01:32'!
+!Text methodsFor: '*styledText' stamp: 'jmv 28/Apr/2026 18:32:23'!
 beNonStyledText
 	"Modify the receiver so that it doesn't include any ParagraphStyle or CharacterStyle.
 	Turn them into TextFontFamilyAndSize, TextEmphasis, TextColor, and TextAlignment as appropriate.
@@ -4448,7 +4487,7 @@ beNonStyledText
 	runs mapValues: [ :attributes |
 		Array streamContents: [ :strm |
 			self withAttributeValues: attributes do: [
-					:familyName :pointSize :emphasis :color :alignment :characterStyle :paragraphStyle :backgroundColor |
+					:familyName :pointSize :emphasis :color :alignment :characterStyle :paragraphStyle :backgroundColor :lineSpacingFactor |
 				familyName ifNotNil: [
 					strm nextPut: (TextFontFamily familyName: familyName) ].	
 				pointSize ifNotNil: [

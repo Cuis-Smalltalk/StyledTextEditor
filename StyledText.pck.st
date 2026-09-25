@@ -1,11 +1,11 @@
-'From Cuis7.7 [latest update: #7880] on 28 April 2026 at 7:03:52 pm'!
+'From Cuis7.9 [latest update: #8237] on 25 September 2026 at 10:40:13 am'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1 78!
+!provides: 'StyledText' 1 79!
 !requires: 'Cuis-Base' 60 5718 nil!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
-!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFImporting' 1 nil nil!
+!requires: 'UI-Entry' 1 35 nil!
 !requires: 'RTFTests' 1 nil nil!
 SystemOrganization addCategory: #StyledText!
 SystemOrganization addCategory: #'StyledText-Morphic-Windows'!
@@ -341,7 +341,7 @@ This example shows how attributes such as ParagraphStyleReference, that must be 
 (Text string: 'This text has no tsyle set', String cStringr)
 ) edit!
 
-!STETheme methodsFor: 'colors' stamp: 'bp 22/Apr/2012 10:51:00'!
+!STETheme methodsFor: 'colors' stamp: 'bp 22/Apr/2012, 1:51:00 pm (UTC)'!
 textHighlight
 	"
 	^ Color r: 0.71 g: 0.835 b: 1.0
@@ -349,15 +349,15 @@ textHighlight
 	"
 	^Color r: 204 g: 235 b: 214 range: 255! !
 
-!STETheme methodsFor: 'colors' stamp: 'jmv 30/Dec/2011 11:42:00'!
+!STETheme methodsFor: 'colors' stamp: 'jmv 30/Dec/2011, 2:42:00 pm (UTC)'!
 unfocusedTextHighlightFrom: aColor
 	^Color r: 218 g: 228 b: 228 range: 255! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011 11:03:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011, 2:03:00 pm (UTC)'!
 autoCompletedStyle
 	^self characterStyleNamed: 'Completed Text'! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 2/Apr/2016 23:07:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 3/Apr/2016, 2:07:00 am (UTC)'!
 characterStyleAt: index
 	| i ii |
 	index <= characterStyles size ifTrue: [
@@ -371,14 +371,14 @@ characterStyleAt: index
 				ii = i ifTrue: [ ^each ]]]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 30/Dec/2011 09:51:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 30/Dec/2011, 12:51:00 pm (UTC)'!
 characterStyleForShortcut: aCharacter
 
 	characterStyles do: [ :pair |
 		pair first = aCharacter ifTrue: [ ^pair second ]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 2/Apr/2016 23:07:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 3/Apr/2016, 2:07:00 am (UTC)'!
 characterStyleIndexOf: aCharacterStyle
 	| index ii |
 	index _ characterStyles findFirst: [ :pair | pair second = aCharacterStyle ].
@@ -393,7 +393,7 @@ characterStyleIndexOf: aCharacterStyle
 
 	^0! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 11:37:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 2:37:00 pm (UTC)'!
 characterStyleNamed: aString
 
 	| style |
@@ -403,13 +403,13 @@ characterStyleNamed: aString
 			style name = aString ifTrue: [ ^style ]]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 10:03:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 1:03:00 pm (UTC)'!
 characterStyleNamedOrNew: aString
 
 	^(self characterStyleNamed: aString) ifNil: [
 		CharacterStyle new privateName: aString ]! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 19/Dec/2011 12:33:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 19/Dec/2011, 3:33:00 pm (UTC)'!
 characterStyleNamesAndShortcuts
 	^Array streamContents: [ :strm |
 		characterStyles do: [ :pair |
@@ -419,17 +419,17 @@ characterStyleNamesAndShortcuts
 				styleOrNil ifNotNil: [
 					strm nextPut: styleOrNil name ]]]]! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011 14:38:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011, 5:38:00 pm (UTC)'!
 characterStyles
 	^characterStyles! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 13/Jan/2012 14:05:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 13/Jan/2012, 5:05:00 pm (UTC)'!
 defaultStyle
 	"Usually we include a 'Normal' style. If not, answer some style anyway.
 	We might refine this!!"
 	^(self paragraphStyleNamed: 'Normal') ifNil: [ self paragraphStyleAt: 1 ]! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 2/Apr/2016 23:07:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 3/Apr/2016, 2:07:00 am (UTC)'!
 paragraphStyleAt: index
 	| i ii |
 	index <= paragraphStyles size ifTrue: [
@@ -443,14 +443,14 @@ paragraphStyleAt: index
 				ii = i ifTrue: [ ^each ]]]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 30/Dec/2011 09:53:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 30/Dec/2011, 12:53:00 pm (UTC)'!
 paragraphStyleForShortcut: aCharacter
 
 	paragraphStyles do: [ :pair |
 		pair first = aCharacter ifTrue: [ ^pair second ]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 2/Apr/2016 23:07:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 3/Apr/2016, 2:07:00 am (UTC)'!
 paragraphStyleIndexOf: aParagraphStyle
 	| index ii |
 	index _ paragraphStyles findFirst: [ :pair | pair second = aParagraphStyle ].
@@ -465,7 +465,7 @@ paragraphStyleIndexOf: aParagraphStyle
 
 	^0! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 11:36:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 2:36:00 pm (UTC)'!
 paragraphStyleNamed: aString
 
 	| style |
@@ -475,13 +475,13 @@ paragraphStyleNamed: aString
 			style name = aString ifTrue: [ ^style ]]].
 	^nil! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 10:02:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 1:02:00 pm (UTC)'!
 paragraphStyleNamedOrNew: aString
 
 	^(self paragraphStyleNamed: aString) ifNil: [
 		ParagraphStyle new privateName: aString ]! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 19/Dec/2011 12:33:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 19/Dec/2011, 3:33:00 pm (UTC)'!
 paragraphStyleNamesAndShortcuts
 	^Array streamContents: [ :strm |
 		paragraphStyles do: [ :pair |
@@ -491,11 +491,11 @@ paragraphStyleNamesAndShortcuts
 				styleOrNil ifNotNil: [
 					strm nextPut: styleOrNil name ]]]]! !
 
-!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011 14:38:00'!
+!StyleSet methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011, 5:38:00 pm (UTC)'!
 paragraphStyles
 	^paragraphStyles! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:42:18'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:42:18 pm (UTC)'!
 createDocumentationCharacterStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| emphasised className completedText nullStyle familyName |
@@ -522,7 +522,7 @@ createDocumentationCharacterStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:35:44'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:35:44 pm (UTC)'!
 createDocumentationParagraphStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| figure indent heading1 heading2 heading3 text familyName |
@@ -564,7 +564,7 @@ createDocumentationParagraphStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:36:00'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:36:00 pm (UTC)'!
 createDramaCharacterStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| completedText nullStyle familyName |
@@ -582,7 +582,7 @@ createDramaCharacterStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:36:36'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:36:36 pm (UTC)'!
 createDramaParagraphStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| figure leftIndent act scene sceneDescription sceneInstruction speaker text familyName |
@@ -637,7 +637,7 @@ createDramaParagraphStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:37:03'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:37:03 pm (UTC)'!
 createFeaturesCharacterStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| title featureType nullStyle completedText familyName |
@@ -663,7 +663,7 @@ createFeaturesCharacterStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020 16:38:53'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Jun/2020, 7:38:53 pm (UTC)'!
 createFeaturesParagraphStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| heading1 heading2 heading3 emphasized normal numbered alphabetic bulleted smalltalkCode  familyName |
@@ -733,7 +733,7 @@ createFeaturesParagraphStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 30/Jan/2021 12:39:26'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 30/Jan/2021, 3:39:26 pm (UTC)'!
 createSampleCharacterStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| greenItalic greenBig redBold nullStyle completedText basePointSize familyName |
@@ -765,7 +765,7 @@ createSampleCharacterStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 3/Sep/2019 08:56:58'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 3/Sep/2019, 11:56:58 am (UTC)'!
 createSampleParagraphStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| heading1 heading2 heading3 emphasized normal numbered alphabetic bulleted smalltalkCode  s familyName |
@@ -836,12 +836,12 @@ createSampleParagraphStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 9/Aug/2011 15:55:00'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 9/Aug/2011, 6:55:00 pm (UTC)'!
 initializeEmpty
 	paragraphStyles _ #().
 	characterStyles _ #()! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Aug/2011 11:41:00'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Aug/2011, 2:41:00 pm (UTC)'!
 makeStylesMuchSmaller
 	"Just an example
 
@@ -860,7 +860,7 @@ makeStylesMuchSmaller
 
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Aug/2011 11:41:00'!
+!StyleSet methodsFor: 'initialization examples' stamp: 'jmv 11/Aug/2011, 2:41:00 pm (UTC)'!
 makeStylesSmaller
 	"Just an example
 
@@ -879,7 +879,7 @@ makeStylesSmaller
 
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011 12:38:00'!
+!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011, 3:38:00 pm (UTC)'!
 equivalentCSTo: aCharacterStyle orAddVolatile: namePrefix
 	"Do not match existing style by name: add as new style to set"
 
@@ -910,7 +910,7 @@ equivalentCSTo: aCharacterStyle orAddVolatile: namePrefix
 				ifFalse: [ volatileCharStyles at: i put: newCharacterStyle ]].
 	^newCharacterStyle! !
 
-!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011 10:58:00'!
+!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011, 1:58:00 pm (UTC)'!
 equivalentOrSameNameCSTo: aCharacterStyle orAddVolatile: namePrefix
 
 	"Match existing style by name."
@@ -920,7 +920,7 @@ equivalentOrSameNameCSTo: aCharacterStyle orAddVolatile: namePrefix
 	"Find equivalent, or add."
 	^self equivalentCSTo: aCharacterStyle orAddVolatile: namePrefix! !
 
-!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011 10:58:00'!
+!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011, 1:58:00 pm (UTC)'!
 equivalentOrSameNamePSTo: aParagraphStyle orAddVolatile: namePrefix
 
 	"Match existing style by name."
@@ -930,7 +930,7 @@ equivalentOrSameNamePSTo: aParagraphStyle orAddVolatile: namePrefix
 	"Find equivalent, or add."
 	^self equivalentPSTo: aParagraphStyle orAddVolatile: namePrefix! !
 
-!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011 12:37:00'!
+!StyleSet methodsFor: 'special' stamp: 'jmv 19/Dec/2011, 3:37:00 pm (UTC)'!
 equivalentPSTo: aParagraphStyle orAddVolatile: namePrefix
 	"Do not match existing style by name: add as new style to set"
 	
@@ -961,7 +961,7 @@ equivalentPSTo: aParagraphStyle orAddVolatile: namePrefix
 				ifFalse: [ volatileParaStyles at: i put: newParagraphStyle ]].
 	^newParagraphStyle! !
 
-!StyleSet methodsFor: 'private' stamp: 'jmv 30/Dec/2011 10:38:00'!
+!StyleSet methodsFor: 'private' stamp: 'jmv 30/Dec/2011, 1:38:00 pm (UTC)'!
 useWeakArrays
 	"An aux conversion method for old instances
 	StyleSet allInstancesDo: [ :a | a useWeakArrays ]. Smalltalk garbageCollect
@@ -971,7 +971,7 @@ useWeakArrays
 	volatileCharStyles class == Array ifTrue: [
 		volatileCharStyles _ WeakArray withAll: volatileCharStyles ].! !
 
-!StyleSet methodsFor: '*StyledText-IChing' stamp: 'KenD 18/Apr/2026 08:05:56'!
+!StyleSet methodsFor: '*StyledText-IChing' stamp: 'KenD 18/Apr/2026, 11:05:56 am (UTC)'!
 createIChingCharacterStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| title name nullStyle  fontFamily familyName |
@@ -995,7 +995,7 @@ createIChingCharacterStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet methodsFor: '*StyledText-IChing' stamp: 'KenD 17/Apr/2026 16:37:00'!
+!StyleSet methodsFor: '*StyledText-IChing' stamp: 'KenD 17/Apr/2026, 7:37:00 pm (UTC)'!
 createIChingParagraphStyleSet
 	"Build one of the many possible sets of Styles. Maybe other methods like this will be added."
 	| heading1 heading2 heading3 emphasized normal numbered alphabetic bulleted 
@@ -1069,30 +1069,30 @@ createIChingParagraphStyleSet
 	
 	self triggerEvent: #stylesChanged! !
 
-!StyleSet class methodsFor: 'instance creation' stamp: 'jmv 9/Aug/2011 15:55:00'!
+!StyleSet class methodsFor: 'instance creation' stamp: 'jmv 9/Aug/2011, 6:55:00 pm (UTC)'!
 empty
 	^self new initializeEmpty! !
 
-!StyleSet class methodsFor: 'instance creation' stamp: 'bp 21/Dec/2011 10:21:00'!
+!StyleSet class methodsFor: 'instance creation' stamp: 'bp 21/Dec/2011, 1:21:00 pm (UTC)'!
 features
 	^self new
 		createFeaturesParagraphStyleSet;
 		createFeaturesCharacterStyleSet! !
 
-!StyleSet class methodsFor: 'instance creation' stamp: 'jmv 20/Dec/2011 12:37:00'!
+!StyleSet class methodsFor: 'instance creation' stamp: 'jmv 20/Dec/2011, 3:37:00 pm (UTC)'!
 sample
 	^self new
 		createSampleParagraphStyleSet;
 		createSampleCharacterStyleSet! !
 
-!StyleSet class methodsFor: '*StyledText-IChing' stamp: 'KenD 17/Apr/2026 16:32:50'!
+!StyleSet class methodsFor: '*StyledText-IChing' stamp: 'KenD 17/Apr/2026, 7:32:50 pm (UTC)'!
 forIChing
 
 	^ self new
 			createIChingCharacterStyleSet;
 			createIChingParagraphStyleSet.! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 11:27:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 2:27:00 pm (UTC)'!
 actualContents: aTextOrString
 	"Merge styles appropriately. Warning: modifies the argument."
 	super actualContents: (aTextOrString ifNotNil: [
@@ -1100,7 +1100,7 @@ actualContents: aTextOrString
 			asText
 			beStyledTextWith: styleSet])! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 11:27:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 2:27:00 pm (UTC)'!
 basicActualContents: aTextOrString
 	"Merge styles appropriately. Warning: modifies the argument."
 	super basicActualContents: (aTextOrString ifNotNil: [
@@ -1108,44 +1108,44 @@ basicActualContents: aTextOrString
 			asText
 			beStyledTextWith: styleSet])! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'KenD 1/Apr/2016 14:35:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'KenD 1/Apr/2016, 5:35:00 pm (UTC)'!
 fileName
 	^fileName! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 30/Apr/2012 00:08:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 30/Apr/2012, 3:08:00 am (UTC)'!
 fileName: aString
 	fileName _ aString! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011 14:40:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 9/Aug/2011, 5:40:00 pm (UTC)'!
 styleSet
 	^styleSet! !
 
-!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011 11:31:00'!
+!StyledTextModel methodsFor: 'accessing' stamp: 'jmv 11/Aug/2011, 2:31:00 pm (UTC)'!
 styleSet: aStyleSet
 	"All assignments to the styleSet ivar should call this method."
 	styleSet ifNotNil: [ styleSet removeActionsWithReceiver: self ].
 	styleSet _ aStyleSet.
 	styleSet ifNotNil: [ styleSet when: #stylesChanged send: #styleSetChanged to: self ]! !
 
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 16/Feb/2016 16:29:00'!
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 16/Feb/2016, 7:29:00 pm (UTC)'!
 autoCompleterClass
 	^STECompleter! !
 
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 16/Feb/2016 16:29:00'!
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 16/Feb/2016, 7:29:00 pm (UTC)'!
 editorClass
 	^StyledTextEditor! !
 
-!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 3/Nov/2016 11:03:59'!
+!StyledTextModel methodsFor: 'user interface support' stamp: 'jmv 3/Nov/2016, 2:03:59 pm (UTC)'!
 textStylerClass
 	^SHTextStylerST80! !
 
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 22/Aug/2024 15:09:16'!
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 22/Aug/2024, 6:09:16 pm (UTC)'!
 aboutToStyleWith: anSHTextStyler
 	"This is a notification that anSHTextStyler is about to re-style its text."
 
 	anSHTextStyler classOrMetaClass: nil! !
 
-!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 22/Aug/2024 15:16:29'!
+!StyledTextModel methodsFor: 'Shout Styling' stamp: 'jmv 25/Sep/2026, 1:18:37 pm (UTC)'!
 convertAndStyleIfNeededWith: anSHTextStyler
 
 	| toStyle |
@@ -1154,9 +1154,9 @@ convertAndStyleIfNeededWith: anSHTextStyler
 		paragraphStyle ifNotNil: [ paragraphStyle doesShout ifTrue: [
 			toStyle := actualContents copyFrom: interval first to: interval last.
 			anSHTextStyler convertAndStyle: toStyle allowBackgroundStyleProcess: false.
-			actualContents replaceFrom: interval first to: interval last with: anSHTextStyler convertedAndStyledText ]]]! !
+			actualContents replaceFrom: interval first to: interval last with: toStyle ]]]! !
 
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 22/Sep/2011 15:06:00'!
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 22/Sep/2011, 6:06:00 pm (UTC)'!
 logUndoAndRemoveCharacterStylesIn: anInterval
 	"Remove any char styles from selection"
 	"This is a user command, and generates undo"
@@ -1168,7 +1168,7 @@ logUndoAndRemoveCharacterStylesIn: anInterval
 		truncateAtPosition.	"To disable redo of previous commands, now invalidated."
 	command doOn: self! !
 
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 29/Dec/2011 15:38:00'!
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 29/Dec/2011, 6:38:00 pm (UTC)'!
 removeReferencesToCharacterStyle: oldCharacterStyle
 	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
 	"This is a user command, and generates undo"
@@ -1180,7 +1180,7 @@ removeReferencesToCharacterStyle: oldCharacterStyle
 
 	actualContents removeReferencesToCharacterStyle: oldCharacterStyle! !
 
-!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 21/Sep/2011 11:35:00'!
+!StyledTextModel methodsFor: 'undoable commands' stamp: 'jmv 21/Sep/2011, 2:35:00 pm (UTC)'!
 replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle
 	"Replace in all contents. Both arguments must be of the same kind (either para or char style)."
 	"This is a user command, and generates undo"
@@ -1192,7 +1192,7 @@ replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrChara
 
 	actualContents replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle! !
 
-!StyledTextModel methodsFor: 'file save' stamp: 'jmv 12/Sep/2024 12:32:04'!
+!StyledTextModel methodsFor: 'file save' stamp: 'jmv 12/Sep/2024, 3:32:04 pm (UTC)'!
 save
 	"Answer wether save was successful."
 	"Note: to enable the use of StyledText in applications, where 'accept' or 'save' have other meanings than 'save to file', we need to merge this class with PluggableTextModel, and have the textProvider be the application."
@@ -1205,7 +1205,7 @@ save
 	self saveAs: fileName.
 	^true! !
 
-!StyledTextModel methodsFor: 'file save' stamp: 'jmv 31/May/2016 11:24:00'!
+!StyledTextModel methodsFor: 'file save' stamp: 'jmv 31/May/2016, 2:24:00 pm (UTC)'!
 saveAs: aName
 	| refStream |
 	fileName _ self class withExtension: aName.
@@ -1215,14 +1215,14 @@ saveAs: aName
 		refStream nextPut: self 
 	].! !
 
-!StyledTextModel methodsFor: 'events' stamp: 'jmv 11/Aug/2011 11:33:00'!
+!StyledTextModel methodsFor: 'events' stamp: 'jmv 11/Aug/2011, 2:33:00 pm (UTC)'!
 styleSetChanged
 	"Our style set (or some style in it) changed.
 	Update text and any views."
 	actualContents beStyledTextWith: styleSet.
 	self triggerEvent: #stylesChanged! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 31/May/2016 11:16:00'!
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 31/May/2016, 2:16:00 pm (UTC)'!
 fromFileNamed: aFileName
 	| fileName model |
 	fileName _ self withExtension: aFileName.
@@ -1237,17 +1237,17 @@ fromFileNamed: aFileName
 	"
 	^model! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 21/Dec/2011 10:20:00'!
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 21/Dec/2011, 1:20:00 pm (UTC)'!
 new
 	^self styleSet: StyleSet sample! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 21/Dec/2011 10:19:00'!
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'bp 21/Dec/2011, 1:19:00 pm (UTC)'!
 styleSet: aStyleSet
 	^super new
 		styleSet: aStyleSet;
 		yourself! !
 
-!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 28/Apr/2012 19:10:00'!
+!StyledTextModel class methodsFor: 'as yet unclassified' stamp: 'jmv 28/Apr/2012, 10:10:00 pm (UTC)'!
 withExtension: aName
 	| suffix |
 	suffix := '.object'.
@@ -1255,7 +1255,7 @@ withExtension: aName
 		ifTrue: [ aName ]
 		ifFalse: [ aName , suffix ]! !
 
-!STEMainMorph methodsFor: 'stepping' stamp: 'jmv 27/Feb/2016 20:07:00'!
+!STEMainMorph methodsFor: 'stepping' stamp: 'jmv 27/Feb/2016, 11:07:00 pm (UTC)'!
 stepAt: millisecondSinceLast
 
 	"My dimensions are constrained live."
@@ -1271,25 +1271,25 @@ stepAt: millisecondSinceLast
 		self morphExtent: (self internalize: owner morphExtent).
 		self morphPosition: 0@0 ]! !
 
-!STEMainMorph methodsFor: 'stepping' stamp: 'jmv 24/May/2011 09:04:00'!
+!STEMainMorph methodsFor: 'stepping' stamp: 'jmv 24/May/2011, 12:04:00 pm (UTC)'!
 stepTime
 	^ 0  "every cycle"! !
 
-!ToolbarMorph methodsFor: 'hacks' stamp: 'jmv 4/Aug/2014 08:37:00'!
+!ToolbarMorph methodsFor: 'hacks' stamp: 'jmv 4/Aug/2014, 11:37:00 am (UTC)'!
 adoptWidgetsColor: paneColor
 	"We hold a Form in the color instance variable..."! !
 
-!ToolbarMorph methodsFor: 'drawing' stamp: 'jmv 21/Dec/2021 15:09:53'!
+!ToolbarMorph methodsFor: 'drawing' stamp: 'jmv 21/Dec/2021, 6:09:53 pm (UTC)'!
 drawOn: aCanvas
 	aCanvas
 		fillRectangle: (0@0 extent: self morphExtent)
 		color: color! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 13/Mar/2012 10:10:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 13/Mar/2012, 1:10:00 pm (UTC)'!
 getCurrentSelectionIndex
 	^currentIndex ifNil: [ super getCurrentSelectionIndex ]! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 13/Mar/2012 10:10:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 13/Mar/2012, 1:10:00 pm (UTC)'!
 realChangeModelSelection
 	"Change the model's selected item index to be anInteger."
 	setIndexSelector ifNotNil: [
@@ -1298,7 +1298,7 @@ realChangeModelSelection
 			with: currentIndex ].
 	currentIndex _ nil! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 4/Apr/2018 17:11:44'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'model access' stamp: 'jmv 4/Apr/2018, 8:11:44 pm (UTC)'!
 setSelectionIndex: anInteger
 	"On regular PluggableListMorphs this method is called when a selection is made.
 	But we don't want to update the model when the arrow keys are pressed, we'll wait for <Return>
@@ -1308,7 +1308,7 @@ setSelectionIndex: anInteger
 	currentIndex _ anInteger.
 	^ false! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'KenD 16/Apr/2026 20:10:20'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'KenD 16/Apr/2026, 11:10:20 pm (UTC)'!
 updateScrollBarsBounds
 	
 	| t |
@@ -1323,12 +1323,12 @@ updateScrollBarsBounds
 		position: borderWidth @ (extent y - t - borderWidth - 4)
 		extent: self hScrollBarWidth - 4@t! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 5/May/2025 12:19:32'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'geometry' stamp: 'jmv 5/May/2025, 3:19:32 pm (UTC)'!
 viewableExtent
 
 	^self focusIndicatorExtent - ("self xtraBorder"3 * 2) - 4! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'drawing' stamp: 'jmv 25/Feb/2013 15:18:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'drawing' stamp: 'jmv 25/Feb/2013, 6:18:00 pm (UTC)'!
 drawOn: aCanvas
 	"We draw our shadow outside our strict bounds..."
 
@@ -1345,7 +1345,7 @@ drawOn: aCanvas
 		color: (Color white)
 		radius: 4! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 27/Dec/2012 15:02:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 27/Dec/2012, 6:02:00 pm (UTC)'!
 keyStroke: event 
 
 	event isReturnKey ifTrue: [
@@ -1356,42 +1356,42 @@ keyStroke: event
 	"We know our model is a PluggableDropDownListMorph"
 	model keyStrokeInList: event! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 14/Feb/2013 12:46:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 14/Feb/2013, 3:46:00 pm (UTC)'!
 mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition
 	"Do update model right away"
 	super mouseButton1Up: aMouseButtonEvent localPosition: localEventPosition.
 	self realChangeModelSelection! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 27/Dec/2012 15:02:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 27/Dec/2012, 6:02:00 pm (UTC)'!
 mouseLeave: evt
 	"We know our model is a PluggableDropDownListMorph"
 	model mouseLeaveList: evt! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012 10:10:00'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012, 1:10:00 pm (UTC)'!
 returnPressed
 	currentIndex
 		ifNotNil: [ self realChangeModelSelection ]
 		ifNil: [ self delete ]! !
 
-!PluggableActOnReturnKeyListMorph methodsFor: 'updating' stamp: 'jmv 4/Apr/2018 17:03:59'!
+!PluggableActOnReturnKeyListMorph methodsFor: 'updating' stamp: 'jmv 4/Apr/2018, 8:03:59 pm (UTC)'!
 verifyContents
 	super verifyContents.
 	"ok???"
 	self visualSelectionIndex = 0 ifTrue: [
 		self setSelectionIndex: 1 ]! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 3/Aug/2011 17:04:00'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 3/Aug/2011, 8:04:00 pm (UTC)'!
 characterStyleNamesAndShortcuts
 	^model styleSet characterStyleNamesAndShortcuts! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021 17:27:17'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021, 8:27:17 pm (UTC)'!
 currentCharacterStyleIndex
 	| cs |
 	cs _ self innerTextMorph editor currentCharacterStyleOrNil.
 	cs ifNil: [ ^0 ].
 	^(model styleSet characterStyleIndexOf: cs)! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021 17:27:26'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021, 8:27:26 pm (UTC)'!
 currentCharacterStyleIndex: index
 	"This is a user command, and generates undo"
 	(model styleSet characterStyleAt: index)
@@ -1403,11 +1403,11 @@ currentCharacterStyleIndex: index
 				ifFalse: [ self innerTextMorph editor applyAttribute: (CharacterStyleReference for: style) ]].
 	self innerTextMorph updateFromTextComposition! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021 17:27:31'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021, 8:27:31 pm (UTC)'!
 currentParagraphStyleIndex
 	^model styleSet paragraphStyleIndexOf: self innerTextMorph editor currentParagraphStyle! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021 17:27:35'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 9/Nov/2021, 8:27:35 pm (UTC)'!
 currentParagraphStyleIndex: index
 	"This is a user command, and generates undo"
 	| style |
@@ -1415,20 +1415,20 @@ currentParagraphStyleIndex: index
 	self innerTextMorph editor applyAttribute: (ParagraphStyleReference for: style).
 	self innerTextMorph updateFromTextComposition! !
 
-!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 3/Aug/2011 17:03:00'!
+!PluggableStyledTextMorph methodsFor: 'services' stamp: 'jmv 3/Aug/2011, 8:03:00 pm (UTC)'!
 paragraphStyleNamesAndShortcuts
 	^model styleSet paragraphStyleNamesAndShortcuts! !
 
-!PluggableStyledTextMorph methodsFor: 'notifications' stamp: 'jmv 18/Sep/2009 14:06:00'!
+!PluggableStyledTextMorph methodsFor: 'notifications' stamp: 'jmv 18/Sep/2009, 5:06:00 pm (UTC)'!
 possiblyChanged
 	self triggerEvent: #possiblyChanged! !
 
-!PluggableStyledTextMorph class methodsFor: 'menu-world' stamp: 'jmv 20/Feb/2016 18:40:00'!
+!PluggableStyledTextMorph class methodsFor: 'menu-world' stamp: 'jmv 20/Feb/2016, 9:40:00 pm (UTC)'!
 openBasicStyledTextEditor
 
 	SystemWindow editStyledText: StyledTextModel new label: 'Styled Text Editor'! !
 
-!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'KenD 18/Apr/2026 15:18:32'!
+!PluggableStyledTextMorph class methodsFor: 'class initialization' stamp: 'KenD 18/Apr/2026, 6:18:32 pm (UTC)'!
 withModel: aStyledTextModel in: aLayoutMorph
 	| topRow paragraphStyleList characterStyleList textMorph m topRowHeight labelFont topRowElementsWidth |
 	textMorph := self withModel: aStyledTextModel.
@@ -1495,7 +1495,7 @@ withModel: aStyledTextModel in: aLayoutMorph
 
 	^aLayoutMorph! !
 
-!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 17/May/2024 18:08:45'!
+!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 17/May/2024, 9:08:45 pm (UTC)'!
 basicOpenList
 	| xtraWidth xtraHeight bounds |
 	bounds := self displayBounds.
@@ -1521,24 +1521,24 @@ basicOpenList
 	xtraHeight > 0 ifTrue: [
 		listMorph morphHeight: (listMorph morphHeight + xtraHeight min: 100) ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 10/Sep/2010 15:31:00'!
+!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 10/Sep/2010, 6:31:00 pm (UTC)'!
 closeList
 	listMorph ifNotNil: [
 		listMorph delete.
 		listMorph _ nil ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 14/Feb/2013 12:41:00'!
+!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 14/Feb/2013, 3:41:00 pm (UTC)'!
 openList
 	self basicOpenList.
 	self world activeHand newKeyboardFocus: listMorph! !
 
-!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 16/Aug/2010 16:01:00'!
+!STEPluggableDropDownListMorph methodsFor: 'private' stamp: 'jmv 16/Aug/2010, 7:01:00 pm (UTC)'!
 openOrCloseList
 	self isListOpen
 		ifFalse: [ self openList ]
 		ifTrue: [ self closeList ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 14/Feb/2013 13:29:00'!
+!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 14/Feb/2013, 4:29:00 pm (UTC)'!
 drawBasicLookOn: aCanvas
 
 	aCanvas
@@ -1549,14 +1549,14 @@ drawBasicLookOn: aCanvas
 		baseColorForBorder: borderColor.
 	self drawLabelOn: aCanvas ! !
 
-!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'bp 17/Sep/2023 15:01:41'!
+!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'bp 17/Sep/2023, 6:01:41 pm (UTC)'!
 drawLabelOn: aCanvas 
 
 	| f |
 	f := Preferences at: #standardButtonFont.
 	aCanvas drawString: label at: 0@(extent y // 2) + (8@ f lineSpacing negated // 2) font: f color: Color black! !
 
-!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 12/Apr/2012 22:19:00'!
+!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 13/Apr/2012, 1:19:00 am (UTC)'!
 drawOn: aCanvas
 
 	"Theme current steButtons"
@@ -1564,7 +1564,7 @@ drawOn: aCanvas
 		ifTrue: [ self drawSTELookOn: aCanvas ]
 		ifFalse: [ self drawBasicLookOn: aCanvas ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 29/Jul/2021 09:39:48'!
+!STEPluggableDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 29/Jul/2021, 12:39:48 pm (UTC)'!
 drawSTELookOn: aCanvas
 
 	"Gradients removed!!"
@@ -1578,20 +1578,20 @@ drawSTELookOn: aCanvas
 		radius: 4.
 	self drawLabelOn: aCanvas ! !
 
-!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 9/Sep/2010 15:12:00'!
+!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 9/Sep/2010, 6:12:00 pm (UTC)'!
 getIndex
 	^model ifNil: [ 0 ] ifNotNil: [ model perform: getIndexSelector ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 16/Sep/2009 13:45:00'!
+!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 16/Sep/2009, 4:45:00 pm (UTC)'!
 getList
 	^model perform: getListSelector! !
 
-!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 3/Jun/2011 14:43:00'!
+!STEPluggableDropDownListMorph methodsFor: 'model' stamp: 'jmv 3/Jun/2011, 5:43:00 pm (UTC)'!
 modelChanged
 	self getLabel.
 	self changed: self! !
 
-!STEPluggableDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011 19:03:00'!
+!STEPluggableDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011, 10:03:00 pm (UTC)'!
 getLabel
 	| i |
 	i _ self getIndex.
@@ -1599,25 +1599,25 @@ getLabel
 		ifTrue: [ '-none-' ]
 		ifFalse: [ self getList at: i ].! !
 
-!STEPluggableDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 10/Sep/2010 08:37:00'!
+!STEPluggableDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 10/Sep/2010, 11:37:00 am (UTC)'!
 label
 	^ label! !
 
-!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 9/Sep/2010 14:25:00'!
+!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 9/Sep/2010, 5:25:00 pm (UTC)'!
 handlesMouseDown: evt
 	"So our #mouseDown: method is called"
 	^ true! !
 
-!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 9/Sep/2010 14:25:00'!
+!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 9/Sep/2010, 5:25:00 pm (UTC)'!
 handlesMouseOver: anEvent
 	"So our #mouseLeave: method is called"
 	^ true! !
 
-!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 27/Jan/2011 16:11:00'!
+!STEPluggableDropDownListMorph methodsFor: 'testing' stamp: 'jmv 27/Jan/2011, 7:11:00 pm (UTC)'!
 isListOpen
 	^ listMorph notNil! !
 
-!STEPluggableDropDownListMorph methodsFor: 'initialization' stamp: 'KenD 18/Apr/2026 15:17:43'!
+!STEPluggableDropDownListMorph methodsFor: 'initialization' stamp: 'KenD 18/Apr/2026, 6:17:43 pm (UTC)'!
 initialize
 	| icon |
 	super initialize.
@@ -1638,7 +1638,7 @@ initialize
 		action: #openOrCloseList.
 	self addMorph: downButton.! !
 
-!STEPluggableDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 16/Sep/2009 11:29:00'!
+!STEPluggableDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 16/Sep/2009, 2:29:00 pm (UTC)'!
 model: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
 
 	self model: anObject.
@@ -1646,7 +1646,7 @@ model: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter:
 	getIndexSelector _ getSelectionSel.
 	setIndexSelector _ setSelectionSel.! !
 
-!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 5/May/2025 12:21:56'!
+!STEPluggableDropDownListMorph methodsFor: 'layout' stamp: 'jmv 5/May/2025, 3:21:56 pm (UTC)'!
 layoutSubmorphs
 	| e innerBounds |
 	"innerBounds _ self innerBounds".
@@ -1656,7 +1656,7 @@ layoutSubmorphs
 		positionInWorld: innerBounds bottomRight - e - (5@10);
 		extentInWorld: e asPoint! !
 
-!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 23/Aug/2020 21:07:34'!
+!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 24/Aug/2020, 12:07:34 am (UTC)'!
 mouseLeave: evt
 	super mouseLeave: evt.
 	(listMorph isNil or: [ (listMorph displayBounds containsPoint: evt eventPosition) not])
@@ -1664,12 +1664,12 @@ mouseLeave: evt
 			"Do the call even if the list is not there, as this also clears selection in subclass with entry field"
 			self closeList ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 23/Aug/2020 21:07:36'!
+!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 24/Aug/2020, 12:07:36 am (UTC)'!
 mouseLeaveList: evt
 	(self displayBounds containsPoint: evt eventPosition)
 		ifFalse: [ self closeList ]! !
 
-!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 3/Jun/2011 14:44:00'!
+!STEPluggableDropDownListMorph methodsFor: 'events' stamp: 'jmv 3/Jun/2011, 5:44:00 pm (UTC)'!
 setIndex: index
 	model perform: setIndexSelector with: index.
 	"self changed: #getIndex." "No chance to actually see it, it is closed too quickly"
@@ -1677,14 +1677,14 @@ setIndex: index
 	self changed: self.
 	self closeList! !
 
-!STEPluggableDropDownListMorph methodsFor: 'geometry' stamp: 'jmv 5/May/2025 12:18:02'!
+!STEPluggableDropDownListMorph methodsFor: 'geometry' stamp: 'jmv 5/May/2025, 3:18:02 pm (UTC)'!
 extentChanged: oldExtent
 	"Our extent changed. Must layout submorphs again."
 
 	super extentChanged: oldExtent.
 	self layoutSubmorphs! !
 
-!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'Ez3 30/May/2024 20:36:13'!
+!STEPluggableDropDownListMorph class methodsFor: 'instance creation' stamp: 'Ez3 30/May/2024, 11:36:13 pm (UTC)'!
 withModel: anObject listGetter: getListSel indexGetter: getSelectionSel indexSetter: setSelectionSel
 
 	^self new
@@ -1693,35 +1693,35 @@ withModel: anObject listGetter: getListSel indexGetter: getSelectionSel indexSet
 		indexGetter: getSelectionSel
 		indexSetter: setSelectionSel! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'private' stamp: 'jmv 20/Dec/2012 13:22:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'private' stamp: 'jmv 20/Dec/2012, 4:22:00 pm (UTC)'!
 closeList
 	"Also clear the selection in the entry field"
 	(listMorph notNil and: [ listMorph hasKeyboardFocus ]) ifTrue: [
 		self world activeHand newKeyboardFocus: editorMorph ].
 	super closeList! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'private' stamp: 'jmv 4/Nov/2010 15:42:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'private' stamp: 'jmv 4/Nov/2010, 6:42:00 pm (UTC)'!
 openList
 
 	super openList.
 	editorMorph selectAll! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 10/Sep/2010 08:57:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'drawing' stamp: 'jmv 10/Sep/2010, 11:57:00 am (UTC)'!
 drawLabelOn: aCanvas
 	"Not needed. Our label is a submorph"! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 20/Dec/2010 15:00:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 20/Dec/2010, 6:00:00 pm (UTC)'!
 editorClass
 	^TextEditor! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012 10:41:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012, 1:41:00 pm (UTC)'!
 keyStrokeInList: aKeyboardEvent
 	"Send to the text anything but Up, Down, Return and Escape"
 	(aKeyboardEvent isReturnKey or: [
 		(#(27 30 31) includes: aKeyboardEvent keyValue)]) ifFalse: [
 			editorMorph keyStroke: aKeyboardEvent ]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012 10:59:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 13/Mar/2012, 1:59:00 pm (UTC)'!
 keyStrokeInText: aKeyboardEvent
 
 	"Handle Return and Escape separatedly"
@@ -1738,12 +1738,12 @@ keyStrokeInText: aKeyboardEvent
 			ifTrue: [ listMorph keyStroke: aKeyboardEvent ].
 		listMorph verifyContents ]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 29/Dec/2011 14:50:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 29/Dec/2011, 5:50:00 pm (UTC)'!
 lostFocus: aMorph
 	(self isListOpen and: [ listMorph hasKeyboardFocus not ]) ifTrue: [
 		self closeList ]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 16/Mar/2011 09:27:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 16/Mar/2011, 12:27:00 pm (UTC)'!
 shouldCloseList
 	"True if no matches to show, or if there is no  typed text"
 	^self isListOpen and: [
@@ -1753,7 +1753,7 @@ shouldCloseList
 		"]"
 	]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 16/Mar/2011 09:24:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'events' stamp: 'jmv 16/Mar/2011, 12:24:00 pm (UTC)'!
 shouldOpenList
 	"True if list not open, but it makes sense to show it, because there is more than one entry that matches the typed text. "
 	^self isListOpen not and: [
@@ -1763,21 +1763,21 @@ shouldOpenList
 		]" 
 	]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 5/Jul/2011 09:02:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 5/Jul/2011, 12:02:00 pm (UTC)'!
 filter
 	^editorMorph contents withBlanksTrimmed! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 16/Mar/2011 17:28:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'accessing' stamp: 'jmv 16/Mar/2011, 8:28:00 pm (UTC)'!
 getLabel
 	super getLabel.
 	editorMorph ifNotNil: [ editorMorph contents: label ]! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'filtering' stamp: 'jmv 10/Sep/2010 15:56:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'filtering' stamp: 'jmv 10/Sep/2010, 6:56:00 pm (UTC)'!
 filter: entry with: filter
 
 	^filter, '*' match: entry! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 6/Apr/2011 19:03:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 6/Apr/2011, 10:03:00 pm (UTC)'!
 getIndex
 	"answer the index in the filtered list"
 	| i filter |
@@ -1788,7 +1788,7 @@ getIndex
 			i _ self getList indexOf: ((model perform: getListSelector) at: i) ]].
 	^i! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 10/Aug/2011 15:17:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 10/Aug/2011, 6:17:00 pm (UTC)'!
 getList
 	| answer filter |
 	answer _ super getList.
@@ -1799,7 +1799,7 @@ getList
 			answer _ filtered ]].
 	^answer! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 13/Mar/2012 10:26:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 13/Mar/2012, 1:26:00 pm (UTC)'!
 returnInEditor
 	| filter all selected |
 	self isListOpen ifTrue: [
@@ -1813,7 +1813,7 @@ returnInEditor
 		ifNone: [ ^ self ].
 	^ super setIndex: (super getList indexOf: selected)! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 16/Mar/2011 09:10:00'!
+!PluggableFilteringDropDownListMorph methodsFor: 'model' stamp: 'jmv 16/Mar/2011, 12:10:00 pm (UTC)'!
 setIndex: index
 	| i filter |
 	i _ index.
@@ -1822,7 +1822,7 @@ setIndex: index
 		i _ (model perform: getListSelector) indexOf: ( self getList at: i ) ].
 	super setIndex: i! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 28/Apr/2026 17:59:15'!
+!PluggableFilteringDropDownListMorph methodsFor: 'initialization' stamp: 'jmv 28/Apr/2026, 8:59:15 pm (UTC)'!
 initialize
 	| labelFont |
 	super initialize.
@@ -1831,7 +1831,7 @@ initialize
 	editorMorph keyboardFocusWatcher: self.
 	self addMorph: editorMorph! !
 
-!PluggableFilteringDropDownListMorph methodsFor: 'layout' stamp: 'jmv 2/Sep/2024 19:36:27'!
+!PluggableFilteringDropDownListMorph methodsFor: 'layout' stamp: 'jmv 2/Sep/2024, 10:36:27 pm (UTC)'!
 layoutSubmorphs
 	| b innerBounds |
 	super layoutSubmorphs.
@@ -1842,7 +1842,7 @@ layoutSubmorphs
 		positionInWorld: b topLeft;
 		extentInWorld: b extent - (downButton morphWidth@0)! !
 
-!FilteringDDLEditorMorph methodsFor: 'events' stamp: 'jmv 3/Nov/2016 11:42:30'!
+!FilteringDDLEditorMorph methodsFor: 'events' stamp: 'jmv 3/Nov/2016, 2:42:30 pm (UTC)'!
 keyStroke: aKeyboardEvent
 	"Handle a keystroke event."
 
@@ -1854,7 +1854,7 @@ keyStroke: aKeyboardEvent
 	"We know that our owner is a PluggableFilteringDropDownListMorph"
 	owner keyStrokeInText: aKeyboardEvent! !
 
-!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 19/Apr/2014 19:31:00'!
+!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 19/Apr/2014, 10:31:00 pm (UTC)'!
 addToText: aString specialAttributes: nonFormattingAttributesOrNil
 	"nonFormattingAttributesOrNil should only contains attributes that answer false to #isForFormatting"
 	| attributes emphasis ps cs |
@@ -1873,7 +1873,7 @@ addToText: aString specialAttributes: nonFormattingAttributesOrNil
 		nonFormattingAttributesOrNil ifNotNil: [ strm nextPutAll: nonFormattingAttributesOrNil ]].
 	textStream nextPutAllString: aString withAttributes: attributes! !
 
-!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 11/Aug/2011 10:40:00'!
+!RTFStyledTextBuilder methodsFor: 'private' stamp: 'jmv 11/Aug/2011, 1:40:00 pm (UTC)'!
 paragraphStyle
 	"We need a paragraph style to be actually used.
 	If we don't have it, take whatever is in construction and use it."
@@ -1893,7 +1893,7 @@ paragraphStyle
 			spaceBefore: spaceBefore spaceAfter: spaceAfter ].
 	^paragraphStyleInUse! !
 
-!RTFStyledTextBuilder methodsFor: 'building-paragraph' stamp: 'jmv 13/Mar/2012 16:57:00'!
+!RTFStyledTextBuilder methodsFor: 'building-paragraph' stamp: 'jmv 13/Mar/2012, 7:57:00 pm (UTC)'!
 finishParagraph
 
 	textStream
@@ -1901,49 +1901,49 @@ finishParagraph
 		withAttributes: { ParagraphStyleReference for: self paragraphStyle }.
 	paragraphStyleInUse _ nil.	"So we can build a new one"! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 26/Aug/2009 22:52:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 27/Aug/2009, 1:52:00 am (UTC)'!
 color
 	^color! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011 16:18:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011, 7:18:00 pm (UTC)'!
 emphasis
 	^emphasis! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011 16:18:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011, 7:18:00 pm (UTC)'!
 familyName
 	^familyName! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 11/Jun/2020 16:47:34'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 11/Jun/2020, 7:47:34 pm (UTC)'!
 font
 	| base |
 	base _ (FontFamily familyName: familyName pointSize: pointSize)
 		ifNil: [ FontFamily defaultFamilyAndPointSize baseFont ].
 	^base emphasized: emphasis! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 26/Aug/2009 22:52:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 27/Aug/2009, 1:52:00 am (UTC)'!
 name
 	^name! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011 16:18:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 6/Apr/2011, 7:18:00 pm (UTC)'!
 pointSize
 	^pointSize! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 26/Aug/2009 22:52:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 27/Aug/2009, 1:52:00 am (UTC)'!
 printOn: aStream
 	super printOn: aStream.
 	aStream space; nextPutAll: self name! !
 
-!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011 11:11:00'!
+!CharacterStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011, 2:11:00 pm (UTC)'!
 shortDescription
 	"note: Does not use all state. Two different instances could answer the same shortDescription."
 	^String streamContents: [ :strm | self shortPrintOn: strm ]! !
 
-!CharacterStyle methodsFor: 'initialization' stamp: 'jmv 19/Apr/2014 11:09:00'!
+!CharacterStyle methodsFor: 'initialization' stamp: 'jmv 19/Apr/2014, 2:09:00 pm (UTC)'!
 initialize
 	name _ ''.
 	emphasis _ 0! !
 
-!CharacterStyle methodsFor: 'comparing' stamp: 'jmv 19/Apr/2014 11:08:00'!
+!CharacterStyle methodsFor: 'comparing' stamp: 'jmv 19/Apr/2014, 2:08:00 pm (UTC)'!
 isEquivalentTo: aStyle
 	"Compare all 'functional' attributes. I.e. ignore name."
 	self class == aStyle class ifFalse: [ ^false ].
@@ -1953,11 +1953,11 @@ isEquivalentTo: aStyle
 			color = aStyle color and: [
 				familyName = aStyle familyName ]]]! !
 
-!CharacterStyle methodsFor: 'testing' stamp: 'jmv 9/Aug/2011 10:44:00'!
+!CharacterStyle methodsFor: 'testing' stamp: 'jmv 9/Aug/2011, 1:44:00 pm (UTC)'!
 isNullStyle
 	^ name = '-none-'! !
 
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014 19:29:00'!
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014, 10:29:00 pm (UTC)'!
 privateFamilyName: otherString pointSize: aNumber emphasis: otherNumber color: aColor
 	"To be used from CharacterStyle instance creation methods.
 	If used on existing instances, existing text will be modified, but in any case, senders are responsible
@@ -1968,21 +1968,21 @@ privateFamilyName: otherString pointSize: aNumber emphasis: otherNumber color: a
 	emphasis _ otherNumber.
 	color _ aColor! !
 
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011 10:48:00'!
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011, 1:48:00 pm (UTC)'!
 privateName: aString
 	"To be used from CharacterStyle instance creation methods.
 	If used on existing instances, existing text will be modified, but in any case, senders are responsible
 	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
 	name _ aString! !
 
-!CharacterStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011 10:48:00'!
+!CharacterStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011, 1:48:00 pm (UTC)'!
 privatePointSize: aNumber
 	"To be used from CharacterStyle instance creation methods.
 	If used on existing instances, existing text will be modified, but in any case, senders are responsible
 	for updating any text editor using us, or any text that should start using us (i.e. users of a StyleSet to which we are added)."
 	pointSize _ aNumber! !
 
-!CharacterStyle methodsFor: 'printing' stamp: 'KenD 5/Dec/2015 08:31:00'!
+!CharacterStyle methodsFor: 'printing' stamp: 'KenD 5/Dec/2015, 11:31:00 am (UTC)'!
 shortPrintOn: strm
 	familyName ifNotNil: [
 		strm nextPutAll: familyName ].
@@ -2003,7 +2003,7 @@ shortPrintOn: strm
 		strm nextPut: $ .
 		color printOn: strm ]! !
 
-!CharacterStyle class methodsFor: 'instance creation' stamp: 'jmv 9/Aug/2011 10:45:00'!
+!CharacterStyle class methodsFor: 'instance creation' stamp: 'jmv 9/Aug/2011, 1:45:00 pm (UTC)'!
 nullStyle
 
 	^self new
@@ -2015,15 +2015,15 @@ alignment
 
 	^alignment! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011 13:32:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011, 4:32:00 pm (UTC)'!
 doNotShout
 	doesShout _ false! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011 13:32:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011, 4:32:00 pm (UTC)'!
 doShout
 	doesShout _ true! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011 13:32:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 25/Jan/2011, 4:32:00 pm (UTC)'!
 doesShout
 	^doesShout! !
 
@@ -2034,11 +2034,11 @@ firstIndent
 
 	^firstIndent! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 29/Sep/2009 09:39:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 29/Sep/2009, 12:39:00 pm (UTC)'!
 isListStyle
 	^listBulletPattern notNil! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 29/Sep/2009 09:15:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 29/Sep/2009, 12:15:00 pm (UTC)'!
 listBulletPattern
 	"Answer the string patter to be used to display bullets at the start of each line."
 
@@ -2058,19 +2058,19 @@ rightIndent
 
 	^rightIndent! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011 11:15:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011, 2:15:00 pm (UTC)'!
 spaceAfter
 	^spaceAfter! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011 11:14:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011, 2:14:00 pm (UTC)'!
 spaceBefore
 	^spaceBefore! !
 
-!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011 13:44:00'!
+!ParagraphStyle methodsFor: 'accessing' stamp: 'jmv 7/Apr/2011, 4:44:00 pm (UTC)'!
 tabsArray
 	^tabsArray! !
 
-!ParagraphStyle methodsFor: 'initialization' stamp: 'jmv 11/Aug/2011 08:08:00'!
+!ParagraphStyle methodsFor: 'initialization' stamp: 'jmv 11/Aug/2011, 11:08:00 am (UTC)'!
 initialize
 	super initialize.
 	firstIndent _ restIndent _ rightIndent _ spaceBefore _ spaceAfter _ 0.
@@ -2079,7 +2079,7 @@ initialize
 	alignment _ 0.
 	tabsArray _ ParagraphStyle defaultTabsArray! !
 
-!ParagraphStyle methodsFor: 'comparing' stamp: 'jmv 9/Aug/2011 15:50:00'!
+!ParagraphStyle methodsFor: 'comparing' stamp: 'jmv 9/Aug/2011, 6:50:00 pm (UTC)'!
 isEquivalentTo: aStyle
 	(super isEquivalentTo: aStyle) ifFalse: [ ^false ].
 
@@ -2093,7 +2093,7 @@ isEquivalentTo: aStyle
 								listBulletPattern = aStyle listBulletPattern and: [
 									tabsArray = aStyle tabsArray ]]]]]]]]! !
 
-!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 29/Jun/2010 10:03:00'!
+!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 29/Jun/2010, 1:03:00 pm (UTC)'!
 nextTabXFrom: anX leftMargin: leftMargin rightMargin: rightMargin 
 	"Tab stops are distances from the left margin. Set the distance into the 
 	argument, anX, normalized for the paragraph's left margin."
@@ -2111,13 +2111,13 @@ nextTabXFrom: anX leftMargin: leftMargin rightMargin: rightMargin
 				ifTrue: [^leftMargin + tabX min: rightMargin]].
 	^rightMargin! !
 
-!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 27/Jul/2009 13:05:00'!
+!ParagraphStyle methodsFor: 'tabs and margins' stamp: 'jmv 27/Jul/2009, 4:05:00 pm (UTC)'!
 tabWidth
 	"Answer the width of a tab."
 
 	^ParagraphStyle defaultTab! !
 
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014 19:30:00'!
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014, 10:30:00 pm (UTC)'!
 privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code
 	"To be used from ParagraphStyle instance creation methods.
 	If used on existing instances, existing text will be modified, but in any case, senders are responsible
@@ -2136,7 +2136,7 @@ privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColo
 "	listBulletPattern 
 	doesShout"! !
 
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014 19:30:00'!
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 19/Apr/2014, 10:30:00 pm (UTC)'!
 privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColor alignment: code firstIndent: fi restIndent: ri rightIndent: rri spaceBefore: sb spaceAfter: sa
 	"To be used from ParagraphStyle instance creation methods.
 	If used on existing instances, existing text will be modified, but in any case, senders are responsible
@@ -2155,7 +2155,7 @@ privateFamilyName: aString pointSize: aNumber emphasis: otherNumber color: aColo
 "	listBulletPattern 
 	doesShout"! !
 
-!ParagraphStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011 10:49:00'!
+!ParagraphStyle methodsFor: 'private' stamp: 'jmv 11/Aug/2011, 1:49:00 pm (UTC)'!
 privateListBulletPattern: aString 
 	"If this is notNil, then this style is a Bullet List Style
 	Some examples are:
@@ -2169,7 +2169,7 @@ privateListBulletPattern: aString
 
 	listBulletPattern _ aString! !
 
-!ParagraphStyle methodsFor: 'printing' stamp: 'jmv 7/Apr/2011 11:11:00'!
+!ParagraphStyle methodsFor: 'printing' stamp: 'jmv 7/Apr/2011, 2:11:00 pm (UTC)'!
 shortPrintOn: strm
 	"note: Does not use all state. Two different instances could print the same."
 
@@ -2179,15 +2179,15 @@ shortPrintOn: strm
 		strm nextPut: $ .
 		strm nextPutAll: (#(right centered justified) at: alignment) ]! !
 
-!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 27/Jul/2009 13:05:00'!
+!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 27/Jul/2009, 4:05:00 pm (UTC)'!
 defaultTab
 	^24! !
 
-!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 27/Jul/2009 13:07:00'!
+!ParagraphStyle class methodsFor: 'constants' stamp: 'jmv 27/Jul/2009, 4:07:00 pm (UTC)'!
 defaultTabsArray
 	^#(24 48 72 96 120 144 168 192 216 240 264 288 312 336 360 384 408 432 456 480 504 528 552 576 600 624 648 672 696 720 744 768 792 816 840 864 888 912 936 960 984 1008 1032 1056 1080 1104 1128 1152 1176 1200 1224 1248 1272 1296 1320 1344 1368 1392 1416 1440 1464 1488 1512 1536 1560)! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011 14:32:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011, 5:32:00 pm (UTC)'!
 , aString
 	"Add aString to the Text we are building, using current style."
 	textStream
@@ -2197,26 +2197,26 @@ defaultTabsArray
 				ifTrue: [ #() ]
 				ifFalse: [ {CharacterStyleReference for: (styleDict at: characterStyleStack last)} ])! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 16/Oct/2013 21:40:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 17/Oct/2013, 12:40:00 am (UTC)'!
 / aParagraphStyleKey
 	"Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. "
 	textStream
 		nextPutAllString: String newLineString
 		withAttributes: {ParagraphStyleReference for: (styleDict at: aParagraphStyleKey)}! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011 14:31:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011, 5:31:00 pm (UTC)'!
 < aCharacterStyleKey
 	"Add a new CharacterStyle to the stack. This is the new current style.
 	aKey is for accessing the styles dictionary that was given on setup."
 	characterStyleStack addLast: aCharacterStyleKey! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011 14:32:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011, 5:32:00 pm (UTC)'!
 > aString
 	"We finished using the CharacterStyle that was last set. Remove it from the stack, to go on with the previous one. Then, add aString to the text being built."
 	characterStyleStack removeLast.
 	self , aString! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 16/Oct/2013 21:40:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 17/Oct/2013, 12:40:00 am (UTC)'!
 >/ aParagraphStyleKey
 	"Stop using the CharacterStyle that was added last.
 	Finish the current paragraph (adding a newLine). Apply a ParagraphStyle to it. 
@@ -2226,7 +2226,7 @@ defaultTabsArray
 	characterStyleStack removeLast.
 	self / aParagraphStyleKey! !
 
-!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011 14:31:00'!
+!StyledTextBuilder methodsFor: 'building' stamp: 'jmv 25/Jan/2011, 5:31:00 pm (UTC)'!
 >< aCharacterStyleKey
 	"Stop using the CharacterStyle that was added last, and start using a new one.
 	The effect is the same as sending
@@ -2235,17 +2235,17 @@ defaultTabsArray
 	but the implementation is optimized"
 	characterStyleStack at: characterStyleStack size put: aCharacterStyleKey! !
 
-!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 3/Jan/2017 21:10:04'!
+!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 4/Jan/2017, 12:10:04 am (UTC)'!
 styles: aDictionary
 	styleDict _ aDictionary.
 	characterStyleStack _ OrderedCollection new.
 	textStream _ WriteStream on: (Text string: (String new: 400))! !
 
-!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 9/Sep/2010 09:05:00'!
+!StyledTextBuilder methodsFor: 'accessing' stamp: 'jmv 9/Sep/2010, 12:05:00 pm (UTC)'!
 text
 	^textStream contents! !
 
-!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 30/Jan/2021 12:38:05'!
+!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 30/Jan/2021, 3:38:05 pm (UTC)'!
 example1
 	"
 	StyledTextBuilder example1
@@ -2269,7 +2269,7 @@ example1
 	model contents: t.
 	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
 
-!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 30/Jan/2021 12:47:59'!
+!StyledTextBuilder class methodsFor: 'examples' stamp: 'jmv 30/Jan/2021, 3:47:59 pm (UTC)'!
 example2
 	"
 	StyledTextBuilder example2
@@ -2307,7 +2307,7 @@ example2
 	model contents: t.
 	SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
 
-!IChingText methodsFor: 'initialization' stamp: 'KenD 17/Apr/2026 16:33:06'!
+!IChingText methodsFor: 'initialization' stamp: 'KenD 17/Apr/2026, 7:33:06 pm (UTC)'!
 open: nameString
 	| fileName model  |
 	fileName := (IChingPackage package fullFileName asFileEntry parent  // nameString) pathName.
@@ -2316,7 +2316,7 @@ open: nameString
 	^SystemWindow editFancierStyledText: model label: nameString
 	! !
 
-!IChingText class methodsFor: 'instance creation' stamp: 'KenD 17/Apr/2026 16:02:10'!
+!IChingText class methodsFor: 'instance creation' stamp: 'KenD 17/Apr/2026, 7:02:10 pm (UTC)'!
 openStyledTextIChing
 "
 	IChingText openStyledTextIChing.
@@ -2325,19 +2325,19 @@ openStyledTextIChing
 	STETheme beCurrent.
 	^self new open: 'Kens I Ching'! !
 
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009 10:35:00'!
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009, 1:35:00 pm (UTC)'!
 initialize
 	sel _ 3! !
 
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009 14:39:00'!
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009, 5:39:00 pm (UTC)'!
 list
 	^#('first' 'second' 'third' 'first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third''first' 'second' 'third')! !
 
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009 10:09:00'!
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009, 1:09:00 pm (UTC)'!
 sel
 ^sel! !
 
-!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009 10:35:00'!
+!SampleListModel methodsFor: 'as yet unclassified' stamp: 'jmv 16/Sep/2009, 1:35:00 pm (UTC)'!
 sel:x
 sel _ x.
 self changed: #list
@@ -2350,7 +2350,7 @@ self changed: #list
 	changeSelected: #sel:) autoDeselect: false; openInWorld
 "! !
 
-!StyledTextEditor methodsFor: 'private' stamp: 'jmv 14/Mar/2012 08:25:00'!
+!StyledTextEditor methodsFor: 'private' stamp: 'jmv 14/Mar/2012, 11:25:00 am (UTC)'!
 addAttributesForPasting: replacement
 	| start stop answer paragraphStyle |
 	(replacement is: #Text)
@@ -2396,7 +2396,7 @@ addAttributesForPasting: replacement
 		ifFalse: [
 			^Text string: replacement attributes: emphasisHere ]! !
 
-!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 5/Aug/2024 10:01:28'!
+!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 5/Aug/2024, 1:01:28 pm (UTC)'!
 changeCharacterStyle: shortcutCharacter
 	"This is a user command, and generates undo"
 
@@ -2407,7 +2407,7 @@ changeCharacterStyle: shortcutCharacter
 				ifTrue: [ self removeCharacterStyles ]
 				ifFalse: [ self applyAttribute: (CharacterStyleReference for: style) ]].! !
 
-!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 5/Aug/2024 10:01:32'!
+!StyledTextEditor methodsFor: 'editing keys' stamp: 'jmv 5/Aug/2024, 1:01:32 pm (UTC)'!
 changeCurrentStyle: shortcutCharacter
 	"This is a user command, and generates undo"
 
@@ -2415,7 +2415,7 @@ changeCurrentStyle: shortcutCharacter
 		ifNotNil: [ :style |
 			self applyAttribute: (ParagraphStyleReference for: style) ].! !
 
-!StyledTextEditor methodsFor: 'clipboard access' stamp: 'jmv 11/Aug/2011 11:27:00'!
+!StyledTextEditor methodsFor: 'clipboard access' stamp: 'jmv 11/Aug/2011, 2:27:00 pm (UTC)'!
 clipboardStringOrText
 
 	| clipContents |
@@ -2426,7 +2426,7 @@ clipboardStringOrText
 			clipContents asStyledTextWith: model styleSet ]
 		ifFalse: [ clipContents]! !
 
-!StyledTextEditor methodsFor: 'typing support' stamp: 'jmv 13/Jan/2012 12:36:00'!
+!StyledTextEditor methodsFor: 'typing support' stamp: 'jmv 13/Jan/2012, 3:36:00 pm (UTC)'!
 setEmphasisHereFromTextForward: f
 
 	model isTextEmpty
@@ -2435,7 +2435,7 @@ setEmphasisHereFromTextForward: f
 			morph possiblyChanged ]
 		ifFalse: [ super setEmphasisHereFromTextForward: f ]! !
 
-!StyledTextEditor methodsFor: 'accessing' stamp: 'KenD 18/Apr/2026 12:00:32'!
+!StyledTextEditor methodsFor: 'accessing' stamp: 'KenD 18/Apr/2026, 3:00:32 pm (UTC)'!
 help
 	"
 	Editor help
@@ -2462,7 +2462,7 @@ help
 		strm nextPutAll: ('Cmd-v', String tab, String tab, String tab, 'Paste'); newLine.
 	]! !
 
-!StyledTextEditor methodsFor: 'model access' stamp: 'jmv 5/Aug/2024 10:11:10'!
+!StyledTextEditor methodsFor: 'model access' stamp: 'jmv 5/Aug/2024, 1:11:10 pm (UTC)'!
 model: aModel
 	super model: aModel.
 	"All assignments to the styleSet ivar should call this method."
@@ -2471,7 +2471,7 @@ model: aModel
 	model ifNotNil: [ model when: #stylesChanged send: #someStyleChanged to: self ].
 	emphasisHere := { ParagraphStyleReference for: model styleSet defaultStyle }.! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 3/Aug/2024 15:39:35'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 3/Aug/2024, 6:39:35 pm (UTC)'!
 quit
 	morph hasUnacceptedEdits ifTrue: [
 		(self confirm: 'Save changes before quitting?' orCancel: [^ true]) ifTrue: [
@@ -2479,7 +2479,7 @@ quit
 	Smalltalk quit.
 	^true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 2/May/2022 12:03:17'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 2/May/2022, 3:03:17 pm (UTC)'!
 removeCharacterStyles
 	"Let user remove character styles for the current selection."
 	"This is a user command, and generates undo"
@@ -2501,7 +2501,7 @@ removeCharacterStyles
 	"Even if nothing done, emphasisHere might have changed"
 	morph possiblyChanged! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 15/Jun/2018 10:21:48'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 15/Jun/2018, 1:21:48 pm (UTC)'!
 replaceAllCharacterStyle
 	"Let user add or change character styles for the current selection, or for text to be typed."
 	"This is a user command, and generates undo"
@@ -2525,7 +2525,7 @@ replaceAllCharacterStyle
 					self someStyleChanged ] ].
 	^ true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 15/Jun/2018 10:21:44'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 15/Jun/2018, 1:21:44 pm (UTC)'!
 replaceAllCurrentStyle
 	"Let user change styles for the current selection or pragraph."
 	"This is a user command, and generates undo"
@@ -2546,7 +2546,7 @@ replaceAllCurrentStyle
 					self someStyleChanged ]].
 	^ true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 1/Apr/2016 14:36:00'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'KenD 1/Apr/2016, 5:36:00 pm (UTC)'!
 save
 	"Save command"
 	model fileName ifNotNil: [
@@ -2556,7 +2556,7 @@ save
 		 ifNil: [ self saveAs ].
 	^true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 12/Sep/2024 12:32:11'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 12/Sep/2024, 3:32:11 pm (UTC)'!
 saveAs
 	"SaveAs command"
 	| fileName |
@@ -2573,7 +2573,7 @@ saveAs
 	
 	^true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 24/Jun/2016 11:14:00'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 24/Jun/2016, 2:14:00 pm (UTC)'!
 selectCharacterStyle
 	"Let user add or change character styles for the current selection, or for text to be typed."
 	"This is a user command, and generates undo"
@@ -2596,7 +2596,7 @@ selectCharacterStyle
 				ifTrue: [ self unapplyAttributes: {CharacterStyleReference for: style} ] ].
 	^ true! !
 
-!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 24/Jun/2016 11:14:00'!
+!StyledTextEditor methodsFor: 'commands' stamp: 'jmv 24/Jun/2016, 2:14:00 pm (UTC)'!
 selectCurrentStyle
 	"Let user change styles for the current selection or pragraph."
 	"This is a user command, and generates undo"
@@ -2616,17 +2616,17 @@ selectCurrentStyle
 				ifTrue: [ self unapplyAttributes: {ParagraphStyleReference for: style} ] ].
 	^ true! !
 
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 18/Nov/2011 14:08:00'!
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 18/Nov/2011, 5:08:00 pm (UTC)'!
 selectAllWithCurrentCharStyle
 
 	self selectAllWithStyle: self currentCharacterStyleOrNil! !
 
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 18/Nov/2011 14:08:00'!
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 18/Nov/2011, 5:08:00 pm (UTC)'!
 selectAllWithCurrentStyle
 
 	self selectAllWithStyle: self currentParagraphStyle! !
 
-!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 5/Aug/2024 09:20:42'!
+!StyledTextEditor methodsFor: 'selecting' stamp: 'jmv 5/Aug/2024, 12:20:42 pm (UTC)'!
 selectAllWithStyle: aParagraphOrCharacterStyle
 
 	| i startIndexes stopIndexes start stop includeInSelection wasLastIncludedInSelection 
@@ -2666,13 +2666,13 @@ selectAllWithStyle: aParagraphOrCharacterStyle
 	self storeSelectionInComposition.
 	morph selectionChanged.! !
 
-!StyledTextEditor methodsFor: 'notifications' stamp: 'jmv 5/Aug/2024 10:11:16'!
+!StyledTextEditor methodsFor: 'notifications' stamp: 'jmv 5/Aug/2024, 1:11:16 pm (UTC)'!
 someStyleChanged
 	textComposition composeAll.
 	self recomputeSelection.
 	morph updateFromTextComposition.! !
 
-!StyledTextEditor methodsFor: 'menu & kbd shortcuts' stamp: 'jmv 5/Aug/2024 10:10:10'!
+!StyledTextEditor methodsFor: 'menu & kbd shortcuts' stamp: 'jmv 5/Aug/2024, 1:10:10 pm (UTC)'!
 defaultMenuSpec
 	"Spec for the menu and shortcut keys for the regular text editors.
 	See coment at Morph >> #getMenu
@@ -2731,7 +2731,7 @@ defaultMenuSpec
 					ifTrue: [entry copy at: 3 put: nil; yourself]
 					ifFalse: [entry]) ]].! !
 
-!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'jmv 24/Mar/2020 10:06:29'!
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'jmv 24/Mar/2020, 1:06:29 pm (UTC)'!
 fileReaderServicesForFileEntry: filename suffix: suffix
 	"FileList buttons that open a CodeFileBrowserWindow on contents."
 
@@ -2740,7 +2740,7 @@ fileReaderServicesForFileEntry: filename suffix: suffix
 
 	^#()! !
 
-!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 3/Feb/2016 16:07:00'!
+!StyledTextEditor class methodsFor: 'file reader registration' stamp: 'KenD 3/Feb/2016, 7:07:00 pm (UTC)'!
 serviceSTEEdit
 	"Answer the service of opening a file in a STEditor"
 
@@ -2752,7 +2752,7 @@ serviceSTEEdit
 		buttonLabel: 'open STE')
 		argumentGetter: [ :fileList | fileList selectedFileEntry ]! !
 
-!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 1/Apr/2016 13:46:00'!
+!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 1/Apr/2016, 4:46:00 pm (UTC)'!
 open
 	"Open a new instance on an empty file"
 "
@@ -2762,13 +2762,13 @@ open
 	model _ StyledTextModel new.
 	^SystemWindow editFancierStyledText: model label: 'Styled Text Editor'! !
 
-!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 3/Feb/2016 16:07:00'!
+!StyledTextEditor class methodsFor: 'instance creation' stamp: 'KenD 3/Feb/2016, 7:07:00 pm (UTC)'!
 openFromFileEntry: fileEntry
 	| model |
 	model _ StyledTextModel fromFileNamed: fileEntry pathName.
 	^SystemWindow editFancierStyledText: model label: fileEntry name! !
 
-!StyledTextEditor class methodsFor: 'menu-world' stamp: 'jmv 20/Sep/2018 08:53:38'!
+!StyledTextEditor class methodsFor: 'menu-world' stamp: 'jmv 20/Sep/2018, 11:53:38 am (UTC)'!
 worldMenuForOpenGroup
 	^ `{{
 			#itemGroup 	-> 		10.
@@ -2780,45 +2780,45 @@ worldMenuForOpenGroup
 			#balloonText 	-> 		'A window for composing Styled text'.
 		} asDictionary}`! !
 
-!CharacterStyleReference methodsFor: 'printing' stamp: 'jmv 6/Apr/2011 18:12:00'!
+!CharacterStyleReference methodsFor: 'printing' stamp: 'jmv 6/Apr/2011, 9:12:00 pm (UTC)'!
 printOn: strm
 	super printOn: strm.
 	strm nextPutAll: ': '.
 	characterStyle shortPrintOn: strm! !
 
-!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 21/Sep/2011 11:14:00'!
+!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 21/Sep/2011, 2:14:00 pm (UTC)'!
 = other 
 	^ (other class == self class) 
 		and: [other style isEquivalentTo: characterStyle]! !
 
-!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 11/Apr/2011 21:33:00'!
+!CharacterStyleReference methodsFor: 'comparing' stamp: 'jmv 12/Apr/2011, 12:33:00 am (UTC)'!
 hash
 	"Rather cheap. Can be improved."
 	^ characterStyle shortDescription hash! !
 
-!CharacterStyleReference methodsFor: 'scanning' stamp: 'jmv 25/Jan/2011 14:26:00'!
+!CharacterStyleReference methodsFor: 'scanning' stamp: 'jmv 25/Jan/2011, 5:26:00 pm (UTC)'!
 dominates: other
 	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
 	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
 	^ other class == self class! !
 
-!CharacterStyleReference methodsFor: 'iterating' stamp: 'jmv 1/Sep/2009 15:36:00'!
+!CharacterStyleReference methodsFor: 'iterating' stamp: 'jmv 1/Sep/2009, 6:36:00 pm (UTC)'!
 forCharacterStyleReferenceDo: aBlock
 	aBlock value: characterStyle! !
 
-!CharacterStyleReference methodsFor: 'testing' stamp: 'jmv 11/Apr/2011 19:35:00'!
+!CharacterStyleReference methodsFor: 'testing' stamp: 'jmv 11/Apr/2011, 10:35:00 pm (UTC)'!
 isStyle
 	^true! !
 
-!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011 11:08:00'!
+!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011, 2:08:00 pm (UTC)'!
 style
 	^characterStyle! !
 
-!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011 11:08:00'!
+!CharacterStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011, 2:08:00 pm (UTC)'!
 style: aCharacterStyle
 	characterStyle _ aCharacterStyle! !
 
-!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016 13:45:00'!
+!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016, 4:45:00 pm (UTC)'!
 writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
 	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
 	
@@ -2842,7 +2842,7 @@ writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
 
 	^0! !
 
-!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016 13:45:00'!
+!CharacterStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016, 4:45:00 pm (UTC)'!
 writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
 	"Write the RTF code for attribute stop.
 	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
@@ -2867,7 +2867,7 @@ writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
 	characterStyle pointSize ifNotNil: [ :ps |
 		aStream nextPutAll: '\fs0 ' ]! !
 
-!CharacterStyleReference class methodsFor: 'instance creation' stamp: 'jmv 21/Sep/2011 11:14:00'!
+!CharacterStyleReference class methodsFor: 'instance creation' stamp: 'jmv 21/Sep/2011, 2:14:00 pm (UTC)'!
 for: aCharacterStyle
 	| attribute |
 self assert: aCharacterStyle notNil.
@@ -2875,7 +2875,7 @@ self assert: aCharacterStyle notNil.
 	attribute style: aCharacterStyle.
 	^attribute! !
 
-!ParagraphStyleReference methodsFor: 'printing' stamp: 'jmv 7/Apr/2011 17:06:00'!
+!ParagraphStyleReference methodsFor: 'printing' stamp: 'jmv 7/Apr/2011, 8:06:00 pm (UTC)'!
 printOn: strm
 	super printOn: strm.
 	strm nextPutAll: ': ('.
@@ -2883,59 +2883,63 @@ printOn: strm
 	strm nextPutAll: ') '.
 	paragraphStyle shortPrintOn: strm! !
 
-!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 21/Sep/2011 11:12:00'!
+!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 21/Sep/2011, 2:12:00 pm (UTC)'!
 = other 
 	^ (other class == self class) 
 		and: [other style isEquivalentTo: paragraphStyle]! !
 
-!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 11/Apr/2011 21:33:00'!
+!ParagraphStyleReference methodsFor: 'comparing' stamp: 'jmv 12/Apr/2011, 12:33:00 am (UTC)'!
 hash
 	"Rather cheap. Can be improved."
 	^ paragraphStyle shortDescription hash! !
 
-!ParagraphStyleReference methodsFor: 'scanning' stamp: 'jmv 29/Nov/2011 13:50:00'!
+!ParagraphStyleReference methodsFor: 'scanning' stamp: 'jmv 25/Sep/2026, 1:37:03 pm (UTC)'!
 dominates: other
 	"See what happens with ParagraphStyleReference, CharacterStyleReference, TextFontReference, TextEmphasis and TextAlignment
 	So far, no one dominates the other. This means they are all applied. We don't specify an order though. This might need refinement"
 
 	"Leave TextAnchors and such alone!!"
 	other isForFormatting ifFalse: [ ^false ].
+	
+	"Similar attributes are applied in order."
+	other class == self class ifTrue: [ ^true ].
 
-	^ other class == self class
-		or: [
-			"Any ParagraphStyle precludes the use of regular CharacterAttributes.
-			This restriction is not usually needed, as the StyledTextEditor doesn't allow the use of regular attributes.
-			But it was needed to add this, because the 'Smalltalk Code' ParagraphStyle uses shout to decorate text, and this adds regular Attributes
-			such as color, bold, italic... Later, if we remove that ParagraphStyle (to use a regular one), we need to ensure that all those attributes
-			are removed"
-			other isStyle not
-				or: [
-					"A ParahraphStyle that does Shout (auto code formatting) precludes the use of CharacterStyles and other CharacterAttributes"
-					paragraphStyle doesShout and: [ other isParagraphAttribute not ] ] ]! !
+	"Leave Shout attributes alone, or 'Smalltalk Code' ParagraphStyle won't be able to style code."
+	other isForShout ifTrue: [ ^false ].
+	
+	"Any ParagraphStyle precludes the use of regular CharacterAttributes.
+	This restriction is not usually needed, as the StyledTextEditor doesn't allow the use of regular attributes.
+	But it was needed to add this, because the 'Smalltalk Code' ParagraphStyle uses shout to decorate text, and this adds regular Attributes
+	such as color, bold, italic... Later, if we remove that ParagraphStyle (to use a regular one), we need to ensure that all those attributes
+	are removed"
+	other isStyle not ifTrue: [ ^true ].
+	
+	"A ParahraphStyle that does Shout (auto code formatting) precludes the use of CharacterStyles and other CharacterAttributes"
+	^ paragraphStyle doesShout and: [ other isParagraphAttribute not ]! !
 
-!ParagraphStyleReference methodsFor: 'iterating' stamp: 'jmv 25/Jan/2011 13:42:00'!
+!ParagraphStyleReference methodsFor: 'iterating' stamp: 'jmv 25/Jan/2011, 4:42:00 pm (UTC)'!
 forParagraphStyleReferenceDo: aBlock
 	aBlock value: paragraphStyle! !
 
-!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 1/Sep/2009 23:02:00'!
+!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 2/Sep/2009, 2:02:00 am (UTC)'!
 isParagraphAttribute
 	"Attributes that answer true will always be applied to whole paragraphs, i.e. starting at the position after a cr (or 1) and ending at a cr (or text size)"
 	
 	^true! !
 
-!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 11/Apr/2011 19:35:00'!
+!ParagraphStyleReference methodsFor: 'testing' stamp: 'jmv 11/Apr/2011, 10:35:00 pm (UTC)'!
 isStyle
 	^true! !
 
-!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011 11:08:00'!
+!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011, 2:08:00 pm (UTC)'!
 style
 	^paragraphStyle! !
 
-!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011 11:08:00'!
+!ParagraphStyleReference methodsFor: 'accessing' stamp: 'jmv 21/Sep/2011, 2:08:00 pm (UTC)'!
 style: aParagraphStyle
 	paragraphStyle _ aParagraphStyle! !
 
-!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016 13:45:00'!
+!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016, 4:45:00 pm (UTC)'!
 writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
 	"Write the RTF code for attribute start. Return number of characters to skip (usually 0)"
 	"paragraph attributes still missing..."
@@ -2995,7 +2999,7 @@ writeRTFStartOn: aStream colorTable: colorArray fontTable: fontArray
 
 	^0! !
 
-!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016 13:45:00'!
+!ParagraphStyleReference methodsFor: 'rtf exporting' stamp: 'jmv 1/Apr/2016, 4:45:00 pm (UTC)'!
 writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
 	"Write the RTF code for attribute stop.
 	Do it in the inverse order of writeRTFStartOn:colorTable:fontTable:"
@@ -3026,7 +3030,7 @@ writeRTFStopOn: aStream colorTable: colorArray fontTable: fontArray
 	"paragraph defaults (i.e. paragraph end). Needed to honor spaceBefore and spaceAfter"
 	aStream nextPutAll: '\pard '! !
 
-!ParagraphStyleReference class methodsFor: 'instance creation' stamp: 'jmv 21/Sep/2011 11:09:00'!
+!ParagraphStyleReference class methodsFor: 'instance creation' stamp: 'jmv 21/Sep/2011, 2:09:00 pm (UTC)'!
 for: aParagraphStyle
 	| attribute |
 self assert: aParagraphStyle notNil.
@@ -3034,19 +3038,19 @@ self assert: aParagraphStyle notNil.
 	attribute style: aParagraphStyle.
 	^attribute! !
 
-!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 5/Aug/2013 10:44:00'!
+!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 5/Aug/2013, 1:44:00 pm (UTC)'!
 comeFullyUpOnReload: smartRefStream
 	"This is not the proper way to handle multiple dictionaries!!"
 	
 	words _ EnglishDict.
 	^ self! !
 
-!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 5/Aug/2013 10:45:00'!
+!STECompleter methodsFor: 'objects from disk' stamp: 'jmv 5/Aug/2013, 1:45:00 pm (UTC)'!
 objectForDataStream: refStrm
 
 	^self shallowCopy clearWords; yourself! !
 
-!STECompleter methodsFor: 'entries' stamp: 'jmv 14/Jul/2011 13:58:00'!
+!STECompleter methodsFor: 'entries' stamp: 'jmv 14/Jul/2011, 4:58:00 pm (UTC)'!
 addEntriesTo: aStream
 	| s count capitalize |
 	s _ 400.
@@ -3059,21 +3063,21 @@ addEntriesTo: aStream
 		aStream nextPut: (capitalize ifTrue: [key capitalized] ifFalse: [key]).
 		count _ count + 1 ]! !
 
-!STECompleter methodsFor: 'entries' stamp: 'jmv 21/Sep/2011 11:14:00'!
+!STECompleter methodsFor: 'entries' stamp: 'jmv 21/Sep/2011, 2:14:00 pm (UTC)'!
 selectedEntry
 	^(Text
 		string: (self entries at: menuMorph selected)
 		attribute: (CharacterStyleReference new style: model styleSet autoCompletedStyle)), ' '! !
 
-!STECompleter methodsFor: 'initialization' stamp: 'jmv 5/Aug/2013 10:45:00'!
+!STECompleter methodsFor: 'initialization' stamp: 'jmv 5/Aug/2013, 1:45:00 pm (UTC)'!
 clearWords
 	words _ nil! !
 
-!STECompleter methodsFor: 'initialization' stamp: 'jmv 14/Jul/2011 13:58:00'!
+!STECompleter methodsFor: 'initialization' stamp: 'jmv 14/Jul/2011, 4:58:00 pm (UTC)'!
 initialize
 	words _ EnglishDict! !
 
-!STECompleter class methodsFor: 'class initialization' stamp: 'jmv 31/May/2016 11:16:00'!
+!STECompleter class methodsFor: 'class initialization' stamp: 'jmv 31/May/2016, 2:16:00 pm (UTC)'!
 initialize
 	"
 	STECompleter initialize
@@ -3110,7 +3114,7 @@ initialize
 
 	'Spell Checker importing done.' print.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:10:40'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:10:40 pm (UTC)'!
 testClickAndHalf
 	"
 	StyledTextEditorTest new testClickAndHalf
@@ -3131,7 +3135,7 @@ testClickAndHalf
 	self assert: ((hand instVarNamed: 'mouseClickState') instVarNamed: 'clickAndHalfSelector') notNil description: 'Click-n-half should be handled'.
 	textModelMorph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:11:41'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:11:41 pm (UTC)'!
 testClickAndHalfSelection
 	"
 	StyledTextEditorTest new testClickAndHalfSelection
@@ -3164,7 +3168,7 @@ testClickAndHalfSelection
 	self assert: morph editor selectionInterval = (1 to: 4) description: 'Click-n-half does not set selection properly.'.
 	morph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:39:53'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:39:53 pm (UTC)'!
 testDropDownKeyboardNavigation
 	"
 	StyledTextEditorTest new testDropDownKeyboardNavigation
@@ -3192,7 +3196,7 @@ testDropDownKeyboardNavigation
 
 	window delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 2/Apr/2016 14:47:00'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 2/Apr/2016, 5:47:00 pm (UTC)'!
 testEmpasizeScanner
 	"Create a few instances of styled text (i.e. Text using various styles)
 	and assert their properties
@@ -3240,7 +3244,7 @@ testEmpasizeScanner
 		
 	Display restore! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:28:04'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021, 8:28:04 pm (UTC)'!
 testEmptyLine
 	"
 	StyledTextEditorTest new testEmptyLine
@@ -3273,7 +3277,7 @@ testEmptyLine
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021 17:28:08'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Nov/2021, 8:28:08 pm (UTC)'!
 testEmptyText
 	"
 	StyledTextEditorTest new testEmptyText
@@ -3299,7 +3303,7 @@ testEmptyText
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:12:54'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:12:54 pm (UTC)'!
 testEmptyTextClick
 	"
 	StyledTextEditorTest new testEmptyTextClick
@@ -3330,7 +3334,7 @@ testEmptyTextClick
 	self assert: block width = 0.
 	self assert: block left = style firstIndent.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 12:40:49'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 3:40:49 pm (UTC)'!
 testEmptyTrailingLine
 	"Test that the special case of an artificial empty last line behaves as normal lines.
 	StyledTextEditorTest new testEmptyTrailingLine
@@ -3363,7 +3367,7 @@ testEmptyTrailingLine
 	form1 addDeltasFrom: form2.
 	self assert: form1 primCountBits = 0 description: 'Incorrect text cursor for empty text.'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 12:51:34'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 3:51:34 pm (UTC)'!
 testEmptyTrailingLineNumberedStyle
 	"Test that the special case of an artificial empty last line behaves as normal lines.
 	StyledTextEditorTest new testEmptyTrailingLineNumberedStyle
@@ -3410,7 +3414,7 @@ testEmptyTrailingLineNumberedStyle
 	form1 addDeltasFrom: form2.
 	self assert: form1 primCountBits = 0 description: 'Incorrect text cursor for empty text.'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:30'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:30 pm (UTC)'!
 testKeepParagraphStyleOnDeleteAll
 	"
 	StyledTextEditorTest new testKeepParagraphStyleOnDeleteAll
@@ -3438,7 +3442,7 @@ testKeepParagraphStyleOnDeleteAll
 	editor cut.
 	self assert: editor currentParagraphStyle = heading1 description: 'Paragraph style should not be lost because of deletion'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Jun/2011 16:32:00'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 9/Jun/2011, 7:32:00 pm (UTC)'!
 testRecentClipping
 	"
 	StyledTextEditorTest new testRecentClipping
@@ -3446,7 +3450,7 @@ testRecentClipping
 	Clipboard default: Clipboard new.
 	self shouldnt: [ Clipboard chooseRecentClipping ] raise: Error! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:35'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:35 pm (UTC)'!
 testSelectStyle
 	"Create a few instances of styled text (i.e. Text using various styles)
 	and assert their properties
@@ -3507,7 +3511,7 @@ testSelectStyle
 		assert: (text paragraphStyleOrNilAt: unstyled size + 1) = heading2
 		description: 'Should have new style affected line'.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:36:07'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:36:07 pm (UTC)'!
 testShiftClickSelection
 	"
 	StyledTextEditorTest new testShiftClickSelection
@@ -3550,7 +3554,7 @@ testShiftClickSelection
 	self assert: (editor stopBlock right > (point2 - p)) description: 'Incorrect selection when shift-click'.
 	morph delete! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:26:52'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:26:52 pm (UTC)'!
 testStylesInPaste1
 	"
 	StyledTextEditorTest new testStylesInPaste1
@@ -3582,7 +3586,7 @@ testStylesInPaste1
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:40'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:40 pm (UTC)'!
 testStylesInPaste2
 	"
 	StyledTextEditorTest new testStylesInPaste2
@@ -3619,7 +3623,7 @@ testStylesInPaste2
 	self assert: concatenation runs values second size = 1 description: 'Should apply the "Heading 1" paragraph style to the second part'.
 	self assert: concatenation runs values second first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:46'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:46 pm (UTC)'!
 testStylesInPaste3
 	"
 	StyledTextEditorTest new testStylesInPaste3
@@ -3650,7 +3654,7 @@ testStylesInPaste3
 	self assert: concatenation runs runs size = 1 description: 'Should apply no character style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:50'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:50 pm (UTC)'!
 testStylesInPaste4
 	"
 	StyledTextEditorTest new testStylesInPaste4
@@ -3687,7 +3691,7 @@ testStylesInPaste4
 	self assert: concatenation runs values first first style name = 'Heading 1'.
 	self assert: concatenation runs values second first style name = 'Normal'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:54'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:54 pm (UTC)'!
 testStylesInPaste5
 	"
 	StyledTextEditorTest new testStylesInPaste5
@@ -3721,7 +3725,7 @@ testStylesInPaste5
 	self assert: concatenation runs runs size = 1 description: 'Should apply same attributes to the whole text'.
 	self assert: concatenation runs runs first = concatenation size description: 'Should apply the "Heading 1" paragraph style to all the text'.! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:27:58'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:27:58 pm (UTC)'!
 testStylesInPaste6
 	"
 	StyledTextEditorTest new testStylesInPaste6
@@ -3759,7 +3763,7 @@ testStylesInPaste6
 	self assert: concatenation runs values first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the first part'.
 	self deny: concatenation runs values second first style == heading1 description: 'Should not apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:02'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:02 pm (UTC)'!
 testStylesInPaste7
 	"
 	StyledTextEditorTest new testStylesInPaste7
@@ -3791,7 +3795,7 @@ testStylesInPaste7
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text, as no part of original text is left.'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text, as no part of original text is left.'! !
 
-!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:05'!
+!StyledTextEditorTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:05 pm (UTC)'!
 testStylesInPaste8
 	"
 	Not exactly a Paste operation, but #replaceSelectionWith: , as done by the autocompletter
@@ -3824,11 +3828,11 @@ testStylesInPaste8
 		assert: (concatenation runs values allSatisfy: [ :attrs | attrs anySatisfy: [ :att | att class == ParagraphStyleReference ]])
 		description: 'Must have ParagraphStyle everywhere!!'! !
 
-!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 31/May/2016 10:34:00'!
+!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 31/May/2016, 1:34:00 pm (UTC)'!
 tearDown
 	(DirectoryEntry currentDirectory // 'StyledTextModelTest.object') delete! !
 
-!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'bp 22/Apr/2012 13:15:00'!
+!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'bp 22/Apr/2012, 4:15:00 pm (UTC)'!
 testFromFileNamed
 	| model1 model2 model3 |
 	model1 _ StyledTextModel new contents: 'Some text' asText.
@@ -3838,7 +3842,7 @@ testFromFileNamed
 	model3 _ StyledTextModel fromFileNamed: 'StyledTextModelTest'.
 	self assert: model1 actualContents equals: model3 actualContents! !
 
-!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 28/Apr/2026 18:43:17'!
+!StyledTextModelTest methodsFor: 'as yet unclassified' stamp: 'jmv 28/Apr/2026, 9:43:17 pm (UTC)'!
 testSave
 	"
 	self new testSave
@@ -3852,7 +3856,7 @@ testSave
 	self assert: fileEntry exists.
 	fileEntry delete.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 20/Dec/2011 12:41:00'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 20/Dec/2011, 3:41:00 pm (UTC)'!
 testAsStyledAsNonStyledSample5
 	"
 	StyledTextTest new testAsStyledAsNonStyledSample5Bis
@@ -3866,7 +3870,7 @@ testAsStyledAsNonStyledSample5
 	self assert: (unstyled attributesAt: 7) first class = TextAnchor.	"Or test is broken"
 	self assert: ((styled attributesAt: 7) anySatisfy: [ :att | att class = TextAnchor])! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 16:23:57'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 7:23:57 pm (UTC)'!
 testCharacterStyleConcatenation
 	"
 	self new testCharacterStyleConcatenation
@@ -3901,7 +3905,7 @@ testCharacterStyleConcatenation
 	self assert: concatenation6 runs runs second = normalText3 size description: 'Should apply no character style to the third part'.
 	self assert: concatenation6 runs values second size = 1 description: 'Should apply no character style to the third part'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 18:04:59'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 9:04:59 pm (UTC)'!
 testOldInstanceDeserialization
 	"
 	StyledTextTest new testOldInstanceDeserialization
@@ -3917,7 +3921,7 @@ testOldInstanceDeserialization
 	self shouldnt: [ newInstance undoRedoCommands ] raise: Exception.
 	! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 20:00:37'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 11:00:37 pm (UTC)'!
 testSample1ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample1ToAndFromRTFClipboardStyle
@@ -3939,7 +3943,7 @@ testSample1ToAndFromRTFClipboardStyle
 	self assert: text2 = text.
 	self assert: text2 asNonStyledText runs = text runs.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 20:00:30'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 11:00:30 pm (UTC)'!
 testSample2ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample2ToAndFromRTFClipboardStyle
@@ -3962,7 +3966,7 @@ testSample2ToAndFromRTFClipboardStyle
 	self assert: text2 = text.
 	self assert: text2 asNonStyledText runs = text runs.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 20:00:20'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 11:00:20 pm (UTC)'!
 testSample3ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample3ToAndFromRTFClipboardStyle
@@ -3984,7 +3988,7 @@ testSample3ToAndFromRTFClipboardStyle
 	self assert: text2 = text.
 	self assert: text2 asNonStyledText runs = text runs.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 20:00:13'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 11:00:13 pm (UTC)'!
 testSample4ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample4ToAndFromRTFClipboardStyle
@@ -4010,7 +4014,7 @@ testSample4ToAndFromRTFClipboardStyle
 	"kern and struckThrough not supported in rtf yet..."
 "	self assert: text2 runs = text asStyledText runs"! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 20:00:06'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 11:00:06 pm (UTC)'!
 testSample5ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample5ToAndFromRTFClipboardStyle
@@ -4032,7 +4036,7 @@ testSample5ToAndFromRTFClipboardStyle
 	self assert: text2 = text.
 	self assert: text2 asNonStyledText runs = text runs.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 19:29:35'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 10:29:35 pm (UTC)'!
 testSample6ToAndFromRTFClipboardStyle
 	"
 	StyledTextTest new testSample6ToAndFromRTFClipboardStyle
@@ -4054,7 +4058,7 @@ testSample6ToAndFromRTFClipboardStyle
 	self assert: text2 = text.
 	self assert: text2 asNonStyledText runs = text runs.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 13/Mar/2012 17:01:00'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 13/Mar/2012, 8:01:00 pm (UTC)'!
 testStyledText
 	"Create a few instances of styled text (i.e. Text using various styles)
 	and assert their properties
@@ -4093,7 +4097,7 @@ testStyledText
 		assert: (multiText paragraphStyleOrNilAt: multiText size) isNil
 		description: 'Incorrect ParagraphStyle in styled text'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 13/Mar/2012 17:01:00'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 13/Mar/2012, 8:01:00 pm (UTC)'!
 testStyledTextAndString
 	"Create a few instances of styled text (i.e. Text using various styles)
 	and assert their properties
@@ -4119,7 +4123,7 @@ testStyledTextAndString
 		assert: (multi paragraphStyleOrNilAt: 3) = style
 		description: 'ParagraphStyle not properly set'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 16:25:05'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 7:25:05 pm (UTC)'!
 testStyledTextBuilder
 	"
 	Test building with nested CharacterStyles
@@ -4161,7 +4165,7 @@ testStyledTextBuilder
 	self assert: (t characterStyleOrNilAt: 140) isNil description: 'Should not have a char style any longer'.
 	self assert: (t characterStyleOrNilAt: t size) isNil description: 'Should not have a char style any longer'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023 16:25:18'!
+!StyledTextTest methodsFor: 'tests' stamp: 'bp 17/Sep/2023, 7:25:18 pm (UTC)'!
 testStyledTextBuilder2
 	"
 	Test several paragraphs, with various ParagraphStyles
@@ -4243,7 +4247,7 @@ And now another paragraph. This one may be smaller than previous ones
 	self assert: (t paragraphStyleOrNilAt: t size) name = 'Normal' description: 'Wrong paragraphStyle'.
 	self assert: (t characterStyleOrNilAt: t size) isNil description: 'Should not have a char style any longer'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:09'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:09 pm (UTC)'!
 testStylesInPaste1
 	"
 	self new testStylesInPaste1
@@ -4278,7 +4282,7 @@ testStylesInPaste1
 	self assert: concatenation runs first size = 1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:13'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:13 pm (UTC)'!
 testStylesInPaste2
 	"
 	self new testStylesInPaste2
@@ -4318,7 +4322,7 @@ testStylesInPaste2
 	self assert: concatenation runs values second size = 1 description: 'Should apply the "Heading 1" paragraph style to the second part'.
 	self assert: concatenation runs values second first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the second part'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:17'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:17 pm (UTC)'!
 testStylesInPaste3
 	"
 	self new testStylesInPaste3
@@ -4352,7 +4356,7 @@ testStylesInPaste3
 	self assert: concatenation runs runs size = 1 description: 'Should apply no character style to the whole text'.
 	self assert: concatenation runs first first style == heading1 description: 'Should apply just the "Heading 1" paragraph style to the whole text'! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:20'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:20 pm (UTC)'!
 testStylesInPaste4
 	"
 	self new testStylesInPaste4
@@ -4391,7 +4395,7 @@ testStylesInPaste4
 	self assert: concatenation runs values first first style name = 'Heading 1'.
 	self assert: concatenation runs values second first style name = 'Imported '! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:24'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:24 pm (UTC)'!
 testStylesInPaste5
 	"
 	self new testStylesInPaste5
@@ -4427,7 +4431,7 @@ testStylesInPaste5
 	self assert: concatenation runs runs size = 1 description: 'Should apply same attributes to the whole text'.
 	self assert: concatenation runs runs first = concatenation size description: 'Should apply the "Heading 1" paragraph style to all the text'.! !
 
-!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026 18:28:27'!
+!StyledTextTest methodsFor: 'tests' stamp: 'jmv 28/Apr/2026, 9:28:27 pm (UTC)'!
 testStylesInPaste6
 	"
 	self new testStylesInPaste6
@@ -4467,18 +4471,18 @@ testStylesInPaste6
 	self assert: concatenation runs values first first style == heading1 description: 'Should apply the "Heading 1" paragraph style to the first part'.
 	self deny: concatenation runs values second first style == heading1 description: 'Should not apply the "Heading 1" paragraph style to the second part'! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 11/Apr/2011 19:37:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 11/Apr/2011, 10:37:00 pm (UTC)'!
 asNonStyledText
 	self usesAnyStyles ifFalse: [ ^self ].
 	^self copy beNonStyledText! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 10/Aug/2011 15:48:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 10/Aug/2011, 6:48:00 pm (UTC)'!
 asStyledTextWith: aStyleSet
 	"Next line is disabled, because even if already styled, we need to compatibilize styles with aStyleSet"
 "	self isStyledText ifTrue: [ ^self ]."
 	^self copy beStyledTextWith: aStyleSet! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 28/Apr/2026 18:32:23'!
+!Text methodsFor: '*styledText' stamp: 'jmv 28/Apr/2026, 9:32:23 pm (UTC)'!
 beNonStyledText
 	"Modify the receiver so that it doesn't include any ParagraphStyle or CharacterStyle.
 	Turn them into TextFontFamilyAndSize, TextEmphasis, TextColor, and TextAlignment as appropriate.
@@ -4506,7 +4510,7 @@ beNonStyledText
 	].
 	runs coalesce! !
 
-!Text methodsFor: '*styledText' stamp: 'KenD 18/Apr/2026 15:14:41'!
+!Text methodsFor: '*styledText' stamp: 'KenD 18/Apr/2026, 6:14:41 pm (UTC)'!
 beStyledTextWith: aStyleSet
 	"Modify the receiver so that it doesn't include any TextFontFamilyAndSize, TextEmphasis, TextColor, TextAlignment. Turn all of them into ParagraphStyleReference or CharacterStyleReference as appropriate.
 	Keep any TextAttribute that doesn't fit into the Styles: TextAction (and subclasses) and TextAnchor.
@@ -4571,7 +4575,7 @@ beStyledTextWith: aStyleSet
 	self privateSetRuns: newRunArray.
 	runs coalesce! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 21/Sep/2011 11:00:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 21/Sep/2011, 2:00:00 pm (UTC)'!
 commandForRemoveCharacterStylesIn: anInterval
 	"Remove any CharacterStyles in anInterval."
 
@@ -4593,7 +4597,7 @@ commandForRemoveCharacterStylesIn: anInterval
 		start: start
 		stop: stop! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 11/Apr/2011 22:08:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 12/Apr/2011, 1:08:00 am (UTC)'!
 isStyledText
 	runs do: [ :run |
 		(run anySatisfy: [ :attribute | attribute class = ParagraphStyleReference])
@@ -4602,14 +4606,14 @@ isStyledText
 			(attribute isForFormatting and: [ attribute isStyle not ]) ifTrue: [ ^false ]]].
 	^true! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 29/Dec/2011 15:44:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 29/Dec/2011, 6:44:00 pm (UTC)'!
 removeReferencesToCharacterStyle: oldCharacterStyle
 	self
 		removeAttributes: {(CharacterStyleReference for: oldCharacterStyle)}
 		from: 1
 		to: self size! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 1/Nov/2011 11:30:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 1/Nov/2011, 2:30:00 pm (UTC)'!
 replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrCharacterStyle
 	"Both arguments must be of the same kind (either para or char style)"
 	runs runsAndValuesDo: [ :count :attributes |
@@ -4617,21 +4621,21 @@ replaceReferencesToStyle: oldParagraphOrCharacterStyle with: newParagraphOrChara
 			(att isStyle and: [ att style == oldParagraphOrCharacterStyle ])
 				ifTrue: [ att style: newParagraphOrCharacterStyle ]]]! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 11/Apr/2011 22:04:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 12/Apr/2011, 1:04:00 am (UTC)'!
 usesAnyStyles
 	runs do: [ :run |
 		run do: [ :attribute |
 			attribute isStyle ifTrue: [ ^true ]]].
 	^false! !
 
-!Text methodsFor: '*styledText' stamp: 'jmv 11/Apr/2011 22:04:00'!
+!Text methodsFor: '*styledText' stamp: 'jmv 12/Apr/2011, 1:04:00 am (UTC)'!
 usesOnlyStyles
 	runs do: [ :run |
 		run do: [ :attribute |
 			(attribute isForFormatting and: [ attribute isStyle not ]) ifTrue: [ ^false ]]].
 	^true! !
 
-!Text class methodsFor: '*styledText' stamp: 'jmv 25/Jan/2011 16:15:00'!
+!Text class methodsFor: '*styledText' stamp: 'jmv 25/Jan/2011, 7:15:00 pm (UTC)'!
 buildWithStyles: aDictionary contents: aBlock
 	"Builds a StyledText, i.e. a Text whose only attributes are ParagraphStyles and CharacterStyles"
 	| builder |
@@ -4639,7 +4643,7 @@ buildWithStyles: aDictionary contents: aBlock
 	aBlock value: builder.
 	^builder text! !
 
-!SystemWindow class methodsFor: '*styledText' stamp: 'jmv 24/Jul/2014 10:26:00'!
+!SystemWindow class methodsFor: '*styledText' stamp: 'jmv 24/Jul/2014, 1:26:00 pm (UTC)'!
 editFancierStyledText: aTextModel label: labelString
 	| window textMorph |
 	textMorph _ PluggableStyledTextMorph withModel: aTextModel in: LayoutMorph newColumn.
@@ -4651,7 +4655,7 @@ editFancierStyledText: aTextModel label: labelString
 	window setProperty: #minimumExtent toValue: 660@300.
 	^ window openInWorld! !
 
-!SystemWindow class methodsFor: '*styledText' stamp: 'jmv 24/May/2011 08:24:00'!
+!SystemWindow class methodsFor: '*styledText' stamp: 'jmv 24/May/2011, 11:24:00 am (UTC)'!
 editStyledText: aTextModel label: labelString
 	| window |
 	window _ SystemWindow new model: aTextModel.
@@ -4662,7 +4666,7 @@ editStyledText: aTextModel label: labelString
 		proportionalHeight: 1.
 	^ window openInWorld! !
 
-!TextAttribute methodsFor: '*styledText' stamp: 'jmv 1/Nov/2011 11:32:00'!
+!TextAttribute methodsFor: '*styledText' stamp: 'jmv 1/Nov/2011, 2:32:00 pm (UTC)'!
 isStyle
 	^false! !
 STECompleter initialize!

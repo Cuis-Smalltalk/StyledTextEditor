@@ -1,6 +1,6 @@
 'From Cuis7.9 [latest update: #8237] on 25 September 2026 at 10:40:13 am'!
 'Description Please enter a description for this package.'!
-!provides: 'StyledText' 1.0.80!
+!provides: 'StyledText' '1.0.80'!
 !requires: 'Cuis-Base' '7.9.8257' '7.*.*'!
 !requires: 'ExtendedClipboard' 1 15 nil!
 !requires: 'RTFExporting' 1 nil nil!
